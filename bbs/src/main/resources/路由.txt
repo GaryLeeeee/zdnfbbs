@@ -1,3 +1,4 @@
+Create by skyisbule 2017-5-10 10:11:18
 //skyisbule:
 2017-5-10 22:58:09：
 /login  登录界面
@@ -5,3 +6,7 @@
 /regist 注册
 /registing 处理注册
 /Kaptcha 用来获取验证码
+
+/api/user/userinfo  get方式传用户名 返回用户的所有信息
+如：/api/user/userinfo?name=skyisbule
+返回：{"name":"skyisbule","passwd":"*****","sex":"man","wechat":"123456","telnum":"123545","introduce":"123213","power":"235"}

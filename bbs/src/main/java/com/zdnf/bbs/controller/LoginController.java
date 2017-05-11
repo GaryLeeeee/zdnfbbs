@@ -37,6 +37,7 @@ public class LoginController {
         String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
         String parameter = httpServletRequest.getParameter("vrifyCode");
         if (captchaId.equals(parameter)) {
+            user.setPower("0");
             LoginService.adduser(user);
             return "login";
         }
