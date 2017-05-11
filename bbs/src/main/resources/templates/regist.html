@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>注册页面</title>
+</head>
+<body>
+<form method="post" action="/registing">
+    <p>用户名：<input type="text" name="name" /></p>
+    <p> 密码：<input type="password" name="passwd" /></p>
+    <p> 性别：<input type="text" name="sex" /></p>
+    <p> 微信号：<input type="text" name="wechat" /></p>
+    <p> 电话:<input type="text" name="telnum" /></p>
+    <p>  个人简介:<input type="text" name="introduce" /></p>
+    <p>验证码<input type="text" name="vrifyCode" /></p>
+    <p>  <input type="submit" /></p>
+</form>
+<img src="/Kaptcha" />
+<a href="login.html">已经有账号了？点我登录</a>
+</body>
+</html>

@@ -1,0 +1,7 @@
+//skyisbule:
+2017-5-10 22:58:09：
+/login  登录界面
+/logining 处理登录
+/regist 注册
+/registing 处理注册
+/Kaptcha 用来获取验证码

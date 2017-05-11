@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zdnf.bbs.dao.LoginDao">
+    <insert id="adduser" parameterType="com.zdnf.bbs.domain.User">
+        insert into userinfo(id,name,passwd,sex,wechat,telnum,introduce,power)
+        VALUES
+        (null,#{user.name},#{user.passwd},#{user.sex},#{user.wechat},#{user.telnum},#{user.introduce},#{user.power})
+    </insert>
+    <select id="get_passwd" resultType="String">
+        SELECT passwd FROM userinfo WHERE name=#{name}
+    </select>
+</mapper>
