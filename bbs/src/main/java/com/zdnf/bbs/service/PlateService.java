@@ -1,0 +1,18 @@
+package com.zdnf.bbs.service;
+import com.zdnf.bbs.domain.Plate;
+import com.zdnf.bbs.dao.PlateDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by ZDNF on 2017/5/12.
+ */
+@Service
+public class PlateService {
+    @Autowired
+    PlateDao PlateDao;
+
+    public List<Plate> get_all(){return PlateDao.get_all();}
+}

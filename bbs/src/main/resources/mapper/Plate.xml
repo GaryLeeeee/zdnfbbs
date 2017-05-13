@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.zdnf.bbs.dao.UserApiDao">
 
-    <select id="get_user_info" resultType="com.zdnf.bbs.domain.User">
-        SELECT * FROM userinfo WHERE name=#{name}
 
+<mapper namespace="com.zdnf.bbs.dao.PlateDao">
+
+    <select id="get_all"  resultType="com.zdnf.bbs.domain.Plate">
+        SELECT * FROM plate
     </select>
 
 </mapper>
