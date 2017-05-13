@@ -15,4 +15,8 @@ public class PlateService {
     PlateDao PlateDao;
 
     public List<Plate> get_all(){return PlateDao.get_all();}
+
+    public boolean add(Plate Plate){return PlateDao.add(Plate);}
+
+    public boolean delete(Plate Plate){return PlateDao.delete(Plate);}
 }

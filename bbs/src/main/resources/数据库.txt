@@ -1,0 +1,62 @@
+表的设计：
+1.用户信息表
+字段：id(主键)、name、password、sex、wechat、telnum、个人简介、头衔（权限）
+
+CREATE TABLE UserInfo (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(32) DEFAULT NULL,
+  passwd varchar(32) DEFAULT NULL,
+  sex varchar(6) DEFAULT NULL,
+  wechat varchar(20) DEFAULT NULL,
+  telnum varchar(20) DEFAULT NULL,
+  introduce varchar(100) DEFAULT NULL,
+  power varchar(3) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+2.板块表
+字段：板块名、板块类型、颜色
+
+CREATE TABLE  plate(
+  id int(4) NOT NULL AUTO_INCREMENT,
+  name varchar(20) DEFAULT NULL,
+  type varchar(20) DEFAULT NULL,
+  color varchar(6) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+4.帖子表
+字段：id（主键）、所属板块、标题、作者、回复数、最后回复者、最后回复时间。
+
+CREATE TABLE  post(
+  id int(4) NOT NULL AUTO_INCREMENT,
+  BelongTo varchar(20) DEFAULT NULL,
+  title varchar(40) DEFAULT NULL,
+  author varchar(30) DEFAULT NULL,
+  num varchar(10) DEFAULT NULL,
+  LastOne varchar(30) DEFAULT NULL,
+  LastTime DATETIME DEFAULT NULL,
+  IsTop bool DEFAULT False,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+5.帖子回复表
+字段：id（对应帖子表中的id）、回复者、回复内容、回复时间、楼层。
+
+CREATE TABLE  replay(
+  id int(10) NOT NULL AUTO_INCREMENT,
+  father int(20) DEFAULT NULL,
+  author varchar(30) DEFAULT NULL,
+  content varchar(500) DEFAULT NULL,
+  time DATETIME DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+6.站内私信表
+字段：发信者、收信者、内容、时间、是否已读。
+
+7.公告表
+字段：标题、内容、时间
+
+8.小黑屋表
+字段：用户名、封禁时间、封禁理由。

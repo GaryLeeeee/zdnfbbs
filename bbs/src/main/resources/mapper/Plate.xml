@@ -6,9 +6,19 @@
 
 
 <mapper namespace="com.zdnf.bbs.dao.PlateDao">
-
+    <!-- 返回所有的板块信息 -->
     <select id="get_all"  resultType="com.zdnf.bbs.domain.Plate">
         SELECT * FROM plate
     </select>
+    <!-- 添加一个板块 -->
+    <insert id="add" parameterType="com.zdnf.bbs.domain.Plate">
+        INSERT INTO plate (id,name,type,color)
+        VALUES
+        (NULL,#{Plate.name},#{Plate.type},#{Plate.color})
+    </insert>
+    <!-- 删除一个板块 -->
+    <delete id="delete" parameterType="com.zdnf.bbs.domain.Plate">
+        DELETE FROM plate WHERE id=#{Plate.id}
+    </delete>
 
 </mapper>

@@ -7,6 +7,11 @@ Create by skyisbule 2017-5-10 10:11:18
 /registing 处理注册
 /Kaptcha 用来获取验证码
 
+用户API部分：
 /api/user/userinfo  get方式传用户名 返回用户的所有信息
 如：/api/user/userinfo?name=skyisbule
 返回：{"name":"skyisbule","passwd":"*****","sex":"man","wechat":"123456","telnum":"123545","introduce":"123213","power":"235"}
+
+板块API部分：
+/api/plate/all  无参数，以LIST返回所有的板块信息，包括板块id，板块名，板块类型，板块颜色。
+如：[{"id":1,"name":"1","type":"1","color":"1"},{"id":2,"name":"2","type":"3","color":"4"},{"id":3,"name":"2","type":"3","color":"4"}]
