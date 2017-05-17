@@ -7,7 +7,14 @@
 
     <select id="get_user_info" resultType="com.zdnf.bbs.domain.User">
         SELECT * FROM userinfo WHERE name=#{name}
+    </select>
 
+    <select id="get_user_replay">
+        SELECT * FROM replay WHERE author=#{name} ORDER BY times DESC LIMIT #{low},#{max}
+    </select>
+
+    <select id="get_user_post">
+        SELECT * FROM post WHERE author#{name} ORDER BY id DESC LIMIT #{low},#{max}
     </select>
 
 </mapper>

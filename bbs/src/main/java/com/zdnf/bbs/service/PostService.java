@@ -20,5 +20,16 @@ public class PostService {
 
     public boolean add(Post post){return PostDao.add(post);}
 
-    public boolean delete(int id){return PostDao.delete(id);}
+    public boolean delete(int id){
+        if (PostDao.delete(id)&&PostDao.del_replay(id))return true;
+        return false;
+    }
+
+    public List<Post> get(int id,int page){
+        int low=(page-1)*10;
+        int max=page*10-1;
+        return PostDao.get(id,low,max);
+    }
+
+    public boolean set_top(int id,int IsTop){return PostDao.set_top(id,IsTop);}
 }

@@ -14,4 +14,11 @@ public interface PostDao {
     public boolean add(@Param("post")Post post);
 
     public boolean delete(@Param("id")int id);
+
+    public  List<Post> get(@Param("id")int id,@Param("low")int low,@Param("max")int max);
+
+    public boolean set_top(@Param("id")int id,@Param("IsTop")int IsTop);
+
+    public boolean del_replay(@Param("id")int id);
+
 }

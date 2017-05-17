@@ -13,4 +13,16 @@ public class UserApiService {
     UserApiDao UserApiDao;
 
     public User get_user(String name){return UserApiDao.get_user_info(name);}
+
+    public User get_user_replay(String name,int page){
+        int low=10*(page-1);
+        int max=page*10-1;
+        return UserApiDao.get_user_replay(name,low,max);
+    }
+
+    public User get_user_post(String name,int page){
+        int low=10*(page-1);
+        int max=page*10-1;
+        return UserApiDao.get_user_post(name,low,max);
+    }
 }

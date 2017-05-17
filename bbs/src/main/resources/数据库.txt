@@ -30,7 +30,7 @@ CREATE TABLE  plate(
 
 CREATE TABLE  post(
   id int(4) NOT NULL AUTO_INCREMENT,
-  BelongTo varchar(20) DEFAULT NULL,
+  BelongTo int(20) DEFAULT NULL,
   title varchar(40) DEFAULT NULL,
   author varchar(30) DEFAULT NULL,
   num varchar(10) DEFAULT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE  post(
 字段：id（对应帖子表中的id）、回复者、回复内容、回复时间、楼层。
 
 CREATE TABLE  replay(
-  id int(10) NOT NULL AUTO_INCREMENT,
+  id int(20) NOT NULL AUTO_INCREMENT,
   father int(20) DEFAULT NULL,
   author varchar(30) DEFAULT NULL,
   content varchar(500) DEFAULT NULL,
@@ -57,6 +57,14 @@ CREATE TABLE  replay(
 
 7.公告表
 字段：标题、内容、时间
+CREATE TABLE  notice(
+  id int(5) NOT NULL AUTO_INCREMENT,
+  title int(20) DEFAULT NULL,
+  content varchar(500) DEFAULT NULL,
+  time DATETIME DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 
 8.小黑屋表
 字段：用户名、封禁时间、封禁理由。

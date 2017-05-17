@@ -8,11 +8,10 @@ public class Post {
     public String BelongTo;
     public String title;
     public String author;
-    public int num;
+    public int num=1;
     public String LastOne;
     public String LastTime;
-    public int IsTop;
-    public int page;
+    public int IsTop=0;
 
     public void setId(int id){this.id=id;}
     public int getId(){return id;}
@@ -30,6 +29,4 @@ public class Post {
     public String getLastTime(){return LastTime;}
     public void setIsTop(int IsTop){this.IsTop=IsTop;}
     public int getIsTop(){return IsTop;}
-    public void setPage(int page){this.page=page;}
-    public int getPage(){return page;}
 }

@@ -9,18 +9,29 @@ Create by skyisbule 2017-5-10 10:11:18
 
 用户API部分：
 <1> /api/user/userinfo  get方式传用户名 返回用户的所有信息
-如：/api/user/userinfo?name=skyisbule
+合法请求：/api/user/userinfo?name=skyisbule
 返回：{"name":"skyisbule","passwd":"*****","sex":"man","wechat":"123456","telnum":"123545","introduce":"123213","power":"235"}
 <2> /api/user/istrue  传用户名密码，返回true或false
 注：未来会将密码进行md5加密
+<3> /api/user/userreplay 参数两个，name和page 返回相应页码的回复（10个）
+合法请求： /api/user/userreplay?name=skyisbule&page=1
+返回：略
+<4> /api/user/userpost 参数两个，name和page 返回相应页码的帖子（10个）
+合法请求： /api/user/userpost?name=skyisbule&page=1
+返回：略
 
 板块API部分：
 <1> /api/plate/all  无参数，以LIST返回所有的板块信息，包括板块id，板块名，板块类型，板块颜色。
 示例返回：[{"id":1,"name":"1","type":"1","color":"1"},{"id":2,"name":"2","type":"3","color":"4"},{"id":3,"name":"2","type":"3","color":"4"}]
 <2> /api/plate/add 添加一个板块，参数有三个：name,type,color;分别代表板块的名字，类型，颜色。
 合法请求： /api/plate/add?name=闲聊&type=0(这里有待最终确定)&color=red(这里同样)
+返回：true
 <3> /api/plate/delete 参数一个： id   用来删除一个板块
 合法请求：/api/plate/delete?id=1
+返回：true
+<4> /api/plate/updatename 参数两个，修改板块的名字
+合法请求： /api/plate/update?id=1&name=旅游分享
+返回：true
 
 公告API部分：
 <1> /api/notice/title  返回所有公告的标题(按时间倒叙)
@@ -36,7 +47,18 @@ Create by skyisbule 2017-5-10 10:11:18
 返回：true
 
 帖子API部分：
-<1> /api/post/all 无参数，返回所有的板块名
+<1> /api/post/all 传模块名，返回所有帖子（供测试用，正式上线后删除）
+<2> /api/post/get 参数两个，板块id和page，返回相应页码的评论，返回10条
+合法请求：/api/replay/select?id=1&page=1
+返回：略
+<3>添加帖子：/api/post/add 参数5个，属于板块、帖子标题、作者、最后回复(当然也填作者)、时间
+合法请求： /api/post/add?BelongTo=1&title=计协日常&author=skyisbule&LastOne=skyisbule&LastTime=1999-12-30 01:00:00.0
+<4>将帖子置顶: /api/post/settop 参数两个，帖子id和是否置顶（0是false 1是true）
+合法请求： /api/post/settop?id=1&istop=1
+返回：true
+<5>删除一个帖子，同时删除帖子下所有回复： /api/post/delete 参数一个，帖子的id
+合法请求： /api/post/delete?id=1
+返回true
 
 帖子的回复部分：
 <1> /api/replay/select 参数两个，帖子id，分页数：返回某帖子下某页的评论，返回10条

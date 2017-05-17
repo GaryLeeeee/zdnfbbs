@@ -16,4 +16,16 @@
         DELETE FROM post WHERE id=#{id}
     </delete>
 
+    <select id="get" resultType="com.zdnf.bbs.domain.Post">
+        SELECT * FROM post WHERE BelongTo=#{id} ORDER BY LastTime DESC LIMIT #{low},#{max}
+    </select>
+
+    <update id="set_top">
+        UPDATE post SET IsTop=#{IsTop} WHERE id=#{id}
+    </update>
+
+    <delete id="del_replay">
+        DELETE  FROM replay WHERE father=#{id}
+    </delete>
+
 </mapper>

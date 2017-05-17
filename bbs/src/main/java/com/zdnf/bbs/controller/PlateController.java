@@ -3,6 +3,7 @@ package com.zdnf.bbs.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.zdnf.bbs.domain.Plate;
 import com.zdnf.bbs.service.PlateService;
@@ -44,5 +45,12 @@ public class PlateController {
         if (PlateService.delete(plate))
         return "success";
         return "error";
+    }
+
+    //修改一个板块的名字
+    @RequestMapping("updatename")
+    public String update(@RequestParam(value="id")int id,@RequestParam(value="name")String name){
+        if (PlateService.update(id,name))return "true";
+        return "false";
     }
 }

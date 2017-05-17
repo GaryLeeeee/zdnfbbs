@@ -11,4 +11,5 @@ public interface PlateDao {
     public List<Plate> get_all();
     public boolean add(@Param("Plate") Plate Plate);
     public boolean delete(@Param("Plate") Plate Plate);
+    public boolean set_name(@Param("id")int id,@Param("name")String name);
 }

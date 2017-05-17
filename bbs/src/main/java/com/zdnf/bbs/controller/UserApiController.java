@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.zdnf.bbs.service.UserApiService;
 import com.zdnf.bbs.domain.User;
@@ -34,7 +35,7 @@ public class UserApiController {
 
     //返回账户密码对不对
     //传账号密码，返回 true或者false
-    @RequestMapping(value = "istrue",method = RequestMethod.POST)
+    @RequestMapping("istrue")
     public String istrue(User user){
         if(LoginService.get_passwd(user.getName(),user.getPasswd()))return "true";
         return "false";
@@ -43,6 +44,18 @@ public class UserApiController {
     //封禁账号
 
     //返回最近回复的
+    @RequestMapping("userreplay")
+    public User replay(@RequestParam(value="name")String name,@RequestParam(value="page")int page){
+        return UserApiService.get_user_replay(name,page);
+    }
 
     //返回发过的所有帖子
+    @RequestMapping("userpost")
+    public User post(@RequestParam(value="name")String name,@RequestParam(value="page")int page){
+        return UserApiService.get_user_post(name,page);
+    }
+
+    //上传头像
+
+    //返回头像
 }

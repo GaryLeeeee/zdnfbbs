@@ -8,4 +8,8 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserApiDao {
     public User get_user_info(@Param("name")String name);
+
+    public User get_user_replay(@Param("name")String name,@Param("low")int low,@Param("max")int max);
+
+    public User get_user_post(@Param("name")String name,@Param("low")int low,@Param("max")int max);
 }
