@@ -18,4 +18,5 @@ public class Plate {
     public String getType(){return type;}
     public void setColor(String color){this.color=color;}
     public String getColor(){return color;}
+
 }

@@ -4,15 +4,20 @@ package com.zdnf.bbs.domain;
  * Created by ZDNF on 2017/5/14.
  */
 public class Replay {
+    private int id;//自身的id
     private int father;//所属id
-    private String auth;//作者
+    private String author;//作者
     private String content;//正文
-    private String time;//时间
+    private String times;//时间
 
+    public void setId(int id){this.id=id;}
+    public int getId(){return id;}
     public void setFather(int father){this.father=father;}
     public int getFather(){return father;}
-    public void setAuth(String auth){this.auth=auth;}
-    public String getAuth(){return auth;}
+    public void setAuthor(String auth){this.author=auth;}
+    public String getAuthor(){return author;}
     public void setContent(String content){this.content=content;}
-
+    public String getContent(){return content;}
+    public void setTimes(String time){this.times=time;}
+    public String getTimes(){return times;}
 }

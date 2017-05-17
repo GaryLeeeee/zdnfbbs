@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zdnf.bbs.dao.ReplayDao">
+    <select id="get_by_id" resultType="com.zdnf.bbs.domain.Replay">
+        SELECT * FROM replay WHERE father=#{id} ORDER BY times DESC LIMIT #{low},#{max}
+    </select>
+
+    <insert id="add" parameterType="com.zdnf.bbs.domain.Replay">
+        INSERT FROM reply VALUES (NULL,#{replay.father},#{replay.author},#{repaly.content},#{replay.times})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM replay WHERE id=#{id}
+    </delete>
+
+    <select id="max" resultType="java.lang.Integer">
+        SELECT COUNT(*) from replay WHERE id=#{id}
+    </select>
+
+</mapper>

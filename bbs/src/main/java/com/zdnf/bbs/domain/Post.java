@@ -12,6 +12,7 @@ public class Post {
     public String LastOne;
     public String LastTime;
     public int IsTop;
+    public int page;
 
     public void setId(int id){this.id=id;}
     public int getId(){return id;}
@@ -19,4 +20,16 @@ public class Post {
     public String getBelongTo(){return BelongTo;}
     public void setTitle(String title){this.title=title;}
     public String getTitle(){return title;}
+    public void setAuthor(String author){this.author=author;}
+    public String getAuthor(){return author;}
+    public void setNum(int num){this.num=num;}
+    public int getNum(){return num;}
+    public void setLastOne(String lastOne){this.LastOne=lastOne;}
+    public String getLastOne(){return this.LastOne;}
+    public void setLastTime(String time){this.LastTime=time;}
+    public String getLastTime(){return LastTime;}
+    public void setIsTop(int IsTop){this.IsTop=IsTop;}
+    public int getIsTop(){return IsTop;}
+    public void setPage(int page){this.page=page;}
+    public int getPage(){return page;}
 }

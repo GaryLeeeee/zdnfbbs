@@ -8,4 +8,12 @@
         SELECT * FROM post where name=#{name}
     </select>
 
+    <insert id="add" parameterType="com.zdnf.bbs.domain.Post">
+        INSERT INTO post VALUES (NULL,#{post.BelongTO},#{post.title},#{post.author},#{post.num},#{post.LastOne},#{post.LastTime},#{post.IsTop})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM post WHERE id=#{id}
+    </delete>
+
 </mapper>

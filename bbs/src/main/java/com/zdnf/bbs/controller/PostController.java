@@ -10,8 +10,7 @@ import java.util.List;
 
 /**
  * Created by ZDNF on 2017/5/12.
- * 此类用来管理帖子的相关操作
- *
+ * 这个控制器用来管理帖子的相关操作
  */
 @RestController
 @RequestMapping("/api/post")
@@ -20,15 +19,23 @@ public class PostController {
     PostService PostService;
     //传板块名返回所有帖子
     @RequestMapping("all")
-    public List<Post> add(Post post){
+    public List<Post> all(Post post){
         return PostService.all(post.getBelongTo());
     }
 
     //添加帖子
-
+    @RequestMapping("add")
+    public String add(Post post){
+        if (PostService.add(post))return "true";
+        return "false";
+    }
 
     //删除帖子
+    //传id
+    @RequestMapping("delete")
+    public String delete(Post post){
+        if (PostService.delete(post.getId()))return "true";
+        return "false";
+    }
 
-
-    //返回帖子的回复
 }
