@@ -68,3 +68,37 @@ CREATE TABLE  notice(
 
 8.小黑屋表
 字段：用户名、封禁时间、封禁理由。
+
+9.表白表（confession）:
+字段:：id(key)，用户id，暗恋对象，联系方式，表白内容, 缘分值,时间;
+create table confession(
+   id int(11) NOT NULL AUTO_INCREMENT,
+   name varchar(32) DEFAULT NULL,
+   lover varchar(30) DEFAULT NULL,
+   telnum varchar(20) DEFAULT NULL,
+   content varchar(200) DEFAULT NULL,
+   fate int(10),
+   time DATETIME DEFAULT NULL,
+   PRIMARY KEY(id)
+   )ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+10.点赞表（fate）:
+字段：被点赞信息id，用户id，状态
+create table fate(
+    id int(6) NOT NULL AUTO_INCREMENT,
+    fateid varchar(6) DEFAULT NULL,
+    user varchar(32) DEFAULT NULL,
+    state boolean,
+    PRIMARY KEY(id)
+)ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+11.匹配记录表：
+字段：id，表白者，被表白者，内容，time
+create table perfect(
+    id int(5) NOT NULL AUTO_INCREMENT,
+    name varchar(32) DEFAULT NULL,
+    lover varchar(30) DEFAULT NULL,
+    content varchar(200) DEFAULT NULL,
+    time DATETIME DEFAULT NULL,
+    PRIMARY KEY(id)
+)ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
