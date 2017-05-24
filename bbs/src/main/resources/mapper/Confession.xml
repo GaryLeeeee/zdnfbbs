@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zdnf.bbs.dao.ConfessionDao">
+
+    <insert id="add" parameterType="com.zdnf.bbs.domain.Confession">
+        INSERT INTO confession VALUES(NULL,#{Confession.name},#{Confession.lover},#{Confession.telnum},#{Confession.content},#{Confession.fate},#{Confession.time})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM confession WHERE id=#{id}
+    </delete>
+
+    <select id="getconfe" resultType="com.zdnf.bbs.domain.Confession">
+        SELECT * FROM confession WHERE   time &gt; #{min} and time &lt; #{max}
+    </select>
+
+    <select id="max" resultType="java.lang.Integer">
+        SELECT COUNT(*) from confession WHERE id=#{id}
+    </select>
+
+</mapper>

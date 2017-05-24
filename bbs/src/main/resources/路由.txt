@@ -71,3 +71,69 @@ Create by skyisbule 2017-5-10 10:11:18
 <3> /api/replay/delete 参数一个：回复的id
 合法请求: /api/replay/delete?id=1
 返回：true
+
+*******************************************************************************
+表白墙部分:
+<1> /api/confe/add   发送表单，添加表白信息
+参数：4     name（表白者）/ lover（被表白者）/ content（内容）/ time（时间）
+合法请求：api/confe/add?name=小栋&lover=小敏&content=test&time=1995-12-30%2001:00:00.0
+返回：true
+
+<2> /api/confe/delete   删除指定表白数据
+参数：1     id（表白信息的id）
+合法请求：api/confe/delete?id=1
+返回：true
+
+<3> /api/confe/getconfe 获取数据
+参数：2     min（本周一的日期）/ max（本周日的日期）
+合法请求：api/confe/getconfe?min=1995-11-1&max=1997-1-1
+返回：[{"id":6,"name":"小明","lover":"小芳","telnum":null,"content":"test","fate":0,"time":"1995-12-30 01:00:00.0"},
+{"id":7,"name":"小栋","lover":"小敏","telnum":null,"content":"test","fate":0,"time":"1995-12-30 01:00:00.0"}]
+
+*******************************************************************************
+
+点赞部分：(user一定要存用户id 否则一旦用户改名字，会出问题)
+<1> /api/fate/add          添加点赞记录
+参数：3     fateid（表白信息id）/ user（表白者）/ state（点赞状态）
+合法请求：api/fate/add?fateid=1&user=boy&state=true
+返回：true
+
+<2> /api/fate/isadd        是否点过赞
+参数：2     fateid（表白信息id）/ user（表白者）
+合法请求:api/fate/isadd?fateid=1&user=boy
+返回:true(点赞了)   false(没点赞)  NULL(无该数据)
+
+<3> /api/fate/update       修改点赞状态
+参数：2     fateid（表白信息id）/ user（表白者）
+合法请求:api/fate/update?fateid=1&user=boy
+返回：true
+
+<4> /api/fate/amount       获取点赞总数
+参数：1     fateid（表白信息id）
+合法请求：api/fate/amount/?fateid=1
+返回：int类型数据
+
+*******************************************************************************
+
+历史数据部分：
+<1> /api/perfect/add       添加历史记录
+参数：4     name（表白者）/ lover（被表白者）/ content（内容）/ time（时间）
+合法请求：api/perfect/add?name=boy&lover=girl&content=love&time=2017-5-22
+返回：true
+
+<2> /api/perfect/delete    删除历史记录
+参数：1     id（信息id）
+合法请求：api/perfect/delete?id=1
+返回：true
+
+<3> /api/perfect/get_all   返回历史记录
+参数：1     page(页数)
+合法请求： api/perfect/amount？page=1
+返回：[{"id":1,"name":"boy","lover":"girl","content":"love","time":"2017-05-22 00:00:00.0"},
+{"id":2,"name":"boy2","lover":"girl2","content":"i love girl2","time":"2017-05-22 00:00:00.0"},
+{"id":3,"name":"boy3","lover":"girl3","content":"I love girl3","time":"2017-05-22 00:00:00.0"}]
+
+<4> /api/perfect/amount    获取历史记录总数
+参数：0
+合法请求：api/perfect/amount
+返回：int类型数据
