@@ -51,4 +51,15 @@ public class PostController {
         return "false";
     }
 
+    //返回有多少条置顶贴
+    @RequestMapping("topnum")
+    public int TopNum(int id){
+        return PostService.TopNum(id);
+    }
+
+    //返回一个板块的置顶帖
+    @RequestMapping("top")
+    public List<Post> Top(int id){
+        return PostService.top(id);
+    }
 }

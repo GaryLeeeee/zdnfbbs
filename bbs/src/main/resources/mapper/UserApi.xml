@@ -17,4 +17,8 @@
         SELECT * FROM post WHERE author#{name} ORDER BY id DESC LIMIT #{low},#{max}
     </select>
 
+    <select id="get_id" resultType="java.lang.String">
+        SELECT id FROM userinfo WHERE name=#{name}
+    </select>
+
 </mapper>

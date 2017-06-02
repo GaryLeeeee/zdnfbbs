@@ -12,4 +12,6 @@ public interface UserApiDao {
     public User get_user_replay(@Param("name")String name,@Param("low")int low,@Param("max")int max);
 
     public User get_user_post(@Param("name")String name,@Param("low")int low,@Param("max")int max);
+
+    public String get_id(@Param("name")String name);
 }

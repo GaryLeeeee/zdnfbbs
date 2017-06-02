@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 import com.zdnf.bbs.domain.User;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -81,10 +84,19 @@ public class LoginController {
         String parameter = httpServletRequest.getParameter("vrifyCode");
         //验证码和账号密码都正确
         if(captchaId.equals(parameter)&&LoginService.get_passwd(user.getName(),user.getPasswd())) {
-            Cookie cookie = new Cookie("userid", user.getName()+"&"+user.getPasswd());
-            cookie.setMaxAge(3600*24); //设置cookie的过期时间是一天
-            response.addCookie(cookie);
-            return "index";
+            try {
+                //将用户密码加上 sky 转md5 存入cookie
+                String md5 =user.getPasswd()+"sky";
+                MessageDigest md =MessageDigest.getInstance("md5");
+                md.update(md5.getBytes());
+                String res = new BigInteger(1,md.digest()).toString();
+                Cookie cookie = new Cookie("userid",res);
+                cookie.setMaxAge(3600*24); //设置cookie的过期时间是一天
+                response.addCookie(cookie);
+                return "index";
+            }catch (Exception e){
+                return "error";
+            }
         }
         return "error";
     }

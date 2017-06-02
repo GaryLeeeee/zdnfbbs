@@ -21,4 +21,8 @@ public interface PostDao {
 
     public boolean del_replay(@Param("id")int id);
 
+    public int topnum(@Param("id")int id);
+
+    public List<Post> top(@Param("id")int id);
+
 }

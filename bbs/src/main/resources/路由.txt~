@@ -75,7 +75,7 @@ Create by skyisbule 2017-5-10 10:11:18
 示例返回：无
 
 帖子的回复部分：
-增删查。 获得回复数
+增删查。
 <1> /api/replay/select 参数两个，帖子id，分页数：返回某帖子下某页的评论，返回10条
 合法请求：/api/replay/select?id=1&page=1
 返回：[{"id"="1",""father":1,"author":"1","content":"1","times":"1999-12-30 01:00:00.0"}]
@@ -86,7 +86,6 @@ Create by skyisbule 2017-5-10 10:11:18
 <3> /api/replay/delete 参数一个：回复的id
 合法请求: /api/replay/delete?id=1
 返回：true
-<4>/api/replay/max 传帖子id 返回帖子下有多少回复
 
 
 
