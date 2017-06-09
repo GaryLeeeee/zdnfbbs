@@ -31,7 +31,7 @@ public class PlateController {
     //添加板块
     //TODO 权限判断！！！！！
     //已测试通过！
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "add")
     public String add(Plate plate){
         if (PlateService.add(plate)) return "success";
         return "error";
@@ -40,7 +40,7 @@ public class PlateController {
     //删除板块 理论无误 但并没有测试
     //传板块id
     //TODO 这里代码写得不好，后期要改！
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    @RequestMapping(value = "delete")
     public String delete(Plate plate){
         if (PlateService.delete(plate))
         return "success";

@@ -12,7 +12,7 @@ public interface ReplayDao {
 
     public List<Replay> get_by_id(@Param("id")int id,@Param("low")int low,@Param("max")int max);
 
-    public boolean add(@Param("reply") Replay Replay);
+    public boolean add(@Param("replay") Replay replay);
 
     public boolean delete(@Param("id")int id);
 

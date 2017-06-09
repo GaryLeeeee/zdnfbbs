@@ -21,8 +21,12 @@ public class ViewController {
     //返回主页
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "home";
     }
+
+    //返回公告页面
+    @RequestMapping("notice")
+    public String MyPage(){return "notice";}
 
     //返回板块页面
     @RequestMapping("/t/{id}")
@@ -30,8 +34,12 @@ public class ViewController {
         return "plate";
     }
 
+    //板块点进去后 显示帖子
+    @RequestMapping("platepost")
+    public String ShowPost(){return "platepost";}
+
     //返回帖子查看页面
-    @RequestMapping("/d/{id}")
+    @RequestMapping("post")
     public String Post(){return "post";}
 
     //返回个人页面

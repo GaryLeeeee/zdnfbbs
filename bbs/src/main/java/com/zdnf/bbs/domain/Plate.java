@@ -8,7 +8,7 @@ public class Plate {
     private int id;
     private String name;
     private String type;
-    private String color;
+    private String BelongTo;
 
     public void setId(int id){this.id=id;}
     public int getId(){return id;}
@@ -16,7 +16,7 @@ public class Plate {
     public String getName(){return name;}
     public void setType(String type){this.type=type;}
     public String getType(){return type;}
-    public void setColor(String color){this.color=color;}
-    public String getColor(){return color;}
+    //public void setColor(String color){this.color=color;}
+    //public String getColor(){return color;}
 
 }

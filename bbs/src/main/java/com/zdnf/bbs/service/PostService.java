@@ -35,6 +35,7 @@ public class PostService {
             low=(page-1)*10-top;
             max=page*10-1-top;
         }
+        System.out.println(low+" "+max);
         return PostDao.get(id,low,max);
     }
 

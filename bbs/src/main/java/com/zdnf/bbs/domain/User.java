@@ -6,10 +6,10 @@ package com.zdnf.bbs.domain;
 public class User {
     private String name;//姓名
     private String passwd;//密码
-    private String sex;//性别
-    private String wechat;//微信
-    private String telnum;//电话号
-    private String introduce;//个人简介
+    private String sex="神秘";//性别
+    private String wechat="0";//微信
+    private String telnum="0";//电话号
+    private String introduce="无~";//个人简介
     private String power="c";//权限
 
     public void setName(String name){this.name=name;}

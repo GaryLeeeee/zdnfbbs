@@ -10,7 +10,7 @@
     </select>
     <!-- 添加一个板块 -->
     <insert id="add" parameterType="com.zdnf.bbs.domain.Plate">
-        INSERT INTO plate (id,name,type,BelongTo)
+        INSERT INTO plate
         VALUES
         (NULL,#{Plate.name},#{Plate.type},#{Plate.BelongTo})
     </insert>

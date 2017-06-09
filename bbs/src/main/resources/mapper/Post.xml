@@ -25,7 +25,7 @@
     </update>
 
     <delete id="del_replay">
-        DELETE  FROM replay WHERE father=#{id}
+        DELETE FROM replay WHERE father=#{id}
     </delete>
 
     <select id="topnum" resultType="java.lang.Integer">

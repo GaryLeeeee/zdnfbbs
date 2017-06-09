@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>贴子</title>
+
+	    <link rel="stylesheet" type="text/css" href="css/post.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/cookie.js"></script>
+		<script type="text/javascript" src="js/post.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+		checkUserStatus();
+		postReplay();
+		})
+	</script>
+	</head>
+
+	<body>
+
+		<div class="title">
+			<font id="ownerPlate" face="宋體" size="+3" color="white">板块</font>
+			<a id="userId" class="login" href="./index.html">login</a>
+		</div>
+
+		<!--发帖人-->
+		<div class="host">
+			<img class="headshot" src="img/hehe.jpg" width="50px" height="50px" />
+		<div id="author" class="name">名字</div>
+		</div>
+		<textarea id="title" class="hosttitle" rows="1" cols="1" readonly="readonly">标题</textarea>
+		<textarea id="content" class="hostmessage" rows="5" cols="5" readonly="readonly">正文</textarea>
+
+		<div class="tail">
+			<span id="ownerTime" class="tailtime">time</span>
+			<span class="tailfloor">第1楼</span>
+			
+		</div>
+
+		<div class="clear"></div> 
+		<hr/>
+
+
+
+		<div id="newReply">
+			
+			<textarea id="replyContent" class="say" rows="5" cols="5"></textarea>
+			<button class="sand">发送</button>
+		</div>
+		<div class="clear"></div>
+
+	</body>
+</html>

@@ -47,6 +47,7 @@ public class UserApiController {
     //传账号密码，返回 true或者false
     @RequestMapping("istrue")
     public String istrue(User user){
+        System.out.println(user.getName()+user.getPasswd());
         if(LoginService.get_passwd(user.getName(),user.getPasswd()))return "true";
         return "false";
     }
