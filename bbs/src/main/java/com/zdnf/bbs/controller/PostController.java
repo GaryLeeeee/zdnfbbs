@@ -32,8 +32,11 @@ public class PostController {
 
     //添加帖子
     @RequestMapping("add")
-    public String add(Post post){
-        if (PostService.add(post))return "true";
+    public String add(Post post) throws InterruptedException {
+        if (PostService.add(post)){
+            Thread.sleep(333);
+            return PostService.add2(post);
+        }
         return "false";
     }
 
@@ -62,4 +65,12 @@ public class PostController {
     public List<Post> Top(int id){
         return PostService.top(id);
     }
+
+    //返回一个版块里有多少条帖子
+    @RequestMapping("max")
+    public int max(int id){return PostService.max(id);}
+
+    //返回一个帖子的所有信息
+    @RequestMapping("getallbyid")
+    public List<Post> GetAllById(int id){return PostService.getallbyid(id);}
 }

@@ -18,4 +18,5 @@ public interface ReplayDao {
 
     public int max(@Param("id")int id);
 
+    public boolean repling(@Param("id")int id,@Param("LastTime")String LastTime);
 }

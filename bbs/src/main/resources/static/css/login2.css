@@ -94,7 +94,7 @@ input::-ms-clear {
 .web_login .input-tips {
 	float:left;
 	margin-top:10px;
-	width:50px;
+	width:70px;
 	height:42px;
 	font-size:16px;
 	line-height:42px;
@@ -219,6 +219,7 @@ width: 80px;_width: 75px;_font-size:12px;}
 	display:inline-block;
 	float:left;
 	height:41px;border-radius:4px;
+	
 	background:#2795dc;border:none;cursor:pointer;
 	border-bottom:none;*border-bottom:none;
 	color:#fff;

@@ -26,8 +26,8 @@ public class NoticeController {
 
     //返回公告的内容 已验证通过
     @RequestMapping("content")
-    public String get_content(Notice Notice){
-        return NoticeService.get_content(Notice.getTitle());
+    public String get_content(String title){
+        return NoticeService.get_content(title);
     }
 
     //添加公告 已验证通过

@@ -1,7 +1,7 @@
 
 function plateInit(){//论坛板块数据初始化
 	setTimeout(function(){
-		$.get("http://10.12.38.53:81/api/plate/all",function(plateData){
+		$.get("http://10.12.45.102:81/api/plate/all",function(plateData){
 
 			if(plateData){
 				for(var i=0;i<plateData.length;i++){

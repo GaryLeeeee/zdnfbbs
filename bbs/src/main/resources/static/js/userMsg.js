@@ -1,8 +1,9 @@
 $(document).ready(function(){
 	checkCookie();
 	msgInit();
-	PlateContent();
-	ReplyContent();
+	PlateContent(1);
+	ReplyContent(1);
+	HeadSetting();
 })
 function checkCookie()//检查cookie确认页面信息与登录人信息
 {
@@ -24,8 +25,8 @@ function msgInit(){//个人信息初始化
 	var usermsg=checkLoginStatus();
 	var username;
 	if(usermsg){
-		var temp = usermsg.split("=");
-	 	username = temp[1];
+		
+		username = usermsg;
 	}
 	else{
 		username = null;
@@ -34,10 +35,10 @@ function msgInit(){//个人信息初始化
 	var dataName=$("#userId").html();
 	if(username&&username==dataName)
 	{
- 		$.get("http://10.12.48.91:81/api/user/userinfo","name="+dataName,function(userData){//登陆者私人信息页面
+ 		$.get("http://10.12.45.102:81/api/user/userinfo","name="+dataName,function(userData){//登陆者私人信息页面
  			$("#nameContent").html(userData.name);
  			$("#sexContent").html(userData.sex);
- 			var personerObj = "<ul>密码<a id='passwdContent'></a></ul>"+"<ul>微信<a id='wechatContent'></a></ul>"
+ 			var personerObj = "<ul>密码<a id='passwdContent'></a></ul>"+"<ul>微信:<a id='wechatContent'></a></ul>"
  			+"<ul>联系电话<a id='telnumContent'></a></ul>"+"<ul>权限<a id='powerContent'></a></ul>";
  			$("#nameTitle").after(personerObj);
  			$("#passwdContent").html(userData.passwd);
@@ -51,103 +52,77 @@ function msgInit(){//个人信息初始化
  	else
  	{
  		
- 		$.get("http://10.12.48.91:81/api/user/userinfo","name="+dataName,function(userData){//游客信息页面
+ 		$.get("http://10.12.45.102:81/api/user/userinfo","name="+dataName,function(userData){//游客信息页面
 
  			$("#nameContent").html(userData.name);
  			$("#sexContent").html(userData.sex);
  			$("#introduceContent").html(userData.introduce);
  		})
  	}
- 	setTimeout(function(){
- 		window.ppageSum=1;
- 		while(dataName&& !$("#userPlate").html("<a>无</a>")){
- 			$.get("http://10.12.48.91:81/api/user/userpost","name="+dataName+"&page="+window.ppageSum,function(userData){
- 				if(userData){
- 					var pagination = "<span id='p_page_"+window.ppageSum+"'>"+window.ppageSum+"</span>";
- 					$("#userPlate").after(paginnation);
- 					if(window.rpageSum==1&&userData){
- 						for(var i in userData){
- 							var userPlateObj = "<a class='Plate'>"+userData[i]+"</a>";
- 							$("#userPlate").append(userPlateObj);
- 						}
- 					}
- 					window.ppageSum++;
 
- 				}
- 				else{
- 					if(window.ppageSum==1){
- 						$("#userPlate").append("<a>无</a>");
- 					
- 					}
- 					
-
- 				}
- 			})
- 		}
- 	},0)
- 	setTimeout(function(){
- 		window.rpageSum=1;
- 		while(dataName&& !$("#userReply").html("<a>无</a>")){
- 			$.get("http://10.12.48.91:81/api/user/userreplay","name="+dataName+"&page="+window.rpageSum,function(userData){
- 				if(userData){
- 					var pagination = "<span id='r_page_"+window.rpageSum+"'>"+window.rpageSum+"</span>";
- 					$("#userReply").after(paginnation);
- 					if(window.rpageSum==1){
- 						for(var i in userData){
- 							var userReplyObj = "<a class='Reply'>"+userData[i]+"</a>";
- 							$("#userReply").append(userReplyObj);
- 						}
- 					}
- 					window.rpageSum++;
-
- 				}
- 				else{
- 					if(window.rpageSum==1){
- 						$("#userReply").append("<a>无</a>");
- 					}
- 					
- 				}
- 			})
-
- 		}
- 	},0)
 
  }
-function PlateContent(){//发过的帖子初始化
-	if(window.ppageSum==1) return;
-	var clickNum = 1;
-	for(var i in window.ppageSum){
-		$("#p_page_"+i).click(function(){
-			if(i==clickNum) return;
-			else{
-				$("#userPlate").remove(".Plate");
-				$.get("http://10.12.48.91:81/api/user/userpost","name="+dataName+"&page="+i,function(userData){
-					for(var i in userData){
-						var userPlateObj = "<a  class='Plate'>"+userData[i]+"</a>";
-						$("#userPlate").append(userPlateObj);
-					}
-				})
+function PlateContent(page){//发过的帖子初始化
+	var dataName=$("#userId").html();
+	$("#userPlate").remove(".Plate");
+	$.get("http://10.12.45.102:81/api/user/userpost","name="+dataName+"&page="+page,function(userData){
+		if(userData){
+			for(var i in userData){
+				var userPlateObj = "<a id='postEver"+i+"' class='Plate'>"+userData[i].title+"</a></br>";
+				$("#userPlate").append(userPlateObj);
 			}
-		})
-	}
+			var allObj=[];
+			for(var i=0;i<userData.length;i++){
+				allObj[i]=$("#postEver"+i);
+			}
+			$.each(allObj, function(i){
+				$(this).click(function(){
+					
+					window.open("./post?id="+userData[i].id+"&postTitle="+escape(userData[i].title)+"&plateName="+escape(userData[i].BelongTo));
+				})
+			})
+		}
+		else{
+			$("#userPlate").append("<p>无</p>");
+		}
+
+	})
+
 
 }
-function ReplyContent(){//收到的评论初始化
-	if(window.rpageSum==1) return;
-	var clickNum = 1;
-	for(var i in window.rpageSum){
-		$("#r_page_"+i).click(function(){
-			if(i==clickNum) return;
-			else{
-				$("#userReply").remove(".Reply");
-				$.get("http://10.12.48.91:81/api/user/userreplay","name="+dataName+"&page="+i,function(userData){
-					for(var i in userData){
-						var userReplyObj = "<a class='Reply'>"+userData[i]+"</a>";
-						$("#userReply").append(userPlateObj);
-					}
-				})
+function ReplyContent(page){//收到的评论初始化
+	var dataName=$("#userId").html();
+	$("#userReply").remove(".Reply");
+	$.get("http://10.12.45.102:81/api/user/userreplay","name="+dataName+"&page="+page,function(userData){
+		if(userData){
+			console.log(userData.length);
+			for(var i in userData){
+				var userReplyObj = "<a id='replyEver"+i+"' class='Reply'>"+userData[i].title+"</a></br>";
+				$("#userReply").append(userReplyObj);
 			}
-		})
+			var allObj=[];
+			for(var i=0;i<userData.length;i++){
+				allObj[i]=$("#replyEver"+i);
+			}
+			$.each(allObj, function(i){
+				$(this).click(function(){
+					window.open("./post?id="+userData[i].id+"&postTitle="+escape(userData[i].title)+"&plateName="+escape(userData[i].BelongTo));
+				})
+			})
+		}
+		else{
+			$("#userReply").append("<p>无</p>");
+		}
+
+	})
+
+
+}
+function HeadSetting(){//头像显示
+	var ownerName = $("#userId").html();
+	if(ownerName){
+		
+		$("#headphoto").attr('src',"/api/user/img?id="+ownerName); 
 	}
 
 }

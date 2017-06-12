@@ -43,6 +43,6 @@ public class ViewController {
     public String Post(){return "post";}
 
     //返回个人页面
-    @RequestMapping("/p/{id}")
-    public String Person(){return "person";}
+    @RequestMapping("mypage")
+    public String Person(){return "mypage";}
 }

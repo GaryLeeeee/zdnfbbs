@@ -12,7 +12,7 @@
 		<script type="text/javascript">
 		$(document).ready(function(){
 		checkUserStatus();
-		postReplay();
+		postPagination();
 		})
 	</script>
 	</head>
@@ -25,12 +25,13 @@
 		</div>
 
 		<!--发帖人-->
+		<div id="towerOwner">
 		<div class="host">
-			<img class="headshot" src="img/hehe.jpg" width="50px" height="50px" />
+			<img class="headshot" src="/api/user/img?id=1" width="50px" height="50px" />
 		<div id="author" class="name">名字</div>
 		</div>
-		<textarea id="title" class="hosttitle" rows="1" cols="1" readonly="readonly">标题</textarea>
-		<textarea id="content" class="hostmessage" rows="5" cols="5" readonly="readonly">正文</textarea>
+		<div id="title" class="hosttitle" >标题</div>
+		<div id="content" class="hostmessage" >正文</div>
 
 		<div class="tail">
 			<span id="ownerTime" class="tailtime">time</span>
@@ -40,7 +41,7 @@
 
 		<div class="clear"></div> 
 		<hr/>
-
+	</div>
 
 
 		<div id="newReply">

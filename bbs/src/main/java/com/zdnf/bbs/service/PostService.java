@@ -26,17 +26,7 @@ public class PostService {
     }
 
     public List<Post> get(int id,int page){
-        int top = PostDao.topnum(id);
-        int low = 0;
-        int max;
-        if (page==1){
-            max=page*10-1-top;
-        }else{
-            low=(page-1)*10-top;
-            max=page*10-1-top;
-        }
-        System.out.println(low+" "+max);
-        return PostDao.get(id,low,max);
+        return PostDao.get(id,(page-1)*10);
     }
 
     public boolean set_top(int id,int IsTop){return PostDao.set_top(id,IsTop);}
@@ -44,4 +34,10 @@ public class PostService {
     public int TopNum(int id){return PostDao.topnum(id);}
 
     public List<Post> top(int id){return PostDao.top(id);}
+
+    public int max(int id){return PostDao.max(id);}
+
+    public String add2(Post post){return PostDao.frist(post.getTitle(),post.getAuthor(),post.getLastTime());}
+
+    public List<Post> getallbyid(int id){return PostDao.getallbyid(id);}
 }

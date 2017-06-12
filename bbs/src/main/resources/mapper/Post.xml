@@ -17,7 +17,7 @@
     </delete>
 
     <select id="get" resultType="com.zdnf.bbs.domain.Post">
-        SELECT * FROM post WHERE BelongTo=#{id} ORDER BY LastTime DESC LIMIT #{low},#{max}
+        SELECT * FROM post WHERE BelongTo=#{id} ORDER BY LastTime DESC LIMIT #{low},10
     </select>
 
     <update id="set_top">
@@ -35,4 +35,17 @@
     <select id="top" resultType="com.zdnf.bbs.domain.Post">
         SELECT * FROM post where BelongTo=#{id} AND IsTop=1
     </select>
+
+    <select id="max" resultType="java.lang.Integer">
+        SELECT count(*) FROM post where BelongTo=#{id}
+    </select>
+
+    <select id="frist" resultType="java.lang.String">
+        SELECT id FROM post WHERE title=#{title} AND author=#{author} AND LastTime=#{LastTime}
+    </select>
+
+    <select id="getallbyid" resultType="com.zdnf.bbs.domain.Post">
+        SELECT * FROM post WHERE id=#{id}
+    </select>
+
 </mapper>

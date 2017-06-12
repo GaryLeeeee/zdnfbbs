@@ -1,11 +1,11 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 	
 	body{
 		margin: 0 0 10% 0;
-		background-image: url(../static/ll.jpg);
+		background-image: url(../images/ll.jpg);
 		background-attachment:fixed;
-		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../static/ll.jpg', sizingMethod='scale');
-		-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../static/ll.jpg', sizingMethod='scale');
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/ll.jpg', sizingMethod='scale');
+		-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/ll.jpg', sizingMethod='scale');
 		background-size: cover;
 		-moz-background-size: cover;
 		-webkit-background-size: cover;
@@ -84,6 +84,7 @@
 		font-size:20px;
 		resize:none;
 		background: rgba(225,225,225, 0.2);
+		
 	}
 
 	.me{

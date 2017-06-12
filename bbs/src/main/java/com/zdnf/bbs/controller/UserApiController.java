@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zdnf.bbs.service.UserApiService;
 import com.zdnf.bbs.domain.User;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.List;
 
 /**
  * Created by ZDNF on 2017/5/11.
@@ -46,9 +49,18 @@ public class UserApiController {
     //返回账户密码对不对
     //传账号密码，返回 true或者false
     @RequestMapping("istrue")
-    public String istrue(User user){
-        System.out.println(user.getName()+user.getPasswd());
-        if(LoginService.get_passwd(user.getName(),user.getPasswd()))return "true";
+    public String istrue(User user,HttpServletResponse response){
+        if(LoginService.get_passwd(user.getName(),user.getPasswd())) {
+            /*****************/
+            Cookie cookie = new Cookie("ZDNF_name", user.getName());
+            cookie.setMaxAge(1000); //设置cookie的过期时间是10s
+            response.addCookie(cookie);
+
+
+             /************/
+            return "true";
+        }
+
         return "false";
     }
 
@@ -56,13 +68,13 @@ public class UserApiController {
 
     //返回最近回复的
     @RequestMapping("userreplay")
-    public User replay(@RequestParam(value="name")String name,@RequestParam(value="page")int page){
+    public List<User> replay(@RequestParam(value="name")String name,@RequestParam(value="page")int page){
         return UserApiService.get_user_replay(name,page);
     }
 
     //返回发过的所有帖子
     @RequestMapping("userpost")
-    public User post(@RequestParam(value="name")String name,@RequestParam(value="page")int page){
+    public List<User> post(@RequestParam(value="name")String name, @RequestParam(value="page")int page){
         return UserApiService.get_user_post(name,page);
     }
 
@@ -100,6 +112,17 @@ public class UserApiController {
         }catch (Exception e){
             return "0";
         }
+    }
+
+    //请求后返回当前用户
+    @RequestMapping("user")
+    public String getuser(HttpServletRequest request){
+        Cookie[] cookies=request.getCookies();
+        if(cookies==null){
+            return "false";
+        }
+        String username= cookies[0].getValue();
+        return username;
     }
 
 }

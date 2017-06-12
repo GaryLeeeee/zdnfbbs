@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" ></link>
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,20 +15,7 @@
     <script type="text/javascript" src="js/notice.js"></script>
     <script type="text/javascript" src="js/homeInit.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            
-            $(".navgation input").each(function () {
-                var this_div = $(".navgation div");
-                var _inx = $(".navgation input").index(this);
-                $(this).click(
-                    function () { this_div.eq(_inx).slideToggle(); },
-                    function () { this_div.eq(_inx).slideToggle(); }
-                    );
-            });
-            
-        });
-    </script>
+    
 
 </head>
 <body>
@@ -62,7 +49,7 @@
         <div class="zfx" style="margin-left:0px;margin-top:200px;">
             <div class="face" style="margin:0px 0px 0px 55px;">
                 <form action="" id="face" accept-charset="utf-8" method="post">
-                    <img  src="images/t.jpg" alt="头像"></img>
+                    <img  src="/api/user/img?id=1" alt="头像" />
                     <input id="loginName" type="submit" value="用户姓名" style="width:100px;border: none;" />
 
                 </form>

@@ -42,7 +42,6 @@ public class ReplayController {
     //返回此帖子都多少条回复
     @RequestMapping("max")
     public int max(@RequestParam(value = "id", required = true) int id){
-        System.out.println(id);
         return ReplayService.max(id);
     }
 }

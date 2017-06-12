@@ -15,13 +15,19 @@ public class ReplayService {
     @Autowired
     ReplayDao ReplayDao;
 
-    public boolean add(Replay replay){return ReplayDao.add(replay);}
+    public boolean add(Replay replay){
+        //更新数据
+        if(ReplayDao.repling(replay.getFather(),replay.getTimes())&ReplayDao.add(replay))
+        return true;
+        return false;
+    }
 
     //每页返回10条
     public List<Replay> get_by_id(int id,int page){
         //首先算一下取第几条
         int low=(page-1)*10;
-        int max=page*10-1;
+        int max=page*10;
+        if(page>1)max-=1;
         return ReplayDao.get_by_id(id,low,max);
     }
 

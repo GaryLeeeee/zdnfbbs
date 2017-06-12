@@ -2,45 +2,44 @@ $(document).ready(function(){
 	checkCookie();
 	plateInit();
 	noticeInit();
+
 })
 
 function checkCookie(){//检查登录状态
 	var userMsg=checkLoginStatus();
+
 	var userName;
 	if(userMsg){
-		var temp = userMsg.split("=");
-	 	userName = temp[1];
+	 	userName = userMsg;
 	}
 	else{
 		userName = null;
 	}
 	if(userName){
-		document.getElementById("button").style.display="inline";
-		var userNameObj = "<div id='skipping' >"+userName+"</div>";
-		$("#login_form").replaceWith(userNameObj);
-		$("#personnalMsg").click(function(){//个人信息页面跳转
-			window.location.href="./mypage.html?name="+userName;
+		document.getElementById("form1").style.display="inline";
+		$("#loginName").val(userName);
+		$("#login_form").replaceWith(" ");
+		$("#loginName").click(function(){//个人信息页面跳转
+			window.open("/mypage?name="+userName);
 		})
 	}
 	else{
-		document.getElementById("button").style.display="none";
-		$("#login").click(function(){
+		document.getElementById("form1").style.display="none";
+		
+			$("#login").click(function(){
 			var loginName = $("input[name=username]").val();
 			var loginPassWd = $("input[name=password]").val();
-			console.log(loginName);
-			$.get("http://10.12.38.53:81/api/user/istrue","name="+loginName+"&passwd="+loginPassWd,function(loginData){
-				console.log(loginData);
+			$.get("http://10.12.45.102:81/api/user/istrue","name="+loginName+"&passwd="+loginPassWd,function(loginData){
 				if(loginData){
-					document.cookie = "ZDNF_name="+loginName;
-					setCookie(loginName,loginPassWd);
-					$("#login_form").remove();
-					$("#loginName").val(loginName);
+					location.reload(true);
 				}
 				else{
-					return;
+					alert("账号或密码错误");
 				}
 			})
 		})
+		
+		
 		}
 	}
 

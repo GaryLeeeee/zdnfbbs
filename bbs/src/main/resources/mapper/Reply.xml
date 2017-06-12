@@ -5,7 +5,7 @@
 
 <mapper namespace="com.zdnf.bbs.dao.ReplayDao">
     <select id="get_by_id" resultType="com.zdnf.bbs.domain.Replay">
-        SELECT * FROM replay WHERE father=#{id} ORDER BY times ASC LIMIT #{low},#{max}
+        SELECT * FROM replay WHERE father=#{id} ORDER BY times ASC LIMIT #{low},10
     </select>
 
     <insert id="add" parameterType="com.zdnf.bbs.domain.Replay">
@@ -20,4 +20,7 @@
         SELECT COUNT(*) from replay WHERE father=#{id}
     </select>
 
+    <update id="repling">
+        update post set num=num+1,LastTime=#{LastTime} where id=#{id};
+    </update>
 </mapper>

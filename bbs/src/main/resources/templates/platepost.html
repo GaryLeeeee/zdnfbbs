@@ -13,7 +13,7 @@
         $(document).ready(function () {
           checkPlateCookie();
           checkUserStatus();
-          postInit();
+          pagination();
           topPostInit();
             
         });
@@ -22,8 +22,8 @@
 	<body>
 
 		<div class="top">
-			<a class="back" href="">返回</a>
-			<a id="userId" class="login" href="./index.html">login</a>
+			<a class="back" href="/">返回</a>
+			<a id="userId" class="login" href="/">login</a>
 		</div>
 
 		<div class="headline">
@@ -34,17 +34,18 @@
 		</div>
 
 		<div class="up">
-			<span class="thetop">置顶</span>
-			<span id="postTop_0" class="thetoppost" href="">帖子标题</span>
+			
 		</div>
 
 		<div class="post">
-			<div>
-				<a class="name" href="">name</a>
-			</div>
-			<span id="postTitle_0" class="title" href="">帖子标题</span>
-			<span class="time">time</span>
+			
 		</div>
-
+		
+		<div id="newReply">
+			
+			<textarea id="replyTitle" class="say" rows="2" cols="5"></textarea>
+			<textarea id="replyContent" class="say" rows="5" cols="5"></textarea>
+			<button class="sand">发送</button>
+		</div>
 	</body>
 </html>

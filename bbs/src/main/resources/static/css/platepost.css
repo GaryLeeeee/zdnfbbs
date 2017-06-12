@@ -1,8 +1,8 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 	body {
 		margin: 0 0;
-		background-image: url(../static/ll.jpg);
+		background-image: url(../images/ll.jpg);
 		background-attachment:fixed;
 		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../static/ll.jpg', sizingMethod='scale');
 		-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../static/ll.jpg', sizingMethod='scale');
@@ -115,7 +115,31 @@
 		color: #999;
 		font-size: 18px;
 	}
+	.say{
+		float: left;
+		height: 20%;
+		width: 60%;
+		margin-top: 1%;
+		margin-left: 6%;
+		border:2px solid #ccc;
+		font-size:20px;
+		resize:none;
+		background: rgba(225,225,225, 0.8);
+	}
 
+	.sand{
+		float: left;
+		height: 30px;
+		width: 20%;
+		margin-top: 11%;
+		margin-left: 2%;
+		background-color: #C4C4C4;
+		background: rgba(52,52,52, 0.5);
+	}
+
+	
 	.clear {
 		clear: both;
 	}
+
+	

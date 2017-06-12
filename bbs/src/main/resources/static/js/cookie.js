@@ -37,13 +37,20 @@ function getCookie(username)
 
 }
 function checkLoginStatus(){
-	var l_start = document.cookie.indexOf("ZDNF_name=");
-	if(l_start!=-1){
-		var l_end=document.cookie.indexOf(";",l_end);
-		if(l_end==-1){
-			l_end=document.cookie.length;
-		}
-		return unescape(document.cookie.substring(l_start,l_end));
+	var result;
+    $.ajax({
+        
+        url : 'http://10.12.45.102:81/api/user/user',
+        async:false,
+        success : function(userStatus){
+        	if(userStatus&&userStatus!="false"){
+        		console.log(userStatus);
+        		result = userStatus;
+        	}
+            
+            
+
+        }
+    })
+    return result;
 	}
-	return false;
-}
