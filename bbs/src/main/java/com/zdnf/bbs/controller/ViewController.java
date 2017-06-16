@@ -1,7 +1,11 @@
 package com.zdnf.bbs.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by ZDNF on 2017/5/16.
@@ -21,7 +25,7 @@ public class ViewController {
     //返回主页
     @RequestMapping("/")
     public String index(){
-        return "home";
+        return "index";
     }
 
     //返回公告页面
@@ -45,4 +49,13 @@ public class ViewController {
     //返回个人页面
     @RequestMapping("mypage")
     public String Person(){return "mypage";}
+
+    //返回个人页面，仅仅测试用
+    @RequestMapping("user")
+    public String UserPage(@CookieValue(value="ZDNF_name",required = false)String name){
+        System.out.print(name);
+        if (name!=null)
+        return "redirect:/mypage?name="+name;
+        return "redirect:/login";
+    }
 }

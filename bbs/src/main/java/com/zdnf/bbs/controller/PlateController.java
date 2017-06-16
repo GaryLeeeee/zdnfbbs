@@ -53,4 +53,10 @@ public class PlateController {
         if (PlateService.update(id,name))return "true";
         return "false";
     }
+
+    //传一个id 返回板块的名字
+    @RequestMapping("namebyid")
+    public String GetNameById(int id){
+        return PlateService.namebyid(id);
+    }
 }

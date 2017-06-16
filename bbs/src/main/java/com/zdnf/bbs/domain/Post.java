@@ -1,14 +1,18 @@
 package com.zdnf.bbs.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by ZDNF on 2017/5/14.
  */
 public class Post {
     public int id;
     public String BelongTo;
+    @Size(min=1,max=15)
     public String title;
     public String author;
-    public int num=1;
+    public int num=0;
     public String LastOne;
     public String LastTime;
     public int IsTop=0;

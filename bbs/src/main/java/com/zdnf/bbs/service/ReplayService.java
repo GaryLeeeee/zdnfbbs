@@ -16,8 +16,10 @@ public class ReplayService {
     ReplayDao ReplayDao;
 
     public boolean add(Replay replay){
+        //对数据进行处理，方式注入
+        replay.setContent(replay.getContent().replace("<script","<"));
         //更新数据
-        if(ReplayDao.repling(replay.getFather(),replay.getTimes())&ReplayDao.add(replay))
+        if(ReplayDao.add(replay)&ReplayDao.repling(replay.getFather(),replay.getTimes()))
         return true;
         return false;
     }

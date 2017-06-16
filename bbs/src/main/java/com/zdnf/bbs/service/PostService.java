@@ -18,7 +18,10 @@ public class PostService {
 
     public List<Post> all(String name){return PostDao.all(name);}
 
-    public boolean add(Post post){return PostDao.add(post);}
+    //对post的内容进行处理
+    public boolean add(Post post){
+        return PostDao.add(post);
+    }
 
     public boolean delete(int id){
         if (PostDao.delete(id)&&PostDao.del_replay(id))return true;

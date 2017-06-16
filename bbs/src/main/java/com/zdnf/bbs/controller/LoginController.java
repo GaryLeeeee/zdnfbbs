@@ -11,13 +11,16 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import com.zdnf.bbs.domain.User;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by ZDNF on 2017/5/7.
@@ -54,21 +57,33 @@ public class LoginController {
     @Autowired
     LoginService LoginService;
 
+    public String ToMd5(String str) throws NoSuchAlgorithmException {
+        String res="skyisblue"+str;
+        MessageDigest md =MessageDigest.getInstance("md5");
+        md.update(res.getBytes());
+        return new BigInteger(1,md.digest()).toString();
+    }
+
+
     //注册的表单
     @RequestMapping(value = "/regist",method = RequestMethod.GET)
     public String regist(){return "regist";}
 
     //注册表单提交
     @RequestMapping(value = "/registing",method = RequestMethod.POST)
-    public String registing(HttpServletRequest httpServletRequest,User user){
+    @ResponseBody
+    public String registing(HttpServletRequest httpServletRequest,@Valid User user){
         String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
         String parameter = httpServletRequest.getParameter("vrifyCode");
+        if (!LoginService.HasUsername(user.getName())){
+            return "<p>账户已存在<br>换个用户名呗QAQ";
+        }
         if (captchaId.equals(parameter)) {
             user.setPower("0");
             LoginService.adduser(user);
-            return "login";
+            return "注册成功<br><a href=\"/\">点我回主页</a>";
         }
-        return "error";
+        return "<p>验证码输错了吧";
     }
 
     //登陆的表单
@@ -85,15 +100,16 @@ public class LoginController {
         //验证码和账号密码都正确
         if(captchaId.equals(parameter)&&LoginService.get_passwd(user.getName(),user.getPasswd())) {
             try {
+                //一个cookie，存储当前用户名字
+                Cookie cookie2 = new Cookie("ZDNF_name", user.getName());
+                cookie2.setMaxAge(3600*24); //设置cookie的过期时间是10s
+                response.addCookie(cookie2);
                 //将用户密码加上 sky 转md5 存入cookie
-                String md5 =user.getPasswd()+"sky";
-                MessageDigest md =MessageDigest.getInstance("md5");
-                md.update(md5.getBytes());
-                String res = new BigInteger(1,md.digest()).toString();
-                Cookie cookie = new Cookie("userid",res);
+                //存储用户加密后的密码 当做密匙
+                Cookie cookie = new Cookie("key",ToMd5(user.getPasswd()));
                 cookie.setMaxAge(3600*24); //设置cookie的过期时间是一天
                 response.addCookie(cookie);
-                return "index";
+                return "redirect:/";
             }catch (Exception e){
                 return "error";
             }

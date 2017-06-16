@@ -32,12 +32,20 @@ public class UserApiService {
         return UserApiDao.get_user_post(name,low);
     }
 
-    public boolean up(HttpServletRequest request,MultipartFile file,String username){
+    public boolean up(MultipartFile file,String username){
         if (file.isEmpty())return false;
         //文件路径
-        String filePath = "d:/bbs/userimages/";
+        String filePath = "d:/bbs/userimgs/";
         //创建文件
-        File dest = new File(filePath + username);
+        File dest = new File(filePath + username+".jpg");
+        //判断文件路径存不存在
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        //判断文件存不存在 存在就删掉
+        if (dest.exists()&dest.isFile()){
+            dest.delete();
+        }
         try {
             file.transferTo(dest);
             return true;

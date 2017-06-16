@@ -2,6 +2,7 @@
 	<head>
 		<title>我的首页</title>
 
+<!--
 		<link rel="stylesheet" type="text/css" href="./CSS/mypage.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />	
@@ -16,14 +17,24 @@
 		)
 		</script>
 		
+-->
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/cookie.js"></script>
+		<script type="text/javascript" src="js/notice.js"></script>
+		<script type="text/javascript" >
+		$(document).ready(function(){
+			noticeMsg();
+		}
+		)
+		</script>
 
-		
+
 	</head>
 
 	<body>
 
 		<div class="ggl">
-			<h1 id="noticeContent" ></h1>
+			<p id="noticeContent" ></p>
 		</div>
 
 

@@ -1,13 +1,19 @@
 package com.zdnf.bbs.domain;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by ZDNF on 2017/5/14.
  */
 public class Replay {
     private int id;//自身的id
+    @NotNull
     private int father;//所属id
+    @NotNull
     private String author;//作者
+    @NotNull
     private String content;//正文
+    @NotNull
     private String times;//时间
 
     public void setId(int id){this.id=id;}

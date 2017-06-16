@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" ></link>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" ></link>
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,104 +14,126 @@
     <script type="text/javascript" src="js/plate.js"></script>
     <script type="text/javascript" src="js/notice.js"></script>
     <script type="text/javascript" src="js/homeInit.js"></script>
-
-    
-
 </head>
+
 <body>
-    <h1>星夜</h1>
+<h1>星夜</h1>
     <div class="box" id="web_qr_login" style="display: block; height: 100px;width:710px;">    
-        <form action="" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
-            <input name="username"  class="ur" />
-            <input name="password" type="password"  class="pw" />
-            <div style="margin-left:600px;margin-top:-40px;">
-                <input id="login" type="submit" value="登 录" style="width:60px;" class="button_blue"/>
-            </div>
-        </form>
-        <form id="form1" runat="server">
-            <div>
-                <ul class="navgation">
-
-                    <input type="button" id="button"  class="xlk" value=""/>
-                    <div>
-                        <li>
-                            <a id ="personnalMsg">个人</a>
-                            <a id ="collectPost">收藏</a>
-                            <a>切换</a>
-                            <a id="end" href="#">退出</a>
-                        </li>
-                    </div>
-                </ul>
-            </div>
-        </form>
+    <form action="/api/user/istrue" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
+    <input name="name"  class="ur" />
+    <input name="passwd" type="password"  class="pw" />
+    <div style="margin-left:600px;margin-top:-40px;">
+    <input id="login" type="submit" value="登 录" style="width:60px;" class="button_blue"/>
     </div>
+    </form>
+    <form id="form1" runat="server">
     <div>
-        <div class="zfx" style="margin-left:0px;margin-top:200px;">
-            <div class="face" style="margin:0px 0px 0px 55px;">
-                <form action="" id="face" accept-charset="utf-8" method="post">
-                    <img  src="/api/user/img?id=1" alt="头像" />
-                    <input id="loginName" type="submit" value="用户姓名" style="width:100px;border: none;" />
+    <ul class="navgation">
+    
+        <input type="button" id="button"  class="xlk" value=""/>
+    <div>
+        <li>
+        <a href="">个人</a>
+        <a href="">收藏</a>
+        <a href="">切换</a>
+        <a href="">退出</a>
+        </li>
+    </div>
+    </ul>
+    </div>
+    </form>
+    </div>
 
-                </form>
-            </div>   
+    <div>
+    <div class="zfx" style="margin-left:0px;margin-top:160px">
+    <div class="face" style="margin-left:26%">
+        <form action="" id="face" accept-charset="utf-8" method="post">
+        <img id="headphoto" src="api/user/img?id=1" alt="头像" ></img>
+        <a id="loginName" class="usename" href=""  >用户姓名</a>
+        </form>
+    </div>   
+    </div>
+        <!--
+    <div class="zfx" style="margin-left:1680px;margin-top:-550px;">
+        <h2>友情链接</h2>
+        <a class="lj" href="">一串长长的链接</a>
+        <a class="lj" href="">一串长长的链接</a>
+        <a class="lj" href="">一串长长的链接</a>
+        <a class="lj" href="">一串长长的链接</a>
+        <a class="lj" href="">一串长长的链接</a>
+        <a class="lj" href="">一串长长的链接</a>
+    </div>
+    -->
+    </div>
+
+-->
+    <div class="ggl" style="margin-left:610px;margin-top:-460px;" >
+<!--<div class="photo" style="margin-left:19%;">
+    <div id="myCarousel" class="carousel slide"  style="position: relative;" >
+	
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+
+	
+	<div class="carousel-inner" style="text-align:center;">
+		<div  class="item active" style="text-align:center;">
+		<img src="images/t.jpg" alt="First slide" width="100%"  height="100%" />
+		</div>
+		<div class="item" style="text-align:center;">
+		<img src="images/t.jpg" alt="Second slide" width="100%" height="100%" />
+		</div>
+		<div class="item" style="text-align:center;">
+		<img src="images/t.jpg" alt="Third slide" width="100%"  height="100%" />
+		</div>
+	</div>
+    </div>
+
+    </div>
+-->
+    <div >
+    <div class="bkfl">
+        <div class="ljwz">
+            <a class="fl" href="" id="test_0">老司机带你上车</a>
         </div>
-        <div class="ggl" style="margin-left:600px;margin-top:-500px;" >
-           <div id="myCarousel" class="carousel slide"  style="position: relative;" >
-             <!-- 轮播（Carousel）指标 -->
-             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>   
-
-          <!-- 轮播（Carousel）项目 -->
-          <div class="carousel-inner">
-              <div class="item active">
-                  <img src="images/t.jpg" alt="First slide" width="800px" height="200px" />
-              </div>
-              <div class="item">
-                  <img src="images/t.jpg" alt="Second slide" width="800px" height="200px" />
-              </div>
-              <div class="item">
-                  <img src="images/t.jpg" alt="Third slide" width="800px" height="200px" />
-              </div>
-          </div>
-      </div>
-
-      <!-- 控制按钮 -->
-
-      <div style="text-align:center;">
-       <input id="test_0" type="button" class="bkfl" value="板块分类"/>
-       <input id="test_1" type="button" class="bkfl" value="板块分类"/>
-       <input id="test_2" type="button" class="bkfl" value="板块分类"/>
-       <input id="test_3" type="button" class="bkfl" value="板块分类"/>
-
-   </div> 
-</div>   
-<div class="zfx" style="margin-left:1680px;margin-top:-500px;">
-    <a class="lj" href="">一串长长的链接</a>
-    <a class="lj" href="">一串长长的链接</a>
-    <a class="lj" href="">一串长长的链接</a>
-    <a class="lj" href="">一串长长的链接</a>
-    <a class="lj" href="">一串长长的链接</a>
-    <a class="lj" href="">一串长长的链接</a>
-</div> 
-</div>
-<div class="ggl" style="margin-left:600px;margin-top:200px;">
-   <h1>公告栏</h1>
-   <ul>
-    <li>
-        <a id="noticeBoard_0" class="lj" href="#">一串长长的链接</a>
-        <br/>
-        <a id="noticeBoard_1" class="lj" href="#">一串长长的链接</a>
-        <br/>
-        <a id="noticeBoard_2" class="lj" href="#">一串长长的链接</a>
-        <br/>
-        <a id="noticeBoard_3" class="lj" href="#">一串长长的链接</a>
-        <br/>
-
-    </li>
-</ul>
-</div>   
+    </div>
+    <div class="bkfl">
+        <div class="ljwz">
+            <a class="fl" href="" id="test_1">板块分类</a>
+        </div>
+    </div>
+    <div class="bkfl">
+        <div class="ljwz">
+            <a class="fl" href="" id="test_2">板块分类</a>
+        </div>
+    </div>
+    <div class="bkfl">
+        <div class="ljwz">
+            <a class="fl" href="" id="test_3">板块分类</a>
+        </div>
+    </div>
+    </div> 
+    </div>   
+ 
+    <div class="ggl2" style="margin-left:610px;margin-top:170px;margin-bottom:100px;">
+     <h2>公告栏</h2>
+    <div style="text-align: center;">
+     <ul>
+        <li>
+        <a class="lj" href="" id="noticeBoard_0">一串长长的链接</a>
+            <br/>
+        <a class="lj" href="" id="noticeBoard_1">一串长长的链接</a>
+            <br/>
+        <a class="lj" href="" id="noticeBoard_2">一串长长的链接</a>
+            <br/>
+        <a class="lj" href="" id="noticeBoard_3">一串长长的链接</a>
+            <br/>
+        </li>
+    </ul>
+    </div>
+    </div>   
 </body>
+
 </html>

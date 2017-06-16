@@ -23,4 +23,6 @@ public class PlateService {
     public boolean update(int id,String name){
         return PlateDao.set_name(id,name);
     }
+
+    public String namebyid(int id){return PlateDao.namebyid(id);}
 }

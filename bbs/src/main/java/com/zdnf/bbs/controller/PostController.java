@@ -1,12 +1,18 @@
 package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.domain.Post;
+import com.zdnf.bbs.service.LoginService;
 import com.zdnf.bbs.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -18,6 +24,24 @@ import java.util.List;
 public class PostController {
     @Autowired
     PostService PostService;
+    @Autowired
+    LoginService LogingService;
+    //传一个字符串 转md5
+    public String ToMd5(String str) throws NoSuchAlgorithmException {
+        String res="skyisblue"+str;
+        MessageDigest md =MessageDigest.getInstance("md5");
+        md.update(res.getBytes());
+        return new BigInteger(1,md.digest()).toString();
+    }
+
+    //传入一个用户名和他的key  判断是否正确
+    public boolean istrue(String name,String key) throws NoSuchAlgorithmException {
+        String md5=ToMd5(LogingService.passwd(name));
+        if (md5.equals(key))return true;
+        return false;
+    }
+
+
     //传板块名返回所有帖子
     @RequestMapping("all")
     public List<Post> all(Post post){
@@ -32,7 +56,10 @@ public class PostController {
 
     //添加帖子
     @RequestMapping("add")
-    public String add(Post post) throws InterruptedException {
+    public String add(@Valid Post post, @CookieValue(value="ZDNF_name")String name,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
+        if (!istrue(name, key)){
+            return "<p>请登录谢谢</p>";
+        }
         if (PostService.add(post)){
             Thread.sleep(333);
             return PostService.add2(post);

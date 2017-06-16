@@ -40,7 +40,7 @@ function checkLoginStatus(){
 	var result;
     $.ajax({
         
-        url : 'http://10.12.45.102:81/api/user/user',
+        url : 'api/user/user',
         async:false,
         success : function(userStatus){
         	if(userStatus&&userStatus!="false"){

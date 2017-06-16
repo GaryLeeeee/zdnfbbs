@@ -1,12 +1,18 @@
 package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.domain.Replay;
+import com.zdnf.bbs.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.zdnf.bbs.service.ReplayService;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -18,6 +24,24 @@ import java.util.List;
 public class ReplayController {
     @Autowired
     ReplayService ReplayService;
+    @Autowired
+    LoginService LoginService;
+
+    //传一个字符串 转md5
+    public String ToMd5(String str) throws NoSuchAlgorithmException {
+        String res="skyisblue"+str;
+        MessageDigest md =MessageDigest.getInstance("md5");
+        md.update(res.getBytes());
+        return new BigInteger(1,md.digest()).toString();
+    }
+
+    //传入一个用户名和他的key  判断是否正确
+    public boolean istrue(String name,String key) throws NoSuchAlgorithmException {
+        String md5=ToMd5(LoginService.passwd(name));
+        if (md5.equals(key))return true;
+        return false;
+    }
+
 
     //查找回复
     @RequestMapping("select")
@@ -27,7 +51,10 @@ public class ReplayController {
 
     //添加回复
     @RequestMapping("add")
-    public String add(Replay replay){
+    public String add(@Valid Replay replay, @CookieValue(value = "ZDNF_name")String name, @CookieValue(value = "key")String key) throws NoSuchAlgorithmException {
+        if (!istrue(name,key)){
+            return "<p>请先登录</p>";
+        }
         if (ReplayService.add(replay)) return "true";
         return "false";
     }

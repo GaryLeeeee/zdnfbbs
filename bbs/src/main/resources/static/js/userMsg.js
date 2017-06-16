@@ -1,9 +1,12 @@
 $(document).ready(function(){
-	checkCookie();
-	msgInit();
-	PlateContent(1);
-	ReplyContent(1);
-	HeadSetting();
+	
+		checkCookie();
+		msgInit();
+		PlateContent(1);
+		ReplyContent(1);
+		HeadSetting();
+	
+	
 })
 function checkCookie()//检查cookie确认页面信息与登录人信息
 {
@@ -35,7 +38,7 @@ function msgInit(){//个人信息初始化
 	var dataName=$("#userId").html();
 	if(username&&username==dataName)
 	{
- 		$.get("http://10.12.45.102:81/api/user/userinfo","name="+dataName,function(userData){//登陆者私人信息页面
+ 		$.get("/api/user/userinfo","name="+dataName,function(userData){//登陆者私人信息页面
  			$("#nameContent").html(userData.name);
  			$("#sexContent").html(userData.sex);
  			var personerObj = "<ul>密码<a id='passwdContent'></a></ul>"+"<ul>微信:<a id='wechatContent'></a></ul>"
@@ -52,7 +55,7 @@ function msgInit(){//个人信息初始化
  	else
  	{
  		
- 		$.get("http://10.12.45.102:81/api/user/userinfo","name="+dataName,function(userData){//游客信息页面
+ 		$.get("/api/user/userinfo","name="+dataName,function(userData){//游客信息页面
 
  			$("#nameContent").html(userData.name);
  			$("#sexContent").html(userData.sex);
@@ -65,7 +68,7 @@ function msgInit(){//个人信息初始化
 function PlateContent(page){//发过的帖子初始化
 	var dataName=$("#userId").html();
 	$("#userPlate").remove(".Plate");
-	$.get("http://10.12.45.102:81/api/user/userpost","name="+dataName+"&page="+page,function(userData){
+	$.get("/api/user/userpost","name="+dataName+"&page="+page,function(userData){
 		if(userData){
 			for(var i in userData){
 				var userPlateObj = "<a id='postEver"+i+"' class='Plate'>"+userData[i].title+"</a></br>";
@@ -78,7 +81,7 @@ function PlateContent(page){//发过的帖子初始化
 			$.each(allObj, function(i){
 				$(this).click(function(){
 					
-					window.open("./post?id="+userData[i].id+"&postTitle="+escape(userData[i].title)+"&plateName="+escape(userData[i].BelongTo));
+					window.open("./post?id="+userData[i].id);
 				})
 			})
 		}
@@ -93,11 +96,11 @@ function PlateContent(page){//发过的帖子初始化
 function ReplyContent(page){//收到的评论初始化
 	var dataName=$("#userId").html();
 	$("#userReply").remove(".Reply");
-	$.get("http://10.12.45.102:81/api/user/userreplay","name="+dataName+"&page="+page,function(userData){
+	$.get("/api/user/userreplay","name="+dataName+"&page="+page,function(userData){
 		if(userData){
 			console.log(userData.length);
 			for(var i in userData){
-				var userReplyObj = "<a id='replyEver"+i+"' class='Reply'>"+userData[i].title+"</a></br>";
+				var userReplyObj = "<a id='replyEver"+i+"' class='Reply'>"+userData[i].content+"</a></br>";
 				$("#userReply").append(userReplyObj);
 			}
 			var allObj=[];
@@ -106,7 +109,7 @@ function ReplyContent(page){//收到的评论初始化
 			}
 			$.each(allObj, function(i){
 				$(this).click(function(){
-					window.open("./post?id="+userData[i].id+"&postTitle="+escape(userData[i].title)+"&plateName="+escape(userData[i].BelongTo));
+					window.open("./post?id="+userData[i].father);
 				})
 			})
 		}

@@ -20,4 +20,13 @@ public class LoginService {
         if (real_passwd.equals(passwd)){return true;}
         return false;
     }
+
+    public Boolean HasUsername(String name){
+        if (LoginDao.HasUsername(name)==null){
+            return false;
+        }
+        return true;
+    }
+
+    public String passwd(String name){return LoginDao.passwd(name);}
 }

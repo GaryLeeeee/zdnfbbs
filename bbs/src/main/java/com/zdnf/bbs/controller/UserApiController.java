@@ -3,6 +3,7 @@ package com.zdnf.bbs.controller;
 import com.zdnf.bbs.service.LoginService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,8 +81,8 @@ public class UserApiController {
 
     //上传头像
     @RequestMapping("up")
-    public String up(HttpServletRequest request, @RequestParam("file") MultipartFile file,@RequestParam("username")String userid){
-        if (UserApiService.up(request, file,userid))return "true";
+    public String up(@RequestParam("file") MultipartFile file,@CookieValue(value = "ZDNF_name")String username){
+        if (UserApiService.up( file,username))return "true";
         return "false";
     }
 
@@ -116,13 +117,8 @@ public class UserApiController {
 
     //请求后返回当前用户
     @RequestMapping("user")
-    public String getuser(HttpServletRequest request){
-        Cookie[] cookies=request.getCookies();
-        if(cookies==null){
-            return "false";
-        }
-        String username= cookies[0].getValue();
-        return username;
+    public String getuser(@CookieValue(value = "ZDNF_name")String name){
+        return name;
     }
 
 }

@@ -3,7 +3,7 @@
 	<head>
 		<title>所有贴子</title>
 
-		<link rel="stylesheet" type="text/css" href="./CSS/platepost.css" />
+		<link rel="stylesheet" type="text/css" href="css/platepost.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -11,6 +11,7 @@
     	<script type="text/javascript" src="js/post.js"></script>
     	<script type="text/javascript">
         $(document).ready(function () {
+        	
           checkPlateCookie();
           checkUserStatus();
           pagination();
@@ -28,7 +29,7 @@
 
 		<div class="headline">
 			<div class="headimg">    
-            <img src="./static/jj.jpg" />
+            <img src="/api/user/img?id=123" />
        		</div>
 			<font id="plateTitle" face="宋體" size="+3" color="white">板块名</font>
 		</div>
@@ -37,9 +38,7 @@
 			
 		</div>
 
-		<div class="post">
-			
-		</div>
+		
 		
 		<div id="newReply">
 			

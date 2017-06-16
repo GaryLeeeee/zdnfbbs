@@ -5,7 +5,7 @@ body {
 	font-family:"Microsoft Yahei";
 	font-size:12px;
 	margin:0;
-background: #fff url(../images/1.jpg) 50% 0 no-repeat;}
+background: #fff url(../images/y.jpg) 27% 0 no-repeat;}
 ul {
 	padding:0;
 	margin:0;
@@ -94,7 +94,7 @@ input::-ms-clear {
 .web_login .input-tips {
 	float:left;
 	margin-top:10px;
-	width:70px;
+	width:50px;
 	height:42px;
 	font-size:16px;
 	line-height:42px;
@@ -164,7 +164,7 @@ input::-ms-clear {
 .web_qr_login {
 	position:relative;
 	
-	overflow:hidden;
+	overflow:;
 }
 
 .cue {
@@ -219,7 +219,6 @@ width: 80px;_width: 75px;_font-size:12px;}
 	display:inline-block;
 	float:left;
 	height:41px;border-radius:4px;
-	
 	background:#2795dc;border:none;cursor:pointer;
 	border-bottom:none;*border-bottom:none;
 	color:#fff;
@@ -234,7 +233,16 @@ input.button_blue:hover
 	text-decoration:none;
 }
 a.zcxy {text-decoration: underline;line-height:58px;margin-left:20px;color: #959ca8;}
-.yzm {margin-left:190px;margin-top:-110px}
+.yzm {
+    float: right;
+    margin-top:-36%;
+}
+.yzm2 {
+    float: right;
+    margin-top:-40%;
+    margin-right: 5%;
+    
+}
 .web_login .login_form {margin-top:30px;}
 .web_login .uinArea {
 height: 60px;}
