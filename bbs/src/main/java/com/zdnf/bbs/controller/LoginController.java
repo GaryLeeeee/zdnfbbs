@@ -75,15 +75,15 @@ public class LoginController {
     public String registing(HttpServletRequest httpServletRequest,@Valid User user){
         String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
         String parameter = httpServletRequest.getParameter("vrifyCode");
-        if (!LoginService.HasUsername(user.getName())){
+        if (LoginService.HasUsername(user.getName())){
             return "<p>账户已存在<br>换个用户名呗QAQ";
         }
-        if (captchaId.equals(parameter)) {
+      //  if (captchaId.equals(parameter)) {
             user.setPower("0");
             LoginService.adduser(user);
             return "注册成功<br><a href=\"/\">点我回主页</a>";
-        }
-        return "<p>验证码输错了吧";
+      //  }
+    //   return "<p>验证码输错了吧";
     }
 
     //登陆的表单
@@ -95,10 +95,12 @@ public class LoginController {
     //处理登录
     @RequestMapping(value = "/logining",method = RequestMethod.POST)
     public String logining(HttpServletRequest httpServletRequest, HttpServletResponse response,User user){
-        String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
-        String parameter = httpServletRequest.getParameter("vrifyCode");
+       // String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
+        // String parameter = httpServletRequest.getParameter("vrifyCode");
         //验证码和账号密码都正确
-        if(captchaId.equals(parameter)&&LoginService.get_passwd(user.getName(),user.getPasswd())) {
+        if(//captchaId.equals(parameter)
+                //&&
+                LoginService.get_passwd(user.getName(),user.getPasswd())) {
             try {
                 //一个cookie，存储当前用户名字
                 Cookie cookie2 = new Cookie("ZDNF_name", user.getName());

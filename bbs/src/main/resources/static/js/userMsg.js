@@ -15,7 +15,7 @@ function checkCookie()//检查cookie确认页面信息与登录人信息
 	if(url.indexOf("?")!=-1){
 		var tempStr = url.substr(1);
 		var strs = url.split('=');
-		$("#userId").html(strs[1]);
+		$("#userId").html(unescape(strs[1]));
 	}
 	else{
 		window.close();

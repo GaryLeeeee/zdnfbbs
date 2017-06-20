@@ -82,7 +82,7 @@ public class UserApiController {
     //上传头像
     @RequestMapping("up")
     public String up(@RequestParam("file") MultipartFile file,@CookieValue(value = "ZDNF_name")String username){
-        if (UserApiService.up( file,username))return "true";
+        if (UserApiService.up( file,UserApiService.get_id(username)))return "true";
         return "false";
     }
 
@@ -92,7 +92,7 @@ public class UserApiController {
         FileInputStream fis = null;
         httpServletResponse.setContentType("image/jpg");
         OutputStream out = httpServletResponse.getOutputStream();
-        File file = new File("d:/bbs/userimgs/"+id+".jpg");
+        File file = new File("d:/bbs/userimgs/"+UserApiService.get_id(id)+".jpg");
         //这里判断一下存不存在，没有就返回默认头像
         if (!file.exists())file = new File("d:/bbs/userimgs/root.jpg");
         fis = new FileInputStream(file);

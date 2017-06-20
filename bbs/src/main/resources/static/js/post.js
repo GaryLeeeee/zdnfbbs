@@ -83,7 +83,8 @@ function pagination(){//板块帖子分页
 					$(".sand").html("发送中");
 					setTimeout(function(){
 						var nowTime = new Date();
-						var postTime = nowTime.getFullYear()+"-"+nowTime.getMonth()+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"
+						var month = nowTime.getMonth()+1;
+						var postTime = nowTime.getFullYear()+"-"+month+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"
 						+nowTime.getSeconds(); 
 
 						var author=$("#userId").html();
@@ -119,16 +120,14 @@ function postInit(pageNum){//板块帖子初始化
 		if(postData){
 			var tempId=0,tempTitle;
 			if(pageNum!=1){
-				$(".post").replace();
+				$("#allPost").empty();
 			}
 				
 			for(var i=0;i<postData.length;i++){
 				var platePostObj = "<div class='post'><div class='postimg'><img id='authorImg_"+i+"' src=\"/api/user/img?id="+postData[i].author+"\" /></div><div class='postcontant'><div><a class='name' href='./mypage?name="+postData[i].author+"'>"+postData[i].author+"</a></div><span id='postTitle_"+i+"' class='title' href=''>"+postData[i].title+"</span><div style='width:90%'><span class='reply'>总回复："+postData[i].num+"</span><span class='time'>"+postData[i].lastTime+"</span></div></div></div>";
-				$(".up").after(platePostObj);
-				$.get("/api/user/getid","name="+postData[i].author,function(authorId){
-					$("#authorImg_"+i).attr('href',"api/user/img?id="+postData[i].author);
-					log.console(postData[i].author);
-				})
+				$("#allPost").append(platePostObj);;
+					
+				
 				allPostId[i]= postData[i].id;
 				allPostTitle[i]= postData[i].title;
 				
@@ -207,7 +206,8 @@ function postPagination(){//帖子回复的分页
 			var sandContent = $("#replyContent").val();
 			if(sandContent){
 				var nowTime = new Date();
-				var postTime = nowTime.getFullYear()+"-"+nowTime.getMonth()+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"
+				var month = nowTime.getMonth()+1;
+				var postTime = nowTime.getFullYear()+"-"+month+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"
 				+nowTime.getSeconds();
 				var author=$("#userId").html();
 				$.get("/api/replay/add","father="+strsId[1]+"&author="+author+"&content="+sandContent+"&times="+postTime,function(data){
@@ -252,6 +252,7 @@ function postReplay(postpage){//帖子内容及回复初始化
 					$("#content").html(postContent[0].content);
 					$("#author").html(postContent[0].author);
 					$("#ownerTime").html(postContent[0].times);
+					$("#ownerphoto").attr('src',"/api/user/img?id="+postContent[0].author)
 				}
 				else{
 					$("#towerOwner").remove();
@@ -262,7 +263,7 @@ function postReplay(postpage){//帖子内容及回复初始化
 				for(var i=0;i<postContent.length;i++){
 					if(i!=0||postpage!=1){
 						var floorNum = (postpage-1)*10+i+1;
-						var floorObj  = "<div id='floor_" +i + "'><div class='me'>"+"<a href=\"/mypage?name="+postContent[i].author+"\"><img class='headshot' src='/api/user/img?id="+postContent[i].author+"' width=80px height=80px ></a><div id='floorName_" +i+ "' class='name'>名字</div></div><div id='floorContent_"+i+"  ' class='message' >"+postContent[i].content+"</div><div class='tail'><span id='floorTime_"+i+"' class='tailtime'>time</span><span class='tailfloor'>第"+floorNum+"楼</span></div><div class='clear'></div> <hr/></div>"
+						var floorObj  = "<div id='floor_" +i + "'><div class='me'>"+"<a href=\"/mypage?name="+escape(postContent[i].author)+"\"><img class='headshot' src='/api/user/img?id="+postContent[i].author+"' width=80px height=80px ></a><div id='floorName_" +i+ "' class='name'>名字</div></div><div id='floorContent_"+i+"  ' class='message' >"+postContent[i].content+"</div><div class='tail'><span id='floorTime_"+i+"' class='tailtime'>time</span><span class='tailfloor'>第"+floorNum+"楼</span></div><div class='clear'></div> <hr/></div>"
 						$("#page_1").before(floorObj);
 						$("#floorName_"+i).html(postContent[i].author);
 						$("#floorTime_"+i).html(postContent[i].times);

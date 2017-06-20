@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>hello</title>
-
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="js/cookie.js"></script>
+    	<script type="text/javascript" src="js/homeInit.js"></script>
 </head>
 <body>
 <h3>板块：</h3>
@@ -14,14 +16,9 @@
 <a href="/login">登录</a><br/>
 <a href="regist">注册</a><br/>
 <h3>个人页面：</h3>
-<a href="user">我的个人页面</a>
-<h3>有头像的账号密码：</h3>
-<li> 1 1</li>
-<li> 2 2</li>
-<li> 3 3</li>
-<p>省略</p>
-<li>9 9</li>
+<a id="loginName" href="user">我的个人页面</a>
 <h3>上传头像</h3>
+<p>注意上传头像前请先登录</p>
 <form action="/api/user/up" method="post" enctype="multipart/form-data">
     <input type="file" name="file"/><br/><br/>
     <input type="submit" value="上传"/>
