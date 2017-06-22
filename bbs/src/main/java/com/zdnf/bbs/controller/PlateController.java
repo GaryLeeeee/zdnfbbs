@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zdnf.bbs.domain.Plate;
 import com.zdnf.bbs.service.PlateService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class PlateController {
     //TODO 权限判断！！！！！
     //已测试通过！
     @RequestMapping(value = "add")
-    public String add(Plate plate){
+    public String add(@Valid Plate plate){
         if (PlateService.add(plate)) return "success";
         return "error";
     }
@@ -41,8 +42,8 @@ public class PlateController {
     //传板块id
     //TODO 这里代码写得不好，后期要改！
     @RequestMapping(value = "delete")
-    public String delete(Plate plate){
-        if (PlateService.delete(plate))
+    public String delete(String id){
+        if (PlateService.delete(id))
         return "success";
         return "error";
     }

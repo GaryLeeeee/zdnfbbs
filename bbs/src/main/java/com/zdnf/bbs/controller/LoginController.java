@@ -98,12 +98,13 @@ public class LoginController {
        // String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
         // String parameter = httpServletRequest.getParameter("vrifyCode");
         //验证码和账号密码都正确
+        System.out.println(user.getName()+"  "+user.getPasswd());
         if(//captchaId.equals(parameter)
                 //&&
                 LoginService.get_passwd(user.getName(),user.getPasswd())) {
             try {
                 //一个cookie，存储当前用户名字
-                Cookie cookie2 = new Cookie("ZDNF_name", user.getName());
+                Cookie cookie2 = new Cookie("id", LoginService.GetIdByName(user.getName()));
                 cookie2.setMaxAge(3600*24); //设置cookie的过期时间是10s
                 response.addCookie(cookie2);
                 //将用户密码加上 sky 转md5 存入cookie

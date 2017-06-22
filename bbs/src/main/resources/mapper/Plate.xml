@@ -16,7 +16,7 @@
     </insert>
     <!-- 删除一个板块 -->
     <delete id="delete" parameterType="com.zdnf.bbs.domain.Plate">
-        DELETE FROM plate WHERE id=#{Plate.id}
+        DELETE FROM plate WHERE id=#{id}
     </delete>
 
     <!--不写注释也知道啥意思啊！！！！-->

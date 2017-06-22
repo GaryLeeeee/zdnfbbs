@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zdnf.bbs.dao.PagesDao">
+    <select id="GetPage" resultType="String">
+        SELECT content FROM pages WHERE url=#{url}
+    </select>
+
+    <insert id="AddPage">
+        INSERT INTO pages VALUES (null,#{url},#{content})
+    </insert>
+
+
+</mapper>

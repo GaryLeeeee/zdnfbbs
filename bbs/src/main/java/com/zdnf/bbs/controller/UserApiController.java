@@ -117,8 +117,8 @@ public class UserApiController {
 
     //请求后返回当前用户
     @RequestMapping("user")
-    public String getuser(@CookieValue(value = "ZDNF_name")String name){
-        return name;
+    public String getuser(@CookieValue(value = "id")String name){
+        return LoginService.GetIdByName(name);
     }
 
 }

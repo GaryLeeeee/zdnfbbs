@@ -18,7 +18,7 @@ public class PlateService {
 
     public boolean add(Plate Plate){return PlateDao.add(Plate);}
 
-    public boolean delete(Plate Plate){return PlateDao.delete(Plate);}
+    public boolean delete(String id){return PlateDao.delete(id);}
 
     public boolean update(int id,String name){
         return PlateDao.set_name(id,name);

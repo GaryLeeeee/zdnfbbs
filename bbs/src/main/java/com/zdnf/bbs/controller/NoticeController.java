@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class NoticeController {
     //TODO！ 添加公告时要验证是否已存在
     //不然会返回错误
     @RequestMapping("add")
-    public String add(Notice Notice){
+    public String add(@Valid Notice Notice){
         //return Notice.getContent();
         if (NoticeService.add(Notice))return "true";
         return "false";
@@ -42,8 +43,8 @@ public class NoticeController {
 
     //删除公告 已验证通过
     @RequestMapping("delete")
-    public String delete(Notice Notice){
-        if (NoticeService.delete(Notice.getTitle()))return "true";
+    public String delete(String title){
+        if (NoticeService.delete(title))return "true";
         return "false";
     }
 

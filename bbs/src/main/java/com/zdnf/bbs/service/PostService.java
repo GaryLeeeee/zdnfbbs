@@ -16,8 +16,6 @@ public class PostService {
     @Autowired
     PostDao PostDao;
 
-    public List<Post> all(String name){return PostDao.all(name);}
-
     //对post的内容进行处理
     public boolean add(Post post){
         return PostDao.add(post);

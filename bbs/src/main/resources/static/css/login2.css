@@ -5,7 +5,13 @@ body {
 	font-family:"Microsoft Yahei";
 	font-size:12px;
 	margin:0;
-background: #fff url(../images/y.jpg) 27% 0 no-repeat;}
+	background: #fff url("http://omspj9k7f.bkt.clouddn.com/login.jpg") 27% 0 no-repeat;
+		background-attachment:fixed;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://omspj9k7f.bkt.clouddn.com/login.jpg', sizingMethod='scale');
+		-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://omspj9k7f.bkt.clouddn.com/login.jpg', sizingMethod='scale');
+		background-size: cover;
+		-moz-background-size: cover;
+		-webkit-background-size: cover;}
 ul {
 	padding:0;
 	margin:0;

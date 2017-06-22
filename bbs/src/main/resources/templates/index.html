@@ -1,27 +1,219 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<title>hello</title>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    	<script type="text/javascript" src="js/cookie.js"></script>
-    	<script type="text/javascript" src="js/homeInit.js"></script>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=320, user-scalable=no" />
+  <meta name="wap-font-scale" content="no" />
+  <link rel="apple-touch-icon" href="images/logo.jpg" />
+  <link rel="canonical" href="https://bbs.pku.edu.cn/v2/home.php" />
+  <script type="text/javascript">
+        window.login = false;
+        window.username = "guest";
+  </script>
+<!-- start _stylesheets_and_scripts.php-->
+<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15" />
+<script>
+    if (typeof(window.console) == 'undefined')
+        window.console = {};
+    if (typeof(window.console.log) == 'undefined')
+      window.console.log = function(a){};
+</script>
+<script src="https://bbs.pku.edu.cn/v2/mobile/libs/jquery-1.11.3.min.js"></script>
+<script src="https://bbs.pku.edu.cn/v2/mobile/libs/underscore-min.js"></script>
+<script src="https://bbs.pku.edu.cn/v2/mobile/libs/crypto-js/crypto-js.js"></script>
+<script src="https://bbs.pku.edu.cn/v2/mobile/libs/bdwm/bdwm.min.js?v3"></script>
+<script src="https://bbs.pku.edu.cn/v2/mobile/js/all.min.js?v17"></script>
+
+<!-- end _stylesheets_and_scripts.php-->
+
+<!-- start meta -->
+<title>南苑论坛</title>
+
+<!-- end meta -->
 </head>
 <body>
-<h3>板块：</h3>
-<a href="/platepost?id=10">日常  </a>
-<a href="/platepost?id=11">闲聊  </a>
-<a href="/platepost?id=12">老司机  </a>
-<a href="/platepost?id=13">技术交流</a><br/>
-<h3>登录注册：</h3>
-<a href="/login">登录</a><br/>
-<a href="regist">注册</a><br/>
-<h3>个人页面：</h3>
-<a id="loginName" href="user">我的个人页面</a>
-<h3>上传头像</h3>
-<p>注意上传头像前请先登录</p>
-<form action="/api/user/up" method="post" enctype="multipart/form-data">
-    <input type="file" name="file"/><br/><br/>
-    <input type="submit" value="上传"/>
-</form>
+<div style="margin:0 auto;width:0px;height:0px;overflow:hidden;"><img src="images/logo.jpg" /></div> <!-- for wechat thumb -->
+<div id="top-search">
+  <span class="logo">南苑e聚</span>
+  <div class="search">
+    <input data-role="top-search-text" type="text" placeholder="版面、帖子、用户" />
+    <a data-action="top-search"></a>
+  </div>
+</div>
+
+
+<div id="top-nav" >
+  <a href="#" class="active">首页</a
+  ><a>版面</a>
+  <ul style="display: none">
+    <li><a href="#">收藏夹</a></li>
+    <li><a href="#">版面目录</a></li>
+  </ul
+  ><a>好友</a>
+  <ul style="display: none">
+    <li><a href="#">关注</a></li>
+    <li><a href="#">粉丝</a></li>
+    <li><a href="#">黑名单</a></li>
+  </ul>
+  <a href="http://heartqiu.cn/regist">注册</a>
+  </ul>
+  <a href="http://heartqiu.cn/login">登录</a>
+</div>
+
+
+
+<div id="page-content">
+  <!-- this is the real content-->
+<!-- start main -->
+<div id="page-home">
+
+        <div class="card">
+      <div class="title">
+        <a class="name" href="thread.php?bid=352">公告</a>
+        </div>
+        <ul>
+              <li><a href="#" class="post-link" /></a><a class="post-title" >[公告]关于此论坛！</a></li>
+              <li><a href="#" class="post-link" /></a><a class="post-title" >[公告]关于南苑计算机协会！</a></li>
+              <li><a href="#" class="post-link" /></a><a class="post-title" >[公告]关于计协开发部</a></li>
+              <li><a href="#" class="post-link" /></a><a class="post-title" >[公告]如何加入我们！</a></li>
+               
+          </ul>
+    </div>
+
+
+
+    <div class="card">
+      <div class="title">
+        <span class="name">热门版面</span>
+      </div>
+      <ul>
+                  <li><a class="post-title inline" href="http://heartqiu.cn/platepost?id=10">日常</a>
+                      <a class="post-title inline" href="http://heartqiu.cn/platepost?id=12">老司机</a>
+                  </li>                    
+                  <li><a class="post-title inline" href="http://www.cybergear-cn.com/ACM/official/lost_found/Home/Index/login">失物招领</a>                    
+                      <a class="post-title inline" href="http://www.cybergear-cn.com/ACM/repair_system/Home/Index/addOrder">电脑维修</a>
+                  </li>                    
+                  <li><a class="post-title inline" href="http://heartqiu.cn/platepost?id=13">编程技术分享</a>            
+                      <a class="post-title inline" href="http://heartqiu.cn/platepost?id=17">期末考试</a>
+                  </li>                    
+                  <li><a class="post-title inline" href="http://heartqiu.cn/platepost?id=14">美食</a>                    
+                    <a class="post-title inline" href="http://heartqiu.cn/platepost?id=15">协会</a>
+                  </li>                    
+                  <li><a class="post-title inline" href="http://heartqiu.cn/platepost?id=11">闲聊</a>                    
+                    <a class="post-title inline" href="http://heartqiu.cn/platepost?id=16">选课</a>
+                  </li>                
+      </ul>
+
+    </div>
+
+
+        <div class="card">
+      <div class="title">
+        <a class="name" href="http://www.cybergear-cn.com/ACM/official/lost_found/Home/Index/login">失物招领</a>
+        <!-- <a class="more-link" href="thread.php?bid=165">更多</a> -->
+      </div>
+      <ul>
+                    <li><a href="#" class="post-link" /></a><a class="post-title" >【招领】校医院捡到车钥匙</a></li>
+                        <li><a href="#" class="post-link" /></a><a class="post-title" >【招领】校园卡&nbsp;桂世林&nbsp;信科</a></li>
+                        <li><a href="#" class="post-link" /></a><a class="post-title" >【招领】校园卡&nbsp;梁新秀&nbsp;1601214096&nbsp;&nbsp;深研院</a></li>
+                        <li><a href="#" class="post-link" /></a><a class="post-title" >【招领】校园卡&nbsp;&nbsp;朴妙卿&nbsp;普通进修生</a></li>
+                        <li><a href="#" class="post-link" /></a><a class="post-title" >【招领】校园卡，物理学院16级，杨宗霖</a></li>
+                  </ul>
+    </div>
+
+
+        <div class="card">
+      <div class="title">
+        <a class="name" href="#">〇区 BBS系统</a>
+        <!-- <a class="more-link" href="board.php?bid=621">更多</a> -->
+      </div>
+      <ul>
+            <li>
+              <a class="post-link" href="#"></a>
+              <a class="post-title">[申请] 想当版务嘛？戳我！</a>
+              <a class="post-info">站长的工作室</i></a>
+            </li>
+             <li>
+              <a class="post-link" href="#"></a>
+              <a class="post-title">[申请]申请属于你自己的版面！</a>
+              <a class="post-info">站长的工作室<i class="iconfont">&#xe608;</i></a>
+            </li>
+            <li>
+              <a class="post-link" href="#"></a>
+              <a class="post-title">[原始]关于此bbs</a>
+              <a class="post-info">站长的工作室 <i class="iconfont">&#xe608;</i></a>
+            </li>
+              <li>
+              <a class="post-link" href="#"></a>
+              <a class="post-title">[加入]加入我们！</a>
+              <a class="post-info">站长的工作室 <i class="iconfont">&#xe608;</i></a>
+            </li>
+                  </ul>
+    </div>
+
+
+          <div class="card">
+      <div class="title">
+        <a class="name" href="board.php?bid=664">一区 南苑</a>
+        <!-- <a class="more-link" href="board.php?bid=664">更多</a> -->
+      </div>
+      <ul>
+                    <li>
+              <a class="post-link" href="http://heartqiu.cn/platepost?id=10"></a>
+              <a class="post-title"
+                        >南苑日常</a>
+              <a class="post-info">南苑学子 <i class="iconfont">&#xe608;</i>99+</a>
+            </li>
+                        <li>
+              <a class="post-link" href="http://heartqiu.cn/platepost?id=11"></a>
+              <a class="post-title"
+                        >日常闲聊</a>
+              <a class="post-info">闲蛋部 <i class="iconfont">&#xe608;</i>99+</a>
+            </li>
+                        <li>
+              <a class="post-link" href="http://heartqiu.cn/platepost?id=12"></a>
+              <a class="post-title"
+                        >老司机带你超车</a>
+              <a class="post-info">超车党 <i class="iconfont">&#xe608;</i>99+</a>
+            </li>
+                        <li>
+              <a class="post-link" href="http://heartqiu.cn/platepost?id=13"></a>
+              <a class="post-title"
+                        >抱紧大腿（技术交流）</a>
+              <a class="post-info">开发部 <i class="iconfont">&#xe608;</i>99+</a>
+            </li>
+                  </ul>
+    
+
+
+
+    <div class="card contract-us">
+      <div class="title">
+        <span class="name">联系我们</span>
+      </div>
+      <div>
+        <div class="sn-block">
+          <p class="sn-link">站长微信</a></p>
+          <a href="#" target="_blank"><img class="qr-code" src="http://omspj9k7f.bkt.clouddn.com/wechat.jpg"></a>
+        </div>
+        <div class="sn-block">
+          <p class="sn-link">捐赠我们</p>
+          <img class="qr-code" src="http://omspj9k7f.bkt.clouddn.com/fukuan.jpg" />
+        </div>
+      </div>
+    </div>
+
+ </div>
+</div>
+
+<!-- end main -->
+  <!-- content end-->
+</div>
+
+<!-- <div id="footer">
+  <p><a href="/v2/home.php?from_mobile_long=1">电脑版</a><span>-</span><a href="help.php">帮助中心</a><span>-</span><a href="mail-new.php?username=SYSOP">意见反馈</a></p>
+  <p>© 2000–2017 北大未名BBS</p>
+</div> -->
 </body>
 </html>

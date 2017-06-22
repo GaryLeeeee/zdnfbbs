@@ -58,7 +58,7 @@
 	.host{
 		float: left;
 		height: 20%;
-		width: 100%;
+		width: 95%;
 		margin-top: 1%;
 		padding: 1%;
 		border:0px solid #ccc;
@@ -158,4 +158,9 @@
 
 	.clear{
 		clear: both;
+	}
+	body{overflow-x:hidden;}
+.message img{
+		 
+		max-width: 90%;
 	}

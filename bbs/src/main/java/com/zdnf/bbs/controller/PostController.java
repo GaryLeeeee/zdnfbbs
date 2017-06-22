@@ -42,12 +42,6 @@ public class PostController {
     }
 
 
-    //传板块名返回所有帖子
-    @RequestMapping("all")
-    public List<Post> all(Post post){
-        return PostService.all(post.getBelongTo());
-    }
-
     //按板块id和page获取板块下相应的数据
     @RequestMapping("get")
     public List<Post> get(@RequestParam(value="id")int id,@RequestParam(value="page")int page){

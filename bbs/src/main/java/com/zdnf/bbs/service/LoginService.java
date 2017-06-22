@@ -29,4 +29,6 @@ public class LoginService {
     }
 
     public String passwd(String name){return LoginDao.passwd(name);}
+
+    public String GetIdByName(String name){return LoginDao.GetIdByName(name);}
 }
