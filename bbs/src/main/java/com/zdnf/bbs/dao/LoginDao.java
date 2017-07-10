@@ -12,5 +12,5 @@ public interface LoginDao {
     public String HasUsername(@Param("name")String name);
     public String passwd(String name);
     public String GetIdByName(String name);
-    public String GetNameByid(String id);
+    public String GetNameById(String id);
 }

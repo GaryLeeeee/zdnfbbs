@@ -22,14 +22,14 @@ public class UserApiService {
 
     public User get_user(String name){return UserApiDao.get_user_info(name);}
 
-    public List<User> get_user_replay(String name, int page){
+    public List<User> GetUserReply(String name, int page){
         int low=10*(page-1);
-        return UserApiDao.get_user_replay(name,low);
+        return UserApiDao.GetUserReply(name,low);
     }
 
-    public List<User> get_user_post(String name,int page){
+    public List<User> GetUserPost(String name,int page){
         int low=10*(page-1);
-        return UserApiDao.get_user_post(name,low);
+        return UserApiDao.GetUserPost(name,low);
     }
 
     public boolean up(MultipartFile file,String username){

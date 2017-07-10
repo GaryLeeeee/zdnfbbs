@@ -51,8 +51,8 @@ public class ReplayController {
 
     //添加回复
     @RequestMapping("add")
-    public String add(@Valid Replay replay, @CookieValue(value = "ZDNF_name")String name, @CookieValue(value = "key")String key) throws NoSuchAlgorithmException {
-        if (!istrue(name,key)){
+    public String add(@Valid Replay replay, @CookieValue(value = "id")String id, @CookieValue(value = "key")String key) throws NoSuchAlgorithmException {
+        if (!istrue(LoginService.GetNameById(id),key)){
             return "<p>请先登录</p>";
         }
         if (ReplayService.add(replay)) return "true";

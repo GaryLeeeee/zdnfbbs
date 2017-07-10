@@ -5,15 +5,15 @@
 
 <mapper namespace="com.zdnf.bbs.dao.UserApiDao">
 
-    <select id="get_user_info" resultType="com.zdnf.bbs.domain.User">
+    <select id="GetUserInfo" resultType="com.zdnf.bbs.domain.User">
         SELECT * FROM userinfo WHERE name=#{name}
     </select>
 
-    <select id="get_user_replay" resultType="com.zdnf.bbs.domain.Replay">
+    <select id="GetUserReply" resultType="com.zdnf.bbs.domain.Replay">
         SELECT * FROM replay WHERE author=#{name} ORDER BY times DESC LIMIT #{low},10
     </select>
 
-    <select id="get_user_post" resultType="com.zdnf.bbs.domain.Post">
+    <select id="GetUserPost" resultType="com.zdnf.bbs.domain.Post">
         SELECT * FROM post WHERE author=#{name} ORDER BY id DESC LIMIT #{low},10
     </select>
 

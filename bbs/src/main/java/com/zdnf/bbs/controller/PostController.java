@@ -50,8 +50,8 @@ public class PostController {
 
     //添加帖子
     @RequestMapping("add")
-    public String add(@Valid Post post, @CookieValue(value="ZDNF_name")String name,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
-        if (!istrue(name, key)){
+    public String add(@Valid Post post, @CookieValue(value="id")String id,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
+        if (!istrue(LogingService.GetNameById(id), key)){
             return "<p>请登录谢谢</p>";
         }
         if (PostService.add(post)){
