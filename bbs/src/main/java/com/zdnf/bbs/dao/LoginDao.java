@@ -10,7 +10,7 @@ public interface LoginDao {
     public void adduser(@Param("user")User user);
     public String get_passwd(@Param("name")String name);
     public String HasUsername(@Param("name")String name);
-    public String passwd(String name);
+    public String Passwd(String id);
     public String GetIdByName(String name);
     public String GetNameById(String id);
 }

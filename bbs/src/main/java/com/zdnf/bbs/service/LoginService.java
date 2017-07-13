@@ -28,7 +28,7 @@ public class LoginService {
         return true;
     }
 
-    public String passwd(String name){return LoginDao.passwd(name);}
+    public String Passwd(String name){return LoginDao.Passwd(name);}
 
     public String GetIdByName(String name){return LoginDao.GetIdByName(name);}
 

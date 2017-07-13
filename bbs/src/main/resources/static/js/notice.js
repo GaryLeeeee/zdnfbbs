@@ -36,7 +36,7 @@ function noticeMsg(){//显示公告栏页面内容
 	var url = window.location.search;
 	if(url.indexOf("?")!=-1){
 		var tempStr = url.substr(1);
-		$.get("http://10.12.20.182:81//api/notice/content",tempStr,function(noticeContentData){
+		$.get("/api/notice/content",tempStr,function(noticeContentData){
 			if(noticeContentData){
 			
 				$("#noticeContent").html(noticeContentData);

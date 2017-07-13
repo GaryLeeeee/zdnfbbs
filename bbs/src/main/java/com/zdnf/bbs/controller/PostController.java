@@ -1,7 +1,6 @@
 package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.domain.Post;
-import com.zdnf.bbs.service.LoginService;
 import com.zdnf.bbs.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -10,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import com.zdnf.bbs.domain.Login;
 
 /**
  * Created by ZDNF on 2017/5/12.
@@ -24,22 +22,7 @@ import java.util.List;
 public class PostController {
     @Autowired
     PostService PostService;
-    @Autowired
-    LoginService LogingService;
-    //传一个字符串 转md5
-    public String ToMd5(String str) throws NoSuchAlgorithmException {
-        String res="skyisblue"+str;
-        MessageDigest md =MessageDigest.getInstance("md5");
-        md.update(res.getBytes());
-        return new BigInteger(1,md.digest()).toString();
-    }
-
-    //传入一个用户名和他的key  判断是否正确
-    public boolean istrue(String name,String key) throws NoSuchAlgorithmException {
-        String md5=ToMd5(LogingService.passwd(name));
-        if (md5.equals(key))return true;
-        return false;
-    }
+    Login login = new Login();
 
 
     //按板块id和page获取板块下相应的数据
@@ -51,9 +34,7 @@ public class PostController {
     //添加帖子
     @RequestMapping("add")
     public String add(@Valid Post post, @CookieValue(value="id")String id,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
-        if (!istrue(LogingService.GetNameById(id), key)){
-            return "<p>请登录谢谢</p>";
-        }
+        if(login.istrue(id,key))return "false";
         if (PostService.add(post)){
             Thread.sleep(333);
             return PostService.add2(post);

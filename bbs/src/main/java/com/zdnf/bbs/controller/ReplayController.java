@@ -37,7 +37,7 @@ public class ReplayController {
 
     //传入一个用户名和他的key  判断是否正确
     public boolean istrue(String name,String key) throws NoSuchAlgorithmException {
-        String md5=ToMd5(LoginService.passwd(name));
+        String md5=ToMd5(LoginService.Passwd(name));
         if (md5.equals(key))return true;
         return false;
     }

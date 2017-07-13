@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zdnf.bbs.dao.JoinDao">
+    <select id="GetAll" resultType="com.zdnf.bbs.domain.Join">
+        SELECT name,mail FROM associationinfo
+    </select>
+    <select id="GetById" resultType="com.zdnf.bbs.domain.Join">
+        SELECT * FROM associationinfo WHERE id=#{id}
+    </select>
+    <insert id="AddAssociation">
+        INSERT INTO associationinfo VALUES (null,#{name},#{mail})
+    </insert>
+    <insert id="AddPeople" parameterType="com.zdnf.bbs.domain.Joiner">
+        INSERT INTO joininfo VALUES (null,#{joiner.AssocialtionName},#{joiner.UserName},#{joiner.RealName},#{joiner.Introduction},#{joiner.TelNum},#{joiner.WeChat})
+    </insert>
+</mapper>

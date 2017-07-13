@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface PostDao {
 
-
     public boolean add(@Param("post")Post post);
 
     public boolean delete(@Param("id")int id);
