@@ -15,7 +15,7 @@
     <select id="HasUsername" resultType="String">
         SELECT id FROM userinfo WHERE name=#{name}
     </select>
-    <select id="passwd" resultType="String">
+    <select id="Passwd" resultType="String">
         SELECT passwd FROM userinfo WHERE id=#{id}
     </select>
     <select id="GetIdByName" resultType="String">

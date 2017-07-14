@@ -8,10 +8,10 @@ public class Join {
     private String name;
     private String mail;
 
-    public void setId(int id){id=id;}
+    public void setId(int id){this.id=id;}
     public int getId(){return id;}
-    public void setName(String name){name=name;}
+    public void setName(String name){this.name=name;}
     public String getName(){return name;}
-    public void setMail(String mail){mail=mail;}
+    public void setMail(String mail){this.mail=mail;}
     public String getMail(){return mail;}
 }

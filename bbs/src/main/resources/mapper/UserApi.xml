@@ -21,4 +21,7 @@
         SELECT id FROM userinfo WHERE name=#{name}
     </select>
 
+    <select id="GetPasswdById" resultType="java.lang.String">
+        SELECT passwd FROM userinfo WHERE id=#{id}
+    </select>
 </mapper>

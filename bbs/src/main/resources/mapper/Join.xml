@@ -14,6 +14,9 @@
         INSERT INTO associationinfo VALUES (null,#{name},#{mail})
     </insert>
     <insert id="AddPeople" parameterType="com.zdnf.bbs.domain.Joiner">
-        INSERT INTO joininfo VALUES (null,#{joiner.AssocialtionName},#{joiner.UserName},#{joiner.RealName},#{joiner.Introduction},#{joiner.TelNum},#{joiner.WeChat})
+        INSERT INTO joininfo VALUES (null,#{joiner.AssociationId},#{joiner.UserName},#{joiner.RealName},#{joiner.Introduction},#{joiner.TelNum},#{joiner.WeChat})
     </insert>
+    <select id="GetAllPeople" resultType="com.zdnf.bbs.domain.Joiner">
+        SELECT AssociationName,RealName,TelNum,WeChat FROM joininfo
+    </select>
 </mapper>
