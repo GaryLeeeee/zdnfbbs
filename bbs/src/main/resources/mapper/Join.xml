@@ -5,7 +5,7 @@
 
 <mapper namespace="com.zdnf.bbs.dao.JoinDao">
     <select id="GetAll" resultType="com.zdnf.bbs.domain.Join">
-        SELECT name,mail FROM associationinfo
+        SELECT id,name FROM associationinfo
     </select>
     <select id="GetById" resultType="com.zdnf.bbs.domain.Join">
         SELECT * FROM associationinfo WHERE id=#{id}
@@ -19,4 +19,11 @@
     <select id="GetAllPeople" resultType="com.zdnf.bbs.domain.Joiner">
         SELECT AssociationName,RealName,TelNum,WeChat FROM joininfo
     </select>
+    <select id="GetUserNameById" resultType="java.lang.String">
+        SELECT name FROM userinfo WHERE id=#{id}
+    </select>
+    <select id="IsJoined" resultType="java.lang.String">
+        SELECT id FROM joininfo WHERE AssociationId=#{id} AND UserName=#{username}
+    </select>
+
 </mapper>

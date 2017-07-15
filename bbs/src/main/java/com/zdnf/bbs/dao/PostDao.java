@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
  * Created by ZDNF on 2017/5/13.
  */
 public interface PostDao {
-
     public boolean add(@Param("post")Post post);
 
     public boolean delete(@Param("id")int id);

@@ -16,7 +16,7 @@ public class LoginService {
     public void adduser(User user){LoginDao.adduser(user);}
     //返回用户密码
     public Boolean get_passwd(String name,String passwd){
-        String real_passwd=LoginDao.get_passwd(name);
+        String real_passwd=LoginDao.GetUserPasswdByUserName(name);
         if (real_passwd.equals(passwd)){return true;}
         return false;
     }

@@ -27,7 +27,7 @@ public class PagesController {
     //添加page
     @RequestMapping("addpages")
     public String AddPages(String url,String content){
-        System.out.println(url+content);
+        //System.out.println(url+content);
         if (PageService.AddPage(url,content))return "redirect:/pages/"+url;
         return "error";
     }

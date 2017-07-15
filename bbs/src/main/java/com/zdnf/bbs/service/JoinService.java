@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import com.zdnf.bbs.domain.Mail;
+import com.zdnf.bbs.tools.Mail;
 
 /**
  * Created by ZDNF on 2017/7/13.
@@ -49,4 +49,8 @@ public class JoinService {
     }
 
     public List<Joiner> GetAllPeople(){return JoinDao.GetAllPeople();}
+
+    public String GetUserNameById(String id){return JoinDao.GetUserNameById(id);}
+
+    public String IsJoined(String id,String name){return JoinDao.IsJoined(id,name);}
 }

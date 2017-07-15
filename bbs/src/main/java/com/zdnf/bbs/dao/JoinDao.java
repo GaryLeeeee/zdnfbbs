@@ -14,4 +14,6 @@ public interface JoinDao {
     public void AddAssociation(@Param("name") String name, @Param("mail") String mail);
     public boolean AddPeople(@Param("joiner") Joiner joiner);
     public List<Joiner> GetAllPeople();
+    public String GetUserNameById(String id);
+    public String IsJoined(@Param("id")String id,@Param("username")String username);
 }

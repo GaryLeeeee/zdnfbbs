@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zdnf.bbs.dao.UserApiDao;
 import com.zdnf.bbs.domain.User;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import com.zdnf.bbs.tools.FileUp;
 
 /**
  * Created by ZDNF on 2017/5/11.
@@ -19,6 +18,8 @@ import java.util.List;
 public class UserApiService {
     @Autowired
     UserApiDao UserApiDao;
+    @Autowired
+    FileUp FileUp;
 
     public User get_user(String name){return UserApiDao.get_user_info(name);}
 
@@ -32,12 +33,12 @@ public class UserApiService {
         return UserApiDao.GetUserPost(name,low);
     }
 
-    public boolean up(MultipartFile file,String username){
+    public boolean up(MultipartFile file,String id){
         if (file.isEmpty())return false;
         //文件路径
         String filePath = "d:/bbs/userimgs/";
         //创建文件
-        File dest = new File(filePath + username+".jpg");
+        File dest = new File(filePath + id+".jpg");
         //判断文件路径存不存在
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();
@@ -48,6 +49,7 @@ public class UserApiService {
         }
         try {
             file.transferTo(dest);
+            FileUp.upload(id);
             return true;
         } catch (IllegalStateException e) {
             e.printStackTrace();

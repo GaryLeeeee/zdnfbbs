@@ -1,7 +1,7 @@
 package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.domain.Join;
-import com.zdnf.bbs.domain.Login;
+import com.zdnf.bbs.tools.Login;
 import com.zdnf.bbs.service.JoinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -44,8 +44,15 @@ public class JoinController {
 
     @RequestMapping("addpeople")
     public String 有人加入协会(@CookieValue(value="id",required=true)String id,@CookieValue("key")String key,Joiner Joiner) throws NoSuchAlgorithmException {
+        //判断是否已经报名过
+
+        if(JoinService.IsJoined(Joiner.getAssociationId(),JoinService.GetUserNameById(id))!=null)
+            return "你已经报过这个协会了";
+        //验证登录 拿到用户在论坛的id
+        Joiner.setUserName(JoinService.GetUserNameById(id));
         if(Login.istrue(id,key)
                 &&
+                //添加进数据库并发送邮件
                 JoinService.AddPeople(Joiner))
             return "true";
         return "false";

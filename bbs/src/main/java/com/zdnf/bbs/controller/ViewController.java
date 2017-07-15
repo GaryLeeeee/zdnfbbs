@@ -13,12 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * 注意：登陆注册的视图在LoginController里
  */
 
-/*
-目前的视图规划：
-主页：帖子页面，返回最新动态，其余板块浏览页面均为 /t/板块id
-帖子页面：/d/帖子id
-个人页面：/p/个人id
- */
+
 @Controller
 public class ViewController {
 

@@ -9,7 +9,7 @@
         VALUES
         (null,#{user.name},#{user.passwd},#{user.sex},#{user.wechat},#{user.telnum},#{user.introduce},#{user.power})
     </insert>
-    <select id="get_passwd" resultType="String">
+    <select id="GetUserPasswdByUserName" resultType="String">
         SELECT passwd FROM userinfo WHERE name=#{name}
     </select>
     <select id="HasUsername" resultType="String">

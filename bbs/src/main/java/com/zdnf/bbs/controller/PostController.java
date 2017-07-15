@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import com.zdnf.bbs.domain.Login;
+import com.zdnf.bbs.tools.Login;
 
 /**
  * Created by ZDNF on 2017/5/12.

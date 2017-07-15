@@ -1,12 +1,5 @@
 package com.zdnf.bbs.controller;
 
-import com.google.gson.Gson;
-import com.qiniu.common.QiniuException;
-import com.qiniu.common.Zone;
-import com.qiniu.http.Response;
-import com.qiniu.storage.Configuration;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
 import com.zdnf.bbs.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -44,7 +37,7 @@ public class UserApiController {
     @RequestMapping("userinfo")
     public User UserInfo(String name) {
         User user = UserApiService.get_user(name);
-        user.setPasswd("*****");
+        user.setPasswd("null");
         return user;
     }
 
@@ -59,13 +52,9 @@ public class UserApiController {
     @RequestMapping("istrue")
     public String istrue(User user, HttpServletResponse response) {
         if (LoginService.get_passwd(user.getName(), user.getPasswd())) {
-            /*****************/
             Cookie cookie = new Cookie("ZDNF_name", user.getName());
             cookie.setMaxAge(1000); //设置cookie的过期时间是10s
             response.addCookie(cookie);
-
-
-            /************/
             return "true";
         }
 
@@ -137,6 +126,7 @@ public class UserApiController {
 
     }
 
+    /*
     @RequestMapping("upload")
     public String upload() {
         //构造一个带指定Zone对象的配置类
@@ -172,5 +162,6 @@ public class UserApiController {
         return "0";
     }
 
+    */
 
 }

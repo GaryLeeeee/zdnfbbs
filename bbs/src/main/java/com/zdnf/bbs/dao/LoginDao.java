@@ -8,7 +8,7 @@ import com.zdnf.bbs.domain.User;
  */
 public interface LoginDao {
     public void adduser(@Param("user")User user);
-    public String get_passwd(@Param("name")String name);
+    public String GetUserPasswdByUserName(@Param("name")String name);
     public String HasUsername(@Param("name")String name);
     public String Passwd(String id);
     public String GetIdByName(String name);
