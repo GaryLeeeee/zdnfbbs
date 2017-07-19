@@ -6,7 +6,7 @@
 <mapper namespace="com.zdnf.bbs.dao.UserApiDao">
 
     <select id="GetUserInfo" resultType="com.zdnf.bbs.domain.User">
-        SELECT * FROM userinfo WHERE name=#{name}
+        SELECT * FROM userinfo WHERE name=#{name} LIMIT 1
     </select>
 
     <select id="GetUserReply" resultType="com.zdnf.bbs.domain.Replay">
@@ -18,10 +18,10 @@
     </select>
 
     <select id="get_id" resultType="java.lang.String">
-        SELECT id FROM userinfo WHERE name=#{name}
+        SELECT id FROM userinfo WHERE name=#{name} LIMIT 1
     </select>
 
     <select id="GetPasswdById" resultType="java.lang.String">
-        SELECT passwd FROM userinfo WHERE id=#{id}
+        SELECT passwd FROM userinfo WHERE id=#{id} LIMIT 1
     </select>
 </mapper>
