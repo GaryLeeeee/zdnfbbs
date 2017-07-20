@@ -21,24 +21,24 @@ public class PostService {
         return PostDao.add(post);
     }
 
-    public boolean delete(int id){
-        if (PostDao.delete(id)&&PostDao.del_replay(id))return true;
+    public boolean DeletePostById(int id){
+        if (PostDao.DeletePostById(id)&&PostDao.DeleteReplyById(id))return true;
         return false;
     }
 
-    public List<Post> get(int id,int page){
-        return PostDao.get(id,(page-1)*10);
+    public List<Post> GetPagesPostByBelongTo(int id,int page){
+        return PostDao.GetPagesPostByBelongTo(id,(page-1)*10);
     }
 
-    public boolean set_top(int id,int IsTop){return PostDao.set_top(id,IsTop);}
+    public boolean SetTop(int id,int IsTop){return PostDao.SetTop(id,IsTop);}
 
-    public int TopNum(int id){return PostDao.topnum(id);}
+    public int GetTopNumById(int id){return PostDao.GetTopNumById(id);}
 
-    public List<Post> top(int id){return PostDao.top(id);}
+    public List<Post> GetTopPostById(int id){return PostDao.GetTopPostById(id);}
 
-    public int max(int id){return PostDao.max(id);}
+    public int CountPostsNumById(int id){return PostDao.CountPostsNumById(id);}
 
     public String add2(Post post){return PostDao.frist(post.getTitle(),post.getAuthor(),post.getLastTime());}
 
-    public List<Post> getallbyid(int id){return PostDao.getallbyid(id);}
+    public List<Post> GetOnePostAllInfoById(int id){return PostDao.GetOnePostAllInfoById(id);}
 }

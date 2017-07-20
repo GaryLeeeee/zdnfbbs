@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by ZDNF on 2017/5/7.
+ * Created by Skysibule on 2017/5/7.
  * 这个类用来处理用户的登录和注册
  */
 
@@ -83,7 +83,7 @@ public class LoginController {
             LoginService.adduser(user);
             return "注册成功<br><a href=\"/\">点我回主页</a>";
       //  }
-    //   return "<p>验证码输错了吧";
+    //   return "验证码输入错误";
     }
 
     //登陆的表单
@@ -94,7 +94,7 @@ public class LoginController {
 
     //处理登录
     @RequestMapping(value = "/logining",method = RequestMethod.POST)
-    public String logining(HttpServletRequest httpServletRequest, HttpServletResponse response,User user){
+    public String logining(HttpServletResponse response,User user){
        // String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
         // String parameter = httpServletRequest.getParameter("vrifyCode");
         //验证码和账号密码都正确

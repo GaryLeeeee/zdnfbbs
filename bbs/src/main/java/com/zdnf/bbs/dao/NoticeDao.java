@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface NoticeDao {
     public boolean add(@Param("Notice")Notice Notice);
-    public List<String> get_title();
-    public String get_content(@Param("title")String title);
-    public boolean delete(@Param("title")String title);
+    public List<String> GetAllTitle();
+    public String GetContentByTitle(@Param("title")String title);
+    public boolean DeleteByTitle(@Param("title")String title);
 }

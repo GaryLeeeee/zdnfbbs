@@ -25,15 +25,13 @@ public class ReplayService {
     }
 
     //每页返回10条
-    public List<Replay> get_by_id(int id,int page){
+    public List<Replay> GetReplyByPostId(int id,int page){
         //首先算一下取第几条
         int low=(page-1)*10;
-        int max=page*10;
-        if(page>1)max-=1;
-        return ReplayDao.get_by_id(id,low,max);
+        return ReplayDao.GetReplyByPostId(id,low);
     }
 
-    public boolean delete(int id){return ReplayDao.delete(id);}
+    public boolean DeleteById(int id){return ReplayDao.DeleteById(id);}
 
     public int max(int id){return ReplayDao.max(id);}
 }

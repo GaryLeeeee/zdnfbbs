@@ -5,7 +5,7 @@
 
 <mapper namespace="com.zdnf.bbs.dao.PlateDao">
     <!-- 返回所有的板块信息 -->
-    <select id="get_all"  resultType="com.zdnf.bbs.domain.Plate">
+    <select id="GetAllPlateInfo"  resultType="com.zdnf.bbs.domain.Plate">
         SELECT * FROM plate
     </select>
     <!-- 添加一个板块 -->
@@ -15,16 +15,16 @@
         (NULL,#{Plate.name},#{Plate.type},#{Plate.BelongTo})
     </insert>
     <!-- 删除一个板块 -->
-    <delete id="delete" parameterType="com.zdnf.bbs.domain.Plate">
+    <delete id="DeletePlateById" parameterType="com.zdnf.bbs.domain.Plate">
         DELETE FROM plate WHERE id=#{id}
     </delete>
 
     <!--不写注释也知道啥意思啊！！！！-->
-    <update id="set_name">
+    <update id="UpdateNameById">
         UPDATE plate SET name=#{name} WHERE id=#{id}
     </update>
 
-    <select id="namebyid" resultType="String">
+    <select id="GetNameById" resultType="String">
         SELECT name FROM plate where id=#{id};
     </select>
 </mapper>

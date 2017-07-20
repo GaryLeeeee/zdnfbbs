@@ -10,31 +10,31 @@
         INSERT INTO post VALUES (NULL,#{post.BelongTo},#{post.title},#{post.author},#{post.num},#{post.LastOne},#{post.LastTime},#{post.IsTop})
     </insert>
 
-    <delete id="delete" parameterType="java.lang.Integer">
+    <delete id="DeletePostById" parameterType="java.lang.Integer">
         DELETE FROM post WHERE id=#{id}
     </delete>
 
-    <select id="get" resultType="com.zdnf.bbs.domain.Post">
+    <select id="GetPagesPostByBelongTo" resultType="com.zdnf.bbs.domain.Post">
         SELECT * FROM post WHERE BelongTo=#{id} ORDER BY LastTime DESC LIMIT #{low},10
     </select>
 
-    <update id="set_top">
+    <update id="SetTop">
         UPDATE post SET IsTop=#{IsTop} WHERE id=#{id}
     </update>
 
-    <delete id="del_replay">
-        DELETE FROM replay WHERE father=#{id}
+    <delete id="DeleteReplyById">
+        DELETE FROM reply WHERE father=#{id}
     </delete>
 
-    <select id="topnum" resultType="java.lang.Integer">
+    <select id="GetTopNumById" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM post WHERE BelongTo=#{id} AND IsTop=1
     </select>
 
-    <select id="top" resultType="com.zdnf.bbs.domain.Post">
+    <select id="GetTopPostById" resultType="com.zdnf.bbs.domain.Post">
         SELECT * FROM post where BelongTo=#{id} AND IsTop=1
     </select>
 
-    <select id="max" resultType="java.lang.Integer">
+    <select id="CountPostsNumById" resultType="java.lang.Integer">
         SELECT count(*) FROM post where BelongTo=#{id}
     </select>
 
@@ -42,7 +42,7 @@
         SELECT id FROM post WHERE title=#{title} AND author=#{author} AND LastTime=#{LastTime}
     </select>
 
-    <select id="getallbyid" resultType="com.zdnf.bbs.domain.Post">
+    <select id="GetOnePostAllInfoById" resultType="com.zdnf.bbs.domain.Post">
         SELECT * FROM post WHERE id=#{id}
     </select>
 

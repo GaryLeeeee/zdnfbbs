@@ -15,13 +15,28 @@ public class NoticeService {
     @Autowired
     NoticeDao NoticeDao;
 
-    public boolean add(Notice Notice){return NoticeDao.add(Notice);}
-
-    public List<String> get_title(){return NoticeDao.get_title();}
-
-    public String get_content(String title){
-        return NoticeDao.get_content(title);
+    public String add(Notice Notice) {
+        try {
+            NoticeDao.add(Notice);
+            return "添加成功";
+        } catch (Exception e) {
+            return e.toString();
+        }
     }
 
-    public boolean delete(String title){return NoticeDao.delete(title);}
+    public List<String> GetAllTitle(){return NoticeDao.GetAllTitle();}
+
+    public String GetContentByTitle(String title){
+        return NoticeDao.GetContentByTitle(title);
+    }
+
+    public String DeleteByTitle(String title){
+        try{
+            NoticeDao.DeleteByTitle(title);
+        }catch (Exception e){
+            return e.toString();
+        }finally {
+            return "未知错误";
+        }
+    }
 }

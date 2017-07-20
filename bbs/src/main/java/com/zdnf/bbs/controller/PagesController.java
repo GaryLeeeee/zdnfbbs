@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- * Created by ZDNF on 2017/6/20.
+ * Created by Skyibusle on 2017/6/20.
  * 用来创建界面
+ * 对应关系： url=>内容
+ * 对应获取。
  */
 @Controller
 public class PagesController {
@@ -27,7 +29,6 @@ public class PagesController {
     //添加page
     @RequestMapping("addpages")
     public String AddPages(String url,String content){
-        //System.out.println(url+content);
         if (PageService.AddPage(url,content))return "redirect:/pages/"+url;
         return "error";
     }

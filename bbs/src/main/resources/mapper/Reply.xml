@@ -4,20 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.zdnf.bbs.dao.ReplayDao">
-    <select id="get_by_id" resultType="com.zdnf.bbs.domain.Replay">
-        SELECT * FROM replay WHERE father=#{id} ORDER BY times ASC LIMIT #{low},10
+    <select id="GetReplyByPostId" resultType="com.zdnf.bbs.domain.Replay">
+        SELECT * FROM reply WHERE father=#{id} ORDER BY times ASC LIMIT #{low},10
     </select>
 
     <insert id="add" parameterType="com.zdnf.bbs.domain.Replay">
-        INSERT replay VALUES (NULL,#{replay.father},#{replay.author},#{replay.content},#{replay.times})
+        INSERT reply VALUES (NULL,#{replay.father},#{replay.author},#{replay.content},#{replay.times})
     </insert>
 
-    <delete id="delete" parameterType="java.lang.Integer">
-        DELETE FROM replay WHERE id=#{id}
+    <delete id="DeleteById" parameterType="java.lang.Integer">
+        DELETE FROM reply WHERE id=#{id}
     </delete>
 
     <select id="max" resultType="java.lang.Integer">
-        SELECT COUNT(*) from replay WHERE father=#{id}
+        SELECT COUNT(*) from reply WHERE father=#{id}
     </select>
 
     <update id="repling">

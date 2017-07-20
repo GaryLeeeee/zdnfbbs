@@ -9,15 +9,15 @@
         INSERT INTO notice VALUES (NULL,#{Notice.title},#{Notice.content},#{Notice.time})
     </insert>
 
-    <select id="get_title" resultType="java.lang.String">
+    <select id="GetAllTitle" resultType="java.lang.String">
         SELECT title from notice
     </select>
 
-    <select id="get_content" resultType="java.lang.String">
+    <select id="GetContentByTitle" resultType="java.lang.String">
         SELECT content from notice WHERE title=#{title}
     </select>
 
-    <delete id="delete" parameterType="com.zdnf.bbs.domain.Notice">
+    <delete id="DeleteByTitle" parameterType="com.zdnf.bbs.domain.Notice">
         DELETE FROM notice WHERE title=#{title}
     </delete>
 

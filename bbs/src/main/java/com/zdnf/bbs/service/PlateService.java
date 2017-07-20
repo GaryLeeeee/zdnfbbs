@@ -7,22 +7,38 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by ZDNF on 2017/5/12.
+ * Created by Skyisbule on 2017/5/12.
  */
 @Service
 public class PlateService {
     @Autowired
     PlateDao PlateDao;
 
-    public List<Plate> get_all(){return PlateDao.get_all();}
+    public List<Plate> GetAllPlateInfo(){return PlateDao.GetAllPlateInfo();}
 
-    public boolean add(Plate Plate){return PlateDao.add(Plate);}
-
-    public boolean delete(String id){return PlateDao.delete(id);}
-
-    public boolean update(int id,String name){
-        return PlateDao.set_name(id,name);
+    public String add(Plate Plate){
+        if(PlateDao.add(Plate))
+            return "添加成功";
+        return "添加失败";
     }
 
-    public String namebyid(int id){return PlateDao.namebyid(id);}
+    public String DeletePlateById(String id){
+        try {
+            PlateDao.DeletePlateById(id);
+            return "删除成功";
+        }catch (Exception e){
+            return e.toString();
+        }
+    }
+
+    public String UpdateNameById(int id,String name){
+        try{
+            PlateDao.UpdateNameById(id,name);
+            return "修改成功";
+        }catch (Exception e){
+            return e.toString();
+        }
+    }
+
+    public String GetNameById(int id){return PlateDao.GetNameById(id);}
 }

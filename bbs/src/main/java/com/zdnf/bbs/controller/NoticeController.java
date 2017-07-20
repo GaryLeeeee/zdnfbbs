@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * Created by ZDNF on 2017/5/14.
+ * Created by Skysibule on 2017/5/14.
  * 这个控制器是用来控制公告的
  */
 @RestController
@@ -21,14 +21,14 @@ public class NoticeController {
 
     //返回公告标题 已验证通过
     @RequestMapping("title")
-    public List<String> get_title(){
-        return NoticeService.get_title();
+    public List<String> GetAllTitle(){
+        return NoticeService.GetAllTitle();
     }
 
     //返回公告的内容 已验证通过
     @RequestMapping("content")
-    public String get_content(String title){
-        return NoticeService.get_content(title);
+    public String GetContentByTitle(String title){
+        return NoticeService.GetContentByTitle(title);
     }
 
     //添加公告 已验证通过
@@ -36,16 +36,14 @@ public class NoticeController {
     //不然会返回错误
     @RequestMapping("add")
     public String add(@Valid Notice Notice){
-        //return Notice.getContent();
-        if (NoticeService.add(Notice))return "true";
-        return "false";
+       // if (NoticeService.add(Notice))return "true";
+        return NoticeService.add(Notice);
     }
 
     //删除公告 已验证通过
     @RequestMapping("delete")
-    public String delete(String title){
-        if (NoticeService.delete(title))return "true";
-        return "false";
+    public String DeleteByTitle(String title){
+        return NoticeService.DeleteByTitle(title);
     }
 
     //TODO! 这俩以后再写 懒

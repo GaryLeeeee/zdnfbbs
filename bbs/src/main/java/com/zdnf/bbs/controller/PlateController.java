@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * Created by ZDNF on 2017/5/12.
+ * Created by Skysibule on 2017/5/12.
  * 此类用来管理板块的处理与返回
  */
 @RestController
@@ -26,7 +26,7 @@ public class PlateController {
     //返回所有的板块信息
     @RequestMapping("all")
     public List<Plate> all(){
-        return PlateService.get_all();
+        return PlateService.GetAllPlateInfo();
     }
 
     //添加板块
@@ -34,30 +34,26 @@ public class PlateController {
     //已测试通过！
     @RequestMapping(value = "add")
     public String add(@Valid Plate plate){
-        if (PlateService.add(plate)) return "success";
-        return "error";
+        return PlateService.add(plate);
     }
 
-    //删除板块 理论无误 但并没有测试
     //传板块id
     //TODO 这里代码写得不好，后期要改！
+    //↑已经改了
     @RequestMapping(value = "delete")
-    public String delete(String id){
-        if (PlateService.delete(id))
-        return "success";
-        return "error";
+    public String DeletePlateById(String id){
+        return PlateService.DeletePlateById(id);
     }
 
     //修改一个板块的名字
     @RequestMapping("updatename")
     public String update(@RequestParam(value="id")int id,@RequestParam(value="name")String name){
-        if (PlateService.update(id,name))return "true";
-        return "false";
+        return PlateService.UpdateNameById(id,name);
     }
 
     //传一个id 返回板块的名字
     @RequestMapping("namebyid")
     public String GetNameById(int id){
-        return PlateService.namebyid(id);
+        return PlateService.GetNameById(id);
     }
 }

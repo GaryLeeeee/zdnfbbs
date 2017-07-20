@@ -20,7 +20,7 @@ import java.util.List;
 import com.qiniu.util.Auth;
 
 /**
- * Created by ZDNF on 2017/5/11.
+ * Created by Skysibule on 2017/5/11.
  * 这个控制器用来返回用户的一系列信息
  */
 @RestController
@@ -53,11 +53,10 @@ public class UserApiController {
     public String istrue(User user, HttpServletResponse response) {
         if (LoginService.get_passwd(user.getName(), user.getPasswd())) {
             Cookie cookie = new Cookie("ZDNF_name", user.getName());
-            cookie.setMaxAge(1000); //设置cookie的过期时间是10s
+            cookie.setMaxAge(3600*24*36); //设置cookie的过期时间是10s
             response.addCookie(cookie);
             return "true";
         }
-
         return "false";
     }
 

@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by ZDNF on 2017/5/16.
+ * Created by Skysibule on 2017/5/16.
  * 这个控制器用来返回普通的视图层
  * 注意：登陆注册的视图在LoginController里
  */
