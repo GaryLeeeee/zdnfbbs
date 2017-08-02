@@ -1,0 +1,266 @@
+#index #section-1{
+  background:url(../images/x.jpg) no-repeat lack; 
+  background-size:auto 1000px;
+  background-position-x: 0;
+  background-position-y: 0;
+  color:white;
+  height:auto;
+}
+#index #section-1 .content-wrap{
+  width:100%;
+  min-width:1024px;
+  text-align:center
+}
+
+#index #section-2{
+  background:url(../images/a.jpg) no-repeat; 
+
+  background-position:bottom;
+  color:white;
+  height:655px;
+  position:relative;
+}
+@media screen and (max-width: 1366px) {
+  #index #section-2{
+    background:url(../images/.jpg); 
+
+    background-position:bottom;
+    color:white;
+    padding-top:2rem;
+  }
+}
+#index #section-2 #section-2-button{
+  width:484px;
+  height:235px;
+  margin:0 auto;
+  margin-top:29rem;
+  background:url(../images/.jpg) no-repeat;
+  background-position:top center;
+  cursor:pointer;
+}
+#index #section-2 .content-wrap{padding-top:360px;}
+#index #section-2 h1{}
+#index #section-2 h2{font-size:1rem; color:#aabbce; font-family:impact; font-weight:400;}
+
+
+.avatar-list-wrapper{
+  position:relative;
+  width:100%;
+  margin-top: 200;
+  max-width:1920px;
+  min-height:360px;
+  background:url(../images/.jpg) no-repeat;
+  background-position: top center;
+}
+.upline{width:100%; height:50px; background:url(../images/.jpg) no-repeat; background-size:100% auto; background-position:center;}
+.downline{width:100%; height:50px; background:url(../images/.jpg) no-repeat; background-size:100% auto; background-position:center;}
+ul.nav-list{
+    width:960px;
+    margin:0 auto;
+  }
+#index .pv-btn-wrapper{
+  position:relative;
+  display:inline-block;
+  height:270px;
+  width:400px;
+  text-align:center;
+}
+.pv-mask{position:absolute; left:0;top:0;width:120%; left:-10%; height:100%; background:url(../images/p.jpg) rgba(0,0,0,0.2) no-repeat; background-size:auto 100%; background-position:center;z-index: 1; transform:skew(10deg);transition: 0.5s;}
+.pv-mask:hover{ background:url(../images/a.jpg) no-repeat; background-size:auto 100%; background-position:center;}
+
+.pv-cover{position:relative; display:block; width:320px;height:210px;border:5px white solid;border-radius:20px; transform:skew(-10deg); margin:0 auto; overflow:hidden;}
+.pv-cover .cover-pic{position:absolute; height:210px; left:50%; margin-left:-186px; transform:skew(10deg);}
+.pv-cover .cover-pic#game-pv{background:url(../images/.jpg); background-size:auto 100%; background-position:center;}
+.pv-cover .cover-pic#film-pv{width:360px; background:url(../images/.jpg); background-size:auto 100%; background-position:center;}
+#index .pv-btn-wrapper .pv-title{height:56px; line-height:56px; font-size:22px; color:white; text-align:center;}
+
+@media screen and (max-width: 1919px) {
+  .pv-cover{position:relative; display:block; width:200px;height:210px;border:5px white solid;border-radius:20px; transform:skew(-10deg); margin:0 auto;}
+}
+@media screen and (max-width: 1600px) {
+  ul.nav-list{
+    width:720px;
+    margin:0 auto;
+  }
+  .pv-cover{position:relative; display:block; width:200px;height:210px;border:5px white solid;border-radius:20px; transform:skew(-10deg); margin:0 auto;}
+}
+
+@media screen and (max-width: 1365px) {
+  ul.nav-list{
+    width:480px;
+    margin:0 auto;
+  }
+  #index .pv-btn-wrapper{width:230px;}
+}
+ul.nav-list li.avatar{
+  display:inline-block;
+  transform:skew(-10deg);
+  width:140px;
+  height:140px;
+  border:3px solid white;
+  border-radius:16px;
+  margin:5px;
+  list-style: none;
+  background:rgba(30, 23, 75, 0.6);
+  overflow:hidden;
+  cursor:pointer;
+  vertical-align:top;
+  transition: 0.4s;
+}
+ul.nav-list li.avatar:hover{
+  background:rgba(24,23,176,0.8);
+  transform:skew(-10deg) scale(1.1,1.1);
+}
+
+#avatar-kiana-pt{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/kiana_pt.png); background-size:auto 100%; background-position:center;}
+#avatar-kiana-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/kiana_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-kiana-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/kiana_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-kiana-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/kiana_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-kiana-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/kiana_c4.png); background-size:auto 100%; background-position:center;}
+#avatar-mei-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/mei_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-mei-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/mei_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-mei-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/mei_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-mei-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/mei_c4.png); background-size:auto 100%; background-position:center;}
+#avatar-bronya-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/bronya_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-bronya-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/bronya_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-bronya-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/bronya_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-bronya-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/bronya_c4.png); background-size:auto 100%; background-position:center;}
+
+#avatar-himeko-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/himeko_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-himeko-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/himeko_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-himeko-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/himeko_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-himeko-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/himeko_c4.png); background-size:auto 100%; background-position:center;}
+
+#avatar-sakura-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/sakura_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-sakura-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/sakura_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-sakura-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/sakura_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-sakura-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/sakura_c4.png); background-size:auto 100%; background-position:center;}
+
+#avatar-theresa-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/theresa_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-theresa-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/theresa_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-theresa-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/theresa_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-theresa-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/theresa_c4.png); background-size:auto 100%; background-position:center;}
+
+#avatar-fuhua-c1{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/fuhua_c1.png); background-size:auto 100%; background-position:center;}
+#avatar-fuhua-c2{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/fuhua_c2.png); background-size:auto 100%; background-position:center;}
+#avatar-fuhua-c3{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/fuhua_c3.png); background-size:auto 100%; background-position:center;}
+#avatar-fuhua-c4{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/fuhua_c4.png); background-size:auto 100%; background-position:center;}
+
+#avatar-kiana-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/kiana_unknown.png); background-size:auto 100%; background-position:center;}
+
+#avatar-mei-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/mei_unknown.png); background-size:auto 100%; background-position:center;}
+
+#avatar-bronya-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/bronya_unknown.png); background-size:auto 100%; background-position:center;}
+
+#avatar-himeko-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/himeko_unknown.png); background-size:auto 100%; background-position:center;}
+#avatar-sakura-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/sakura_unknown.png); background-size:auto 100%; background-position:center;}
+#avatar-theresa-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/theresa_unknown.png); background-size:auto 100%; background-position:center;}
+#avatar-fuhua-unknown{position:relative; width:120%; left:-10%;height:140px;transform:skew(10deg);background:url(../images/index/avatar/fuhua_unknown.png); background-size:auto 100%; background-position:center;}
+
+
+
+#news{position:absolute; left:312px;top:632px;width:640px;height:150px;background:url(../images/x.jpg) no-repeat; background-size: 100% auto; cursor:pointer;}
+
+#social-btn{position:absolute; left:800px;top:580px;width:184px;height:170px;background:url(../images/x.jpg); cursor:pointer;transition: 0.4s;}
+#social-btn:hover{transform:scale(1.1,1.1);}
+
+#pre-register-btn{margin: 0 auto; margin-top:240px;}
+
+.explore-the-game{font-size:2.4rem; line-height:64px; color:rgb(254,223,76); transition:0.4s;}
+.explore-the-game:hover{transform:scale(1.1,1.1);}
+#explore-arrow{display:inline-block; height:64px; width:57px; margin:0 40px; background:url(../images/index/explore_arrow.png); background-position-x:0; vertical-align:middle}
+
+
+#index-news{
+  width: 1012px;
+  margin: auto;
+  padding-top: 76px;
+  padding-bottom: 90px;
+
+}
+#index-news-top {
+  height: 316px;
+  background-color: rgba(40,47,60,0.7);
+  border: 3px solid rgba(40,47,60,0.2);
+}
+#index-news-top-left {
+  float: left;
+  width: 474px;
+  height: 100%;
+}
+#index-news-top-right {
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  width: 490px;
+  margin-left: 20px;
+  position: relative;
+}
+#btn-news-more {
+  position: absolute;
+  display: block;
+  background: url(../images/zz.jpg) 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: 35px;
+  right: 0;
+}
+.index-news-entry-date {
+  float: right;
+}
+.index-news-list {
+  margin-top: 5px;
+}
+.index-news-list li {
+  font-size: 15px;
+  height: 41px;
+  line-height: 41px;
+  list-style-type: none;
+}
+.index-news-list a:hover {
+  color: #74dcff;
+}
+.index-news-entry-title {
+  float: left;
+  white-space: nowrap;
+  width: 293px;
+overflow: hidden;
+-o-text-overflow: ellipsis; /* Opera */
+text-overflow: ellipsis; /* IE, Safari (WebKit) */
+}
+#news-bottom-info {
+  list-style-type: none;
+  margin-left: 9px;
+  margin-top: 10px;
+  color: transparent;
+}
+#news-bottom-info li {
+  width: 200px;
+  height: 149px;
+  display: inline-block;
+  margin: 0;
+  padding:0;
+  margin-left: -5px;
+}
+
+
+.download-layer {
+    z-index: 997;
+    bottom: 0;
+}
+.download-layer2 {
+    z-index: 998;
+    bottom: 0;
+}
+.download-layer2 .android, .download-layer2 .taptap {
+  cursor: pointer;
+}
+#download-text {
+    height: 106px;
+    color: black;
+        margin: 31px auto 0 auto;
+    width: 77%;
+}
+.download-tip {
+  z-index: 999;
+}

@@ -135,6 +135,7 @@
 		margin-left: 2%;
 		color: #090909;
 		font-size: 20px;
+		cursor: pointer;
 	}
 
 	.reply {
@@ -178,7 +179,30 @@
         font-size: 17px;
 	}
 
-	
+	.paging {
+	margin: 2px 1px 1px 1px;
+	padding: 0;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border: 1px solid #CCCCCC;
+	border-radius: 50%;
+	text-align: center;
+	font-family: Microsoft YaHei;
+	color: #333333;
+	line-height: 15.5px;
+	font-size: 5px;
+	white-space: nowrap;
+}
+
+.paging:hover {
+	cursor: pointer;
+	color: white;
+	background-color: #BBBBBB;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+	transition: 0.3s;
+}
 	.clear {
 		clear: both;
 	}

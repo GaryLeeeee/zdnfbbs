@@ -25,17 +25,17 @@ public class FileUp {
         String secretKey = "_NT5SwHFOKdCMYdlEAHf1QsQABtW1VzACBEdEkaS";
         String bucket = "touxiang";
         //如果是Windows情况下，格式是 D:\\qiniu\\test.png
-        String localFilePath = "D:\\bbs\\userimgs\\"+id+".jpg";
+        String localFilePath = GlobalConfig.FilePath+id+".jpg";
         //默认不指定key的情况下，以文件内容的hash值作为文件名
-        String key = null;
+        String key = id;
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
         try {
             Response response = uploadManager.put(localFilePath, key, upToken);
             //解析上传成功的结果
             DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
-            System.out.println(putRet.key);
-            System.out.println(putRet.hash);
+            //System.out.println(putRet.key);
+            //System.out.println(putRet.hash);
             return "1";
         } catch (QiniuException ex) {
             Response r = ex.response;

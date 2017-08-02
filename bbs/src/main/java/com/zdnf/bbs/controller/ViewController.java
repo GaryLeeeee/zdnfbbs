@@ -3,6 +3,7 @@ package com.zdnf.bbs.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,18 @@ public class ViewController {
     @RequestMapping("/")
     public String index(){
         return "index";
+    }
+
+    //返回手机端页面
+    @RequestMapping("m")
+    public String m_index(){
+        return "m_index";
+    }
+
+    //返回手机端的版面页面
+    @RequestMapping("posts")
+    public String 手机端版面(){
+        return "posts";
     }
 
     //返回公告页面

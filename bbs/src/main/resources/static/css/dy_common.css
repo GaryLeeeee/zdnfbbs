@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+body{ margin:0; padding:0; text-align:center; font-family:"宋体"; background-attachment:fixed}
+a{ text-decoration:none; color:#0068b7}
+a:hover{ color:#eb6100}
+a img{ border:none}
+.f12{ font-size:12px}
+.f14{ font-size:14px}
+.f16{ font-size:16px}
+.l{ float:left}
+.r{ float:right}
+.transparent_class {
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+.h-30{ height:30px; line-height:30px;}
+.h-20{ line-height:20px}
+.l-h-30{ line-height:30px}
+.clear{ clear:both;height:1px; font-size:0px;_overflow:hidden}
+.clearfix:after{clear:both;display:block;height:0;content:" ";visibility:hidden;font-size:0}.clearfix{*zoom:1}
+.h-center{ margin:0 auto}
+.m-r-10{ margin-right:10px;display:inline;}
+.m-l-10{ margin-left:10px;display:inline;}
+.m-t-10{ margin-top:10px;}
+.m-b-10{ margin-bottom:10px}
+.p-l-10{ padding-left:10px;}
+.p-l-20{ padding-left:20px}
+.p-r-10{ padding-right:10px;}
+.p-t-10{ padding-top:10px;}
+.p-b-10{ padding-bottom:10px;}
+.b{ font-weight:bold}
+.border{ border:1px solid #CCC}
+.border-l{ border-left:1px solid #ddd}
+.border-r{ border-right:1px solid #ddd}
+.border-t{ border-top:1px solid #ddd}
+.border-b{ border-bottom:1px solid #ddd}
+.grey{ color:#666}
+.h-left{ text-align:left}
+ul{ margin:0; padding:0}
+ul li{ list-style:none; text-indent:0}
+h1,h2,h3,h4,h5,form{ margin:0; padding:0}
+
+.w-735{ width:735px;}
+.p-10{ padding:10px}
+.white{ color:#fff}
+.md_wrap{ width:1000px; background:#fff; border-left:1px solid #e1e1df; border-right:1px solid #e1e1df}
+.md_wrap_nobg{ width:1002px;}
+.md_header{ width:100%; height:auto; padding-top:40px; padding-bottom:1px; border-bottom:1px solid #ddd}
+.md_header_top{width:100%;position:fixed;_position:absolute; top:0px; left:0px;z-index:10000;
+}
+.md_header_top_link{width:100%;position:fixed;_position:absolute; top:0px; left:0px;z-index:10001; height:40px; line-height:40px; background:#FFF; border-bottom:1px solid #eee}
+.md_header_top_link span.r a{ margin-right:10px; color:#666; }.md_header_top_link span.r a:hover{ color:#06C}
+.md_header_top_link .md_wrap{ background:none; border:none}

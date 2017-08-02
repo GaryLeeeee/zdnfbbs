@@ -1,5 +1,6 @@
 package com.zdnf.bbs.controller;
 
+import com.zdnf.bbs.dao.UserApiDao;
 import com.zdnf.bbs.domain.Post;
 import com.zdnf.bbs.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import com.zdnf.bbs.tools.Login;
@@ -22,7 +25,8 @@ import com.zdnf.bbs.tools.Login;
 public class PostController {
     @Autowired
     PostService PostService;
-    Login login = new Login();
+    @Autowired
+    UserApiDao UserApiDao;
 
 
     //按板块id和page获取板块下相应的数据
@@ -34,7 +38,8 @@ public class PostController {
     //添加帖子
     @RequestMapping("add")
     public String AddPost(@Valid Post post, @CookieValue(value="id")String id,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
-        if(login.istrue(id,key))return "false";
+        if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
+            return "error";}
         if (PostService.add(post)){
             Thread.sleep(333);
             return PostService.add2(post);
@@ -75,4 +80,12 @@ public class PostController {
     //返回一个帖子的所有信息
     @RequestMapping("getallbyid")
     public List<Post> GetPostAllInfoById(int id){return PostService.GetOnePostAllInfoById(id);}
+
+
+    public String ToMd5(String str) throws NoSuchAlgorithmException {
+        String res="skyisblue"+str;
+        MessageDigest md =MessageDigest.getInstance("md5");
+        md.update(res.getBytes());
+        return new BigInteger(1,md.digest()).toString();
+    }
 }

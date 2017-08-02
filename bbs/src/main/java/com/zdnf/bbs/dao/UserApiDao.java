@@ -8,7 +8,7 @@ import java.util.List;
  * Created by ZDNF on 2017/5/11.
  */
 public interface UserApiDao {
-    public User get_user_info(@Param("name")String name);
+    public User GetUserInfo(@Param("name")String name);
     public List<User> GetUserReply(@Param("name")String name,@Param("low")int low);
     public List<User> GetUserPost(@Param("name")String name,@Param("low")int low);
     public String get_id(@Param("name")String name);

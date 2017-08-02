@@ -1,11 +1,9 @@
 package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.service.LoginService;
+import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.zdnf.bbs.service.UserApiService;
 import com.zdnf.bbs.domain.User;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import com.qiniu.util.Auth;
@@ -36,7 +35,7 @@ public class UserApiController {
     //用户名、个人简介、最近回复等。
     @RequestMapping("userinfo")
     public User UserInfo(String name) {
-        User user = UserApiService.get_user(name);
+        User user = UserApiService.GetUserInfo(name);
         user.setPasswd("null");
         return user;
     }
@@ -76,9 +75,16 @@ public class UserApiController {
 
     //上传头像
     @RequestMapping("up")
-    public String up(@RequestParam("file") MultipartFile file, @CookieValue(value = "ZDNF_name") String username) {
-        if (UserApiService.up(file, UserApiService.get_id(username))) return "true";
-        return "false";
+    @ResponseBody
+    public String up(@RequestParam("file") MultipartFile file,
+                     @CookieValue(value = "id") String id,
+                     @CookieValue(value = "key") String key)
+                     throws NoSuchAlgorithmException {
+        if(!key.equals(ToMd5(UserApiService.GetPasswdById(id)))){
+            return "这不是你的账号";
+        }
+        if (UserApiService.up(file, id)) return "上传成功";
+        return "上传失败";
     }
 
     //返回头像
@@ -87,9 +93,9 @@ public class UserApiController {
         FileInputStream fis = null;
         httpServletResponse.setContentType("image/jpg");
         OutputStream out = httpServletResponse.getOutputStream();
-        File file = new File("d:/bbs/userimgs/" + UserApiService.get_id(id) + ".jpg");
+        File file = new File(GlobalConfig.FilePath + UserApiService.get_id(id) + ".jpg");
         //这里判断一下存不存在，没有就返回默认头像
-        if (!file.exists()) file = new File("d:/bbs/userimgs/root.jpg");
+        if (!file.exists()) file = new File(GlobalConfig.FilePath+"root.jpg");
         fis = new FileInputStream(file);
         byte[] b = new byte[fis.available()];
         fis.read(b);
@@ -100,14 +106,11 @@ public class UserApiController {
 
     //返回md5加密
     @RequestMapping("md5")
-    public String md5(String id) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("md5");
-            md.update(id.getBytes());
-            return new BigInteger(1, md.digest()).toString();
-        } catch (Exception e) {
-            return "0";
-        }
+    public String ToMd5(String str) throws NoSuchAlgorithmException {
+        String res="skyisblue"+str;
+        MessageDigest md =MessageDigest.getInstance("md5");
+        md.update(res.getBytes());
+        return new BigInteger(1,md.digest()).toString();
     }
 
     //请求后返回当前用户

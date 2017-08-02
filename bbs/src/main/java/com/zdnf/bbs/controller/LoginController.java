@@ -81,7 +81,7 @@ public class LoginController {
       //  if (captchaId.equals(parameter)) {
             user.setPower("0");
             LoginService.adduser(user);
-            return "注册成功<br><a href=\"/\">点我回主页</a>";
+            return "注册成功";
       //  }
     //   return "验证码输入错误";
     }
@@ -93,6 +93,7 @@ public class LoginController {
     }
 
     //处理登录
+    @ResponseBody
     @RequestMapping(value = "/logining",method = RequestMethod.POST)
     public String logining(HttpServletResponse response,User user){
        // String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
@@ -111,12 +112,12 @@ public class LoginController {
                 Cookie cookie = new Cookie("key",ToMd5(user.getPasswd()));
                 cookie.setMaxAge(3600*24*30); //设置cookie的过期时间是一个月
                 response.addCookie(cookie);
-                return "redirect:/";
+                return "<script>window.location=\"/\"</script>";
             }catch (Exception e){
-                return "error";
+                return "未知错误";
             }
         }
-        return "error";
+        return "账号密码错误";
     }
 
     //用来生成验证码

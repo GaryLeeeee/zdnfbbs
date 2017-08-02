@@ -1,0 +1,179 @@
+@charset "utf-8";
+html{ scrollbar-face-color:#ffffff; scrollbar-highlight-color:#ffffff; scrollbar-shadow-color:#cccccc; scrollbar-arrow-color:#00A0C6; scrollbar-base-color:#cccccc; scrollbar-darkshadow-color:#ffffff}
+body{font-size:12px;margin:0 auto !important;margin:0;padding:0; text-align:center; background:url(http://static.mdaxue.com/web/static/img/bodybg.gif) center top repeat-y #e5e5e5;}
+a{ font-size:12px; text-decoration:none;}
+a:hover{ color:#FF9900}
+*{ word-wrap:break-word;}
+.clear{clear:both;}
+#mainbody{ margin:0 auto !important;width:950px; height:auto}
+#pagebody{ margin:0 auto !important;width:950px; height:auto}
+a.blue{ color:#00A0C6}
+a.red{ color:#FF0000}
+a.green{ color:#009900}
+span.spanl{ float:left;margin-left:3px}
+span.spanl a.spanl_a{ font-size:12px; color:#999999; font-weight:normal}
+span.spanl a:hover.spanl_a{color:#ff9900}
+span.spanr{ float:right;margin-right:5px}
+span.spanr a img{ border:none;margin-top:10px}
+#email_login{ width:100%; height:30px; line-height:30px; margin:0; clear:both; background:#eeeeee; text-align:left; text-indent:2em;  font-family:"宋体";font-family:Arial, Helvetica, sans-serif}
+#email_login form{padding:0; margin:0 !important;margin:3px 0 0 0; float:left}
+#email_login a{ color:#006699}#email_login a:hover{ text-decoration:underline}
+#email_login span.spanr{ color:#006699;}#email_login span.spanr a{ color:#000000}
+#email_login span.spanr a:hover{ text-decoration:underline}
+#email_login span.spanr#userinfobox a.loginbtn1{ padding:3px 5px 2px 5px; background:#FFFFFF; color:#006699; margin-right:3px; border:1px solid #cccccc;}
+#email_login span.spanr#userinfobox a.loginbtn1:hover{background:#006699; color:#FFFFFF; text-decoration:none;border:1px solid #006699;}
+#zLogo{width:157px; height:30px; background:url(http://static.mdaxue.com/web/static/img/zoneimg/zonelogo2.gif) top left no-repeat; float:left;text-indent:0}
+#zLogo a img{ border:none}
+/*header*/
+#header{ width:100%; height:auto; margin:10px auto 5px auto;}
+#header #header_top{ width:100%; height:auto; line-height:75px; text-align:left;}
+#header #header_top .popup{ line-height:24px;}
+#header #logo{ width:240px; height:73px; background:url(http://static.mdaxue.com/web/static/img/logo.jpg) no-repeat; float:left}
+#header #logo a img{border:none;}
+#header #flashad{width:560px; height:60px;line-height:60px;border:1px solid #cccccc; float:left; margin:5px; padding:0}
+#header #webcontrol{width:135px; float:right; height:60px;margin:5px 0 5px auto; text-align:center; overflow:hidden}
+#header #webcontrol a{color:#000000;}
+#header #webcontrol a:hover{ text-decoration:underline}
+#header #webcontrol ul{margin:0;padding:0; height:auto; line-height:16px; color:#00A0C6}
+#header #webcontrol ul li{ float:left; list-style:none; width:5.5em; text-align:left; margin-top:3px;}
+/*nav1*/
+/*#header #nav1{ width:950px; background:url(http://static.mdaxue.com/web/static/img/navbg.gif) top left no-repeat; height:30px;margin:5px auto 0 auto; line-height:30px; text-align:left;border-bottom:1px solid #097dd0}
+#header #nav1 a{ padding:5px 10px 3px 10px; color:#ffffff;margin:10px; font-size:14px}
+#header #nav1 a.bechecked{ text-decoration:none; background:url(http://static.mdaxue.com/web/static/img/navbtnbg.gif) bottom left repeat-x; border-top:1px solid #0068b7;border-left:1px solid #0068b7;border-right:1px solid #76b9e6;border-bottom:1px solid #76b9e6; color:#00469d;}
+#header #nav1 a.unchecked{color:#ffffff}*/
+#header #nav1{ width:950px; background:url(http://static.mdaxue.com/web/static/img/defaultimg/navbarbg.gif) top left repeat-x #0087c8; height:30px; line-height:30px;margin:5px auto 5px auto;  padding-top:5px; text-align:left;border-top:1px solid #448ac9;border-bottom:none; overflow:hidden}
+#header #nav1 a{ color:#FFFFFF;font-size:14px;font-weight:bold;padding:8px 12px 8px 12px; background:none; margin-left:10px}
+#header #nav1 a:hover{ background:#fff; color:#039; text-decoration:none; border:none}
+#header #nav1 a.bechecked{ background:#fff; color:#039; text-decoration:none; border:none}
+#header #nav1 a.unchecked{color:#ffffff}
+/*nav1 end*/
+#header #mainpage_nav{width:700px; height:60px; line-height:60px; float:right;margin:5px 5px 0 0; text-align:center;}
+#header #mainpage_nav a{margin:0 5px 0 5px;padding:0;}
+#header #mainpage_nav a img{ border:none;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;}
+#header #mainpage_nav a:hover img{ border:none;border-bottom:1px solid #cccccc;border-right:1px solid #cccccc;}
+/*header end*/
+/*content*/
+#content{ width:100%; height:auto; clear:both; }
+.box{ width:98%; height:auto; padding:5px; border:1px solid #00A0C6;  background:url(http://static.mdaxue.com/web/static/img/boxbg.gif) bottom left repeat-x #ffffff;margin-top:5px;}
+/*content end*/
+.child_nav{ height:30px; line-height:30px;width:100%; color:#000000; border-bottom:1px solid #cccccc; background:url(http://static.mdaxue.com/web/static/img/commonbg.gif) bottom left repeat-x; text-align:left; clear:both; overflow:hidden;}
+form#loginForm{ padding:0; margin:0}
+.child_nav a{padding:0 10px 0 10px; color:#666666; font-size:14px}
+.child_nav a:hover{ color:#000000}
+.child_nav span{ float:left}
+div.page{ width:98%; text-align:right; padding-right:10px; height:auto;text-align:right; color:#333333; margin-top:5px;}
+div.page a{padding:2px 5px 2px 5px; background:#ffffff; height:15px; line-height:15px; color:#00A0C6;margin:0 5px 0 5px; font-family:Arial, Helvetica, sans-serif;}
+div.page a:hover{ background:#00A0C6; color:#ffffff}
+.content_page{ width:100%; height:auto;}
+.content_page h3{width:100%; height:30px; line-height:30px;padding:0;margin:0; text-indent:2em; font-size:14px; text-align:left; font-weight:normal; background:url(http://static.mdaxue.com/web/static/img/barbg.gif) top left repeat-x; border-bottom:1px solid #00A0C6}
+.content_page h3 a{ font-size:14px; color:#00A0C6;} 
+.content_page_title{ height:30px; line-height:30px; font-size:18px; font-weight:bold; background:#effafd; color:#00A0C6}
+.content_page_msg{ width:100%; height:auto; color:#666666; line-height:18px; background:url(http://static.mdaxue.com/web/static/img/listbg.gif) bottom left repeat-x; padding:5px 0 5px 0}
+.content_page_msg a{ color:#000000}
+.content_page_msg span{ color:#FF0000;}
+.content_page_main{ width:100%; clear:both; padding:10px 0 10px 0}
+.content_page_main p{ width:90%; height:auto; margin:0 auto !important;margin:0; padding:0; line-height:24px; font-size:14px; ; text-align:left; text-indent:2em}
+.content_page_main p img{ width:80%;}
+.content_page_main p.imgbox{ text-indent:0em; text-align:center}
+.content_page_main p.newslinks{text-indent:0em; text-align:center; font-size:12px}
+.content_page_main div.newslinkslist{margin:0 auto !important;width:80%;padding:10px; height:auto; border:1px solid #cccccc; background:#effafd}
+.content_page_main ul{margin:0; padding:0 15px 0 15px; float:left;width:45%; height:auto;}
+.content_page_main ul li{ width:100%; text-align:left; list-style:none; line-height:24px}
+.content_page_main ul li a{ color:#000000; font-size:12px;}
+.content_page_comment ul{margin:0; padding:0; line-height:24px; text-align:center}
+.content_page_comment ul li{ padding:0; width:100%; height:auto; background:url(http://static.mdaxue.com/web/static/img/listbg.gif) bottom left repeat-x;  list-style:none;}
+.content_page_comment ul li div{ margin:0 auto !important;text-indent:2em; padding:0 5px 0 5px; width:98%;text-align:left;}
+.content_page_comment ul li div.comment_msg{ background:#effafd;}
+.content_page_comment ul li div.comment_msg a{ color:#00A0C6}
+.content_page_comment ul li div.comment_msg.spanl{text-align:left;float:left;}
+.content_page_comment ul li div.comment_msg.spanr{text-align:right;float:right;}
+.write_comment{ width:60%;}.write_comment a{ color:#FF0000}
+.write_comment form{ margin:10px; width:100%;padding:0}.write_comment .text{ width:20%}
+.textarea1{ width:99%; height:10em; font-size:12px;}
+
+#friendlinks{ width:100%; height:auto; background:#eeeeee}
+#friendlinks ul{ width:100%; height:auto; margin:0; padding:0}
+#friendlinks ul li{ width:120px; height:40px; padding:2px; border:none; background:none; float:left; margin:6px 14px 6px 14px; list-style:none; overflow:hidden}
+#friendlinks ul li a img{ border:none; width:81px; height:27px;border:1px solid #999999; background:#ffffff;}
+
+.content_page_comment ul li div.restore{ width:90%; height:auto; padding:5px 10px 5px 10px; background:#f5f5f5; border:1px solid #cccccc; margin:5px 10px 5px 10px !important; color:#999999}
+.content_page_comment ul li div.restore div.restore{ background:#ffffff}
+
+#footer{ width:100%; height:60px; margin:5px 0 5px 0; clear:both}
+#footer p{ line-height:24px; margin:0; padding:0;color:#666666}
+#footer p a{ color:#666666}
+#footer p a:hover{ color:#00A0C6}
+.childnav_cont{ display:none}
+#child_nav{ height:30px; line-height:30px;width:100%; color:#000000; border-bottom:1px solid #cccccc; background:url(http://static.mdaxue.com/web/static/img/commonbg.gif) bottom left repeat-x; text-align:left}
+#child_nav a{padding:0 10px 0 10px; color:#666666; font-size:14px}
+#child_nav a:hover{ color:#000000}
+#child_nav span{ float:left; text-indent:2em}
+
+.popupwrap { display:none; position:absolute; padding:10px; border:none; background:#7ecef4; text-align:left; z-index:1000;filter:alpha(opacity=90); -moz-opacity:0.9; opacity:0.9;}
+.popup { padding:10px; border:1px solid #00a0e9; background:#e4effd;}
+.popup h4 { color:#CC6600; border-bottom:1px solid #00a0e9; line-height:24px;}
+.popup p { margin:5px 0; color:#000;}
+.popup p.operation { text-align:right;}
+#univlist { position:absolute; width:800px; z-index:1000;}
+#univlist_provinces { border:none;}
+#univlist_provinces td { vertical-align:middle; color:#0068b7; text-align:center; font-size:13px;}
+#univlist_provinces td a{ color:#0068b7;}
+#univlist_provinces a { display:block; text-decoration:none;}
+#univlist_provinces td.activetab a { background:#00a0e9; color:#fff;}
+#univlist_provinces:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+#univlist_provinces { *zoom:1;}
+#univlist .operation a { margin-right:180px;}
+
+.u_list{ width:98%; height:auto; border:1px solid #69C; background:#fff; margin:0 auto; height:360px; overflow-x:hidden; overflow-y:auto;font-size:13px; padding:0; }
+.u_list ul{ margin:0; padding:0; text-indent:0px;}
+.u_list ul li{width:100%; clear:both;text-align:left; line-height:24px; clear:both; border-bottom:1px solid #ddd;list-style-type: none;}
+.u_list ul li .citys{ float:left; width:10%; height:auto; text-align:center; color:#F00}
+.u_list ul li .c_u_list{ float:left; width:89%; height:auto; text-align:left}
+.u_list ul li .c_u_list a{display:inline-block; padding:0 4px 0 4px; line-height:20px; height:20px;color:#0068b7;width:30%;}
+.u_list ul li .c_u_list a.u_on{ background:#999; color:#fff}
+.u_btn{ padding:2px 5px 2px 5px; border:none; background:#039; color:#fff; margin-top:5px}
+
+#highSchoolListWrapDiv, #searchSchoolList { position:absolute; width:606px; z-index:1000;}
+#highSchoolCityQuList { border-bottom:1px solid #3b5998;}
+#highSchoolCityQuList td { vertical-align:middle; color:#0068b7; text-align:center; font-size:13px;}
+#highSchoolCityQuList td a{color:#0068b7;}
+#highSchoolCityQuList a { font-size:12px;display:block; text-decoration:none; color:#0068b7;}
+#highSchoolCityQuList td.activetab a { background:#3b5998; color:#fff;}
+#highSchoolCityQuList:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+#highSchoolCityQuList { *zoom:1;}
+#highSchoolListContentUl { list-style:none; padding:5px 10px; border:1px solid #d8dfea; background:#fff;}
+#highSchoolListContentUl:after { content:"."; display:block; height:0; line-height:0; clear:both; visibility:hidden;}
+#highSchoolListContentUl { *zoom:1;}
+#highSchoolListContentUl li { float:left; width:140px; border-bottom:1px solid #f4f4f4; line-height:23px;}
+#highSchoolListContentUl li a{ color:#0068b7;}
+#highSchoolListContentUl li.univ { width:112px;}
+#highSchoolListContentUl li a:hover { background:#3b5998; color:#fff; text-decoration:none;}
+#highSchoolListWrapDiv .operation a { margin-right:180px;}
+#highSchoolComponent_provinceCitySpan {display:none;}
+#highSchoolProvince .select{float:left}
+#highSchoolCityCode .select{float:left}
+#highSchoolName .inputtext{float:left}
+.inputbutton, .inputsubmit, .subbutton, .canbutton {height:24px;padding:3px 5px;background:#3399CC;color:#fff;line-height:16px;cursor:pointer;border-top: 1px solid #FFCC99;border-right: 1px solid #CC6600;border-bottom: 1px solid #CC6600;border-left: 1px solid #FFCC99;}
+input.subbutton { margin-right:5px;  padding:3px 8px;}
+input.subbbsbtn{ background:url(http://static.mdaxue.com/web/static/img/regbtn.gif) top left no-repeat; width:100px; height:30px; border:none; cursor:pointer}
+.messages_div { border-color:#ffe222; background:#fffbe2;}
+.errors_div	{ border-color:#dd3c10; background:#ffebe8;}
+.messages_div, .errors_div,{ margin:10px; padding:10px; border:1px solid; text-align:center; line-height:20px;color:#008ab0;}
+.mdaxueline{width:95%;text-align:left;overflow:hidden;text-overflow:ellipsis;}/*以省略号替代截除部分*/
+
+body{ background:#ffffff}
+
+#friendlinks0610{ width:950px; height:auto;  border:1px solid #b9daf9; overflow:hidden}
+#friendlinks0610 ul{ width:100%; height:138px; margin:0; padding:0; float:left; background:#ffffff; }
+#friendlinks0610 ul li{ width:11%; height:29px; text-align:center;float:left; margin:10px 0 0 0; padding:0; list-style:none; overflow:hidden}
+#friendlinks0610 h3{ height:30px; line-height:30px; font-size:12px; color:#333; font-weight:normal; border-bottom:1px solid #b9daf9; margin:0 auto; padding:0;background:#ecf8fe; font-family:Arial, Helvetica, sans-serif;}
+#friendlinks0610 h3 span.spanl{ margin-left:1em; font-size:14px; color:#039; font-weight:bold}
+#friendlinks0610 h3 span.spanr{ margin-right:1em;} 
+#friendlinks0610 h3 span.spanr a{ color:#03C}
+#friendlinks0610 h3 span.spanr img{ vertical-align:text-bottom}
+#friendlinks0610 ul li a img{ border:none;width:81px; height:27px; background:#ffffff;border:1px solid #b9daf9;}
+#univsteam{ width:139px; height:auto; overflow:hidden; float:left; margin:5px 0 0 5px; font-family:Arial, Helvetica, sans-serif; color:#6699CC; line-height:16px; text-align:left;font-size:12px;}
+#univsteam a{ color:#0066CC;font-size:12px;}#univsteam a:hover{ text-decoration:underline}
+#univsteam p{ line-height:20px}
+
+

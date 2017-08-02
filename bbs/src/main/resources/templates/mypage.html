@@ -2,7 +2,7 @@
 	<head>
 		<title>我的首页</title>
 
-		<link rel="stylesheet" type="text/css" href="./CSS/mypage.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/mypage.css"></link>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />	
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -14,47 +14,64 @@
 	<body>
 
 		<div class="title">
-			<font id="userId" face="宋體" size="+3" color="#A8DFD4">ME</font>
+			<font id="userId" face="宋體" size="+3" color="snow">我的</font>
 		</div>
 
+		<!-- 头像 -->
 		<div class="headshot">
 			<a href="">
-				<img id="headphoto" src="./static/a.jpg" width="150px" height="150px"></img>
+				<img id="headphoto" src="./static/hei.jpg" width="150px" height="150px"></img>
+				<form id="form_1"  method="post" enctype="multipart/form-data" action="/api/user/up"> 
+				<input type="file" name="_f" accept="image/jpg,image/jepg" style="opacity: 0; position: absolute; top: 50px; left: 10px; width: 150px; height: 150px;" title="点击上传头像"/> 
+				</form>
 			</a>
 		</div>
 
+		<div class="clear"></div>
+		<form action="/api/user/up" method="post" enctype="multipart/form-data">
+			<input type="file" name="file"/>
+			<input type="submit">
+		</form>
+
+		<!-- 个人信息 -->
 		<div>
-			<h3>个人信息</h3>
+			<h3 class="littletitle">个人信息</h3>
 		</div>
 
 		<div class="personinfor">
-			<ul id="nameTitle">姓名:<a id="nameContent">无</a></ul>
-			<ul>性别:<a id="sexContent">无</a></ul>
-			<ul>个人简介:<a id="introduceContent">无</a></ul>
+			<ul id="nameTitle" class="ulme">姓名:<a id="nameContent">无</a></ul>
+			<ul class="ulme">性别:<a id="sexContent">无</a></ul>
+			<ul class="ulme">个人简介:<a id="introduceContent">无</a></ul>
 		</div>
+		<hr  style=" height:1px; border:none; border-top:1px dashed #2d5186;" width=80%>
 
+		<!-- 历史帖子 -->
 		<div>
-			<h3>历史帖子</h3>
+			<h3 class="littletitle">历史帖子</h3>
 		</div>
 
 		<div id="userPlate" class="mypost">
 		
 		</div>
+		<hr  style=" height:1px; border:none; border-top:1px dashed #2d5186;" width=80%>
 
+		<!-- 历史回复 -->
 		<div>
-			<h3>历史回复</h3>
+			<h3 class="littletitle">历史回复</h3>
 		</div>
 
 		<div id="userReply" class="myreply">
 		
 		</div>
+		<hr  style=" height:1px; border:none; border-top:1px dashed #2d5186;" width=80%>
 
+		<!-- 收藏 -->
 		<div>
-			<h3>收藏</h3>
+			<h3 class="littletitle">收藏</h3>
 		</div>
 
 		<div class="mycollect">
-		<a>无</a>
+		
 		</div>
 
 	</body>

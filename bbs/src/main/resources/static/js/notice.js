@@ -1,6 +1,6 @@
 ﻿function noticeInit(){//公告栏初始化
 	var noticeSkip=[];
-	$.get("api/notice/title",function(noticeData){
+	$.post("api/notice/title",function(noticeData){
 		if(noticeData){
 			
 			for(var i=0;i<noticeData.length;i++){
@@ -36,7 +36,7 @@ function noticeMsg(){//显示公告栏页面内容
 	var url = window.location.search;
 	if(url.indexOf("?")!=-1){
 		var tempStr = url.substr(1);
-		$.get("/api/notice/content",tempStr,function(noticeContentData){
+		$.post("http://10.12.20.182:81//api/notice/content",tempStr,function(noticeContentData){
 			if(noticeContentData){
 			
 				$("#noticeContent").html(noticeContentData);

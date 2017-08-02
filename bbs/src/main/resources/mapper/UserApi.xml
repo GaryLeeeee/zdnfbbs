@@ -5,12 +5,14 @@
 
 <mapper namespace="com.zdnf.bbs.dao.UserApiDao">
 
-    <select id="GetUserInfo" resultType="com.zdnf.bbs.domain.User">
+    <select id="GetUserInfo"
+            resultType="com.zdnf.bbs.domain.User"
+            parameterType="java.lang.String">
         SELECT * FROM userinfo WHERE name=#{name} LIMIT 1
     </select>
 
     <select id="GetUserReply" resultType="com.zdnf.bbs.domain.Replay">
-        SELECT * FROM replay WHERE author=#{name} ORDER BY times DESC LIMIT #{low},10
+        SELECT * FROM reply WHERE author=#{name} ORDER BY times DESC LIMIT #{low},10
     </select>
 
     <select id="GetUserPost" resultType="com.zdnf.bbs.domain.Post">

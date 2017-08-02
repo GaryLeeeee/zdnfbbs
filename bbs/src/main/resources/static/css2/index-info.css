@@ -1,0 +1,37 @@
+#news-bottom-info li {
+	position: relative;
+}
+#news-bottom-info li .info-pop {
+	display: none;
+	position: absolute;
+	bottom: 136px;
+	background-color: #fff;
+	border-radius: 12px;
+	color: #313131;
+	font-size: 13pt;
+	text-align: center;
+	padding: 39px 50px 20px 50px;
+}
+#news-bottom-info li .info-pop .close-btn {
+	position: absolute;
+	bottom: 0;
+	color: red;
+	content: "";
+	width: 28px;
+	height: 28px;
+	right: 11px;
+	top: 11px;
+	background: url(../images/xx.jpg) 50%;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.pop-title-bottom {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.info-pop .small-popup {
+	font-size: small;
+}
+.pop-btn:hover {
+	opacity: 0.8;
+}

@@ -33,9 +33,7 @@ public class ReplayController {
     //添加回复
     @RequestMapping("add")
     public String add(@Valid Replay replay, @CookieValue(value = "id")String id, @CookieValue(value = "key")String key) throws NoSuchAlgorithmException {
-        if (!Loginer.istrue(id,key)){
-            return "<p>请先登录</p>";
-        }
+       // if (!Loginer.istrue(id,key)){return "<p>请先登录</p>";}
         if (ReplayService.add(replay)) return "true";
         return "false";
     }

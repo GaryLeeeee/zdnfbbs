@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 public class Post {
     public int id;
     public String BelongTo;
-    @Size(min=1,max=15)
+    @Size(min=1,max=25)
     public String title;
     public String author;
     public int num=0;

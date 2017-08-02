@@ -1,5 +1,6 @@
 package com.zdnf.bbs.service;
 
+import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zdnf.bbs.dao.UserApiDao;
@@ -21,7 +22,7 @@ public class UserApiService {
     @Autowired
     FileUp FileUp;
 
-    public User get_user(String name){return UserApiDao.get_user_info(name);}
+    public User GetUserInfo(String name){return UserApiDao.GetUserInfo(name);}
 
     public List<User> GetUserReply(String name, int page){
         int low=10*(page-1);
@@ -36,7 +37,7 @@ public class UserApiService {
     public boolean up(MultipartFile file,String id){
         if (file.isEmpty())return false;
         //文件路径
-        String filePath = "d:/bbs/userimgs/";
+        String filePath = GlobalConfig.FilePath;
         //创建文件
         File dest = new File(filePath + id+".jpg");
         //判断文件路径存不存在
@@ -62,4 +63,6 @@ public class UserApiService {
     public String get_id(String name){
        return UserApiDao.get_id(name);
     }
+
+    public String GetPasswdById(String id){return UserApiDao.GetPasswdById(id);}
 }

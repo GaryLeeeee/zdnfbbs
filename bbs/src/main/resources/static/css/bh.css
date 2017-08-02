@@ -1,0 +1,253 @@
+    .footer .footer-content {
+    z-index: 500;
+}
+      .contact-layer .contact-wrap p.small-popup {
+        font-size: small;
+        padding: 0;
+        margin: 0;
+        line-height: 25px;
+        text-align: center;
+      }
+#news{background-image:url("http://static.event.mihoyo.com/bh3_homepage/images/index/pre_login_here.png");left: 381px; top: 618px;}
+#info-board-wrap {
+  background-color: rgba(0,0,0,0);
+}
+.contact-layer .contact-wrap {
+    width: 300px;
+    height: 700px;
+    margin: 0;
+  }
+  #info-broad {
+    /*display: none;*/
+  }
+  .arrow {
+    position: absolute;
+  }
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid rgba(255,255,255,0.9);
+}
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent; 
+  border-right:20px solid rgba(255,255,255,0.9); 
+}
+.download-layer{
+    background-color: black;
+    height: 216px;
+    position: fixed;
+    width: 100%;
+}
+.download-layer2 {
+    position: fixed;
+    width: 100%;
+    height: 407px;
+    background-color: #000;
+    background-image: url(http://static.event.mihoyo.com/bh3_homepage/images/index/PC_bt.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.download-center {
+  margin: 0 auto;
+  width: 1010px;
+  height: 100%;
+  position: relative;
+}
+.download-qrcode {
+  position: absolute;
+  left: 0;
+  top: 66px;
+  width: 252px;
+  height: 292px;
+  background-color: #fff;
+  color: #999999;
+}
+.download-qrcode img {
+  width: 100%;
+}
+.download-btn-group {
+  position: absolute;
+  top: 66px;
+  left: 283px;
+}
+.download-close-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 41px;
+}
+
+      .download-layer2 .head {
+        float: left;
+        width: 120px;
+        height: 120px;
+      }
+      .download-layer2 .head img{
+        width: 100%;
+        height: 100%;
+      }
+      .download-layer2 .android {
+        top: 0;
+        left: 167px;
+      }
+      .download-layer2 .taptap{
+        top: 0;
+        left: 608px;
+      }
+.download-layer2 .android, .download-layer2 .taptap{
+  /*position: absolute;*/
+  /*width: 400px;*/
+  height:91px;
+  background-color: black;
+  border: 1px solid white; 
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #888888;
+  /*float: right;*/
+  /*position: relative;*/
+}
+.download-layer2 .download-btn img {
+    width: 100%;
+}
+.download-btn {
+  width: 306px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.ios.download-btn {
+  height: 90px;
+}
+.download-layer2 .android-down {
+  background-image: url(http://static.event.mihoyo.com/bh3_homepage/m/images/index/icon-android.png);
+}
+.download-layer2 .android-down, .download-layer2 .taptap-down {
+  width:57px;
+  height:100%;
+  margin-left: 25px;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 94%;
+}
+.download-layer2 .taptap-down {
+  background-image: url(http://static.event.mihoyo.com/bh3_homepage/m/images/index/icon-tap.png);
+  background-size: 108%;
+}
+.download-layer2 .text {
+  /*float: left;*/
+  margin-left: 94px;
+  text-align: left;
+}
+.download-layer2 .text h2{
+  /*margin-top: 15px;*/
+  font-size: 26px;
+  line-height: 32px;
+  transform: skew(0);
+  font-weight: 500;
+}
+.download-layer2 .text span{
+  font-size: 20px;
+  line-height: 43px;
+  color:rgba(255,255,255,0.5);
+  text-align: left;
+  /*margin-top: 20px;*/
+  display: inline-block;
+}
+
+      .download-tip {
+        width: 665px;
+        height: 375px;
+        position: fixed;
+        background-color: white;
+        border-radius: 10px;
+        text-align: center;
+        margin: 0 auto;
+        top: 25%;
+        left: 35%;
+        display: none;
+      }
+      
+      .download-tip .sister {
+        background: url(http://static.event.mihoyo.com/bh3_homepage/images/index/AI.png);
+        width: 328px;
+        height: 557px;
+        position: absolute;
+        left: -210px;
+        top: -100px;
+      }
+      .download-tip .close {
+        background: url(http://static.event.mihoyo.com/bh3_homepage/images/index/close.png);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        width: 38px;
+        height: 38px;
+      }
+      .download-tip .content {
+        margin: 0 auto;
+        text-align: center;
+      }
+      .download-tip .icon {
+        background: url(http://static.event.mihoyo.com/bh3_homepage/images/index/tips.png);
+        margin-top: 20px;
+        width: 101px;
+        height: 102px;
+        margin: 0 auto;
+        margin-top: 25px;
+      }
+      .download-tip #onep {
+        margin-top: 20px;
+      }
+      .download-tip p {
+        font-size: 24px;
+        color: #4c4c4c;
+      }
+      .download-tip .downbutton {
+        background-color: #ffe14b;
+        color: black;
+        font-weight: bold;
+        width: 310px;
+        height: 60px;
+        border-radius: 5px;
+        cursor: pointer;
+        line-height: 60px;
+        margin: 0 auto;
+        margin-top: 25px;
+      }
+      .download-center .special {
+        background: url(http://static.event.mihoyo.com/bh3_homepage/images/index/bt.png);
+        width: 53px;
+        height: 47px;
+        position: absolute;
+        right: 10px;
+        top: -8px;
+      }
+      .footer .footer-content {
+        z-index: 1;
+      }
+      #avatar-sakura-c1{
+        position: relative;
+        width: 120%;
+        left: -10%;
+        height: 140px;
+        transform: skew(10deg);
+        background: url(http://static.event.mihoyo.com/bh3_homepage/images/index/avatar/sakura_c1.png);
+        background-size: auto 100%;
+        background-position: center;
+      }
+      #avatar-sakura-c2{
+        position: relative;
+        width: 120%;
+        left: -10%;
+        height: 140px;
+        transform: skew(10deg);
+        background: url(http://static.event.mihoyo.com/bh3_homepage/images/index/avatar/sakura_c2.png);
+        background-size: auto 100%;
+        background-position: center;
+      }

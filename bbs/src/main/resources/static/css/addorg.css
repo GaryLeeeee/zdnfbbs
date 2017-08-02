@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+body{width:100%; height:auto; margin:0; padding:0;  text-align:center; font-family:"宋体"; background:#f5f5f5}
+a{ text-decoration:none}
+a:hover{ text-decoration:none}
+ul{ margin:0; padding:0}
+ul li{ list-style:none}
+h1,h2,h3,h4,h5{ margin:0; padding:0}
+a img{ border:none}
+.clear{ clear:both}
+.wrap{ width:1003px; margin:0 auto; clear:both; height:auto}
+.topl{ float:left}
+.topr{ float:right}
+.minilogo{ float:left}
+.topcross{ width:100%; height:30px; line-height:30px; border-bottom:1px solid #eee}
+.topcross a,.topcross{ font-size:12px; color:#999}.topcross a:hover{ color:#06C}
+.topcross .topl a{ margin-left:20px}
+.orghead{ width:1003px; margin:0 auto; background:url(http://org.mdaxue.com/style/mdaxue/img/hdbg.gif) bottom center no-repeat; height:141px; overflow:hidden}
+span.spanl{ float:left}
+span.spanr{ float:right}
+
+.picnav{ height:30px; line-height:30px; font-size:16px; color:#06C; width:80%; margin:0 auto; text-align:left; margin-top:10px}
+.picnav a{ font-size:16px; color:#666}
+.picnav a.now{ font-size:16px; font-weight:bold; color:#06C}
+.picnav span.spanr{ font-size:14px; color:#333}
+
+.uploadform{ width:80%; margin:0 auto; text-align:left; font-size:14px; color:#333; margin-top:20px}
+.uploadform label{ vertical-align:middle}
+.uploadtxt{ width:250px; border:3px solid #eee; margin-bottom:10px;vertical-align:middle; font-size:12px; color:#666}
+input.uploadtxt{height:25px; height:25px; line-height:25px;vertical-align:middle}
+.uploadform p {	font-size: 12px;color: #999;}
+.uploadform input.uploadtxt2 {width: 250px} 
+.uploadform textarea.uploadtxt2 {width: 290px}
+
+.uploadtxt2{ width:200px; border:3px solid #eee; margin-bottom:10px;vertical-align:middle}
+input.uploadtxt2{height:25px; height:25px; line-height:25px;vertical-align:middle}
+
+.orggy{ width:80%; margin:0 auto; margin-top:10px; margin-bottom:10px; border:3px solid #FFF4E8; text-align:left; padding:10px; font-size:14px; color:#333; line-height:24px;}
+.orggy p{ margin:0; padding:0}
+
+.stinfobtn{ width:auto; padding:5px; font-size:12px; color:#FFF; background:#06C; border:none; cursor:pointer}
+.stinfobtn2{ width:auto; padding:5px; font-size:12px; color:#666; background:#eee; border:1px solid #CCC; cursor:pointer}
+
+#main{ width:995px; margin:0 auto; border:3px solid #eee; background:#fff; padding-bottom:10px;}
+.addorg_head{ width:1003px; margin:0 auto; text-align:left; background:url(http://org.mdaxue.com/style/mdaxue/img/addorg_top.jpg) top left no-repeat; height:100px; overflow:hidden }
+.addorg_head #notice{ width:400px; float:right; margin-right:20px; text-align:right; margin-top:50px; font-size:12px; color:#999}
+.addorg_head #notice a{ color:#03C}
+
+#addorg_nav{ width: 1003px; margin:0 auto;  overflow:hidden; margin-top:20px;}
+#addorg_nav ul{ width:90%; margin:0 auto;height:30px; line-height:30px; overflow:hidden;padding:0; text-indent:0px; clear:both}
+#addorg_nav ul li{ width:auto;  float:left;height:30px; line-height:30px;overflow:hidden; background:url(http://org.mdaxue.com/style/mdaxue/img/bzbg2.jpg) top right no-repeat #eeeeee; padding:0px 30px 0px 20px; margin-right:20px; font-size:14px}
+#addorg_nav ul li a{ color:#666}
+#addorg_nav ul li.on{background:url(http://org.mdaxue.com/style/mdaxue/img/bzbg1.jpg) top right no-repeat #88abda; }
+#addorg_nav ul li.on a{ color:#FFF}
+
+.parts{ display:none}
+span.tt{ width:180px; text-align:right; display:inline-block; line-height:18px; margin-right:20px}
+.stinfotxt{ height:25px; line-height:25px; border:3px solid #ddd; vertical-align:middle; width:250px; font-size:12px; color:#666}
+.stinfotxt2{ height:25px; line-height:25px; border:3px solid #ddd; vertical-align:middle; width:100px; font-size:12px; color:#666}
+.tb1{ font-size:12px; color:#666}
+
+#reply{ width:90%; margin:0 auto; margin-top:20px; margin-bottom:20px; background:#FFF8EC; border:1px solid #FFF4D7; font-size:14px; color:#666; padding:20px;}
+#reply a{ color:#F00; background:#FFF; padding:5px; border:1px solid #CCC}
+.yz_msg{display:block; width:500px; margin:0px auto; text-align:center;font-size:12px; color:#666; line-height:20px; padding:5px; background:#FFF8EC; border:1px solid #FFF4D7;}
+.yz_msg a{ color:#03C}
+.yz_msg em{ color:#F00; font-style:normal}
+#samest{ display:none}
+.footer{ height:40px; line-height:30px; font-size:12px; color:#666; font-family:Arial, Helvetica, sans-serif}
+body{ width:100%; margin:0; padding:0;}
+.org_wrap{ width:950px;}
+<!--///////////////////////新加////////////////////////////-->
+.zhezhao { width:100%; height:100%; position:absolute; top:0px; left:0px; background:#000; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5; z-index:2000; display:none }
+.centerAlignNotice { width:900px; height:auto; padding:0px; border:1px solid #eee; background:#fff; position:absolute; top:0px; left:0px; z-index:2001; display:none }
+.centerAlignNotice h3 { height:30px; line-height:30px; text-align:right; font-size:12px; color:#666; background:#f5f5f5; border-bottom:1px solid #ddd; margin:0; padding:0; font-weight:normal }
+.centerAlignNotice h3 a { color:#666 }
+.notice_content { margin:10px auto 30px auto; width:80%; height:300px; overflow-x:hidden; overflow-y:auto; position:relative; padding-right:30px }
+.notice_content p { font-size:16px; color:#666; font-family:"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu; line-height:30px; margin:0 auto; padding:0; width:100%; text-align:left; margin-bottom:10px }
+.notice_content p em { color:#06C; font-style:normal; background:#f5f5f5 }
+p.notice_tt { font-family:"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu; line-height:200%; margin:0 auto; padding:0; text-align:left; margin-top:20px; font-size:24px; color:#F60; width:80% }
+.notice_content p a { color:#69F }
+.notice_content p b { color:#F60 }
+.notice_content p a.zhidao, a.zhidao { padding:10px 20px 10px 20px; background:#F90; color:#FFF; font-family:"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu; height:50px; line-height:50px; font-size:24px; text-align:center }
+.notice_content p span { color:#F60 }
+.notice_login, .choose_class { margin:10px auto 30px auto; font-size:18px; font-family:"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu; line-height:30px; color:#666; display:none; }
+.choose_class { display:block }
+.notice_content .creater { width:46%; float:left; padding:10px; background:#f5f5f5; border:1px solid #ddd; margin-left:10px; margin-bottom:10px }
+.notice_content .creater p { margin:0; padding:0; font-size:14px; line-height:25px; }
+.notice_content .creater p .uploadtxt { margin:0; padding:0 }
+.notice_content p.btns { display:none; text-align:center }
+.new_footer { width:1003px !important; margin:0 auto; margin-top:10px }
+.yz_msg { display:inherit; width: 90%; margin: 0px auto; text-align: center; font-family:"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu; line-height:200%; font-size:24px; color:#F60; padding: 5px; background: #FFF8EC; border: 1px solid #FFF4D7; margin-top:20px; margin-bottom:20px;}

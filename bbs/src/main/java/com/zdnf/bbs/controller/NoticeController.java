@@ -36,7 +36,6 @@ public class NoticeController {
     //不然会返回错误
     @RequestMapping("add")
     public String add(@Valid Notice Notice){
-       // if (NoticeService.add(Notice))return "true";
         return NoticeService.add(Notice);
     }
 
