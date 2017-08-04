@@ -1,5 +1,6 @@
 package com.zdnf.bbs.controller;
 
+import com.zdnf.bbs.dao.UserApiDao;
 import com.zdnf.bbs.domain.Replay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -9,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import com.zdnf.bbs.tools.Login;
 
 /**
  * Created by Skysibule on 2017/5/15.
@@ -22,18 +24,21 @@ import com.zdnf.bbs.tools.Login;
 public class ReplayController {
     @Autowired
     ReplayService ReplayService;
-    Login Loginer = new Login();
+    @Autowired
+    com.zdnf.bbs.dao.UserApiDao UserApiDao;
+
 
     //查找回复
     @RequestMapping("select")
-    public List<Replay> get_by_id(@RequestParam(value="id",required=true)int id,@RequestParam(value="page",required=true)int page){
+    public List<Replay> getReplyById(@RequestParam(value="id",required=true)int id,@RequestParam(value="page",required=true)int page){
         return ReplayService.GetReplyByPostId(id,page);
     }
 
     //添加回复
     @RequestMapping("add")
     public String add(@Valid Replay replay, @CookieValue(value = "id")String id, @CookieValue(value = "key")String key) throws NoSuchAlgorithmException {
-       // if (!Loginer.istrue(id,key)){return "<p>请先登录</p>";}
+        if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
+            return "usererror";}
         if (ReplayService.add(replay)) return "true";
         return "false";
     }
@@ -46,8 +51,17 @@ public class ReplayController {
     }
 
     //返回此帖子都多少条回复
+    //做分页用
     @RequestMapping("max")
     public int max(@RequestParam(value = "id", required = true) int id){
         return ReplayService.max(id);
     }
+
+    public String ToMd5(String str) throws NoSuchAlgorithmException {
+        String res="skyisblue"+str;
+        MessageDigest md =MessageDigest.getInstance("md5");
+        md.update(res.getBytes());
+        return new BigInteger(1,md.digest()).toString();
+    }
+
 }

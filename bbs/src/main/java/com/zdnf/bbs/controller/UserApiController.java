@@ -43,7 +43,7 @@ public class UserApiController {
     //传用户名返回用户的id
     @RequestMapping("getid")
     public String getid(String name) {
-        return UserApiService.get_id(name);
+        return UserApiService.GetIdByName(name);
     }
 
     //返回账户密码对不对
@@ -93,7 +93,7 @@ public class UserApiController {
         FileInputStream fis = null;
         httpServletResponse.setContentType("image/jpg");
         OutputStream out = httpServletResponse.getOutputStream();
-        File file = new File(GlobalConfig.FilePath + UserApiService.get_id(id) + ".jpg");
+        File file = new File(GlobalConfig.FilePath + UserApiService.GetIdByName(id) + ".jpg");
         //这里判断一下存不存在，没有就返回默认头像
         if (!file.exists()) file = new File(GlobalConfig.FilePath+"root.jpg");
         fis = new FileInputStream(file);

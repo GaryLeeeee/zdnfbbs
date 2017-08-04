@@ -19,7 +19,7 @@
         SELECT * FROM post WHERE author=#{name} ORDER BY id DESC LIMIT #{low},10
     </select>
 
-    <select id="get_id" resultType="java.lang.String">
+    <select id="GetIdByName" resultType="java.lang.String">
         SELECT id FROM userinfo WHERE name=#{name} LIMIT 1
     </select>
 

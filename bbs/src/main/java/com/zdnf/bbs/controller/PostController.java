@@ -39,7 +39,7 @@ public class PostController {
     @RequestMapping("add")
     public String AddPost(@Valid Post post, @CookieValue(value="id")String id,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
-            return "error";}
+            return "usererror";}
         if (PostService.add(post)){
             Thread.sleep(333);
             return PostService.add2(post);

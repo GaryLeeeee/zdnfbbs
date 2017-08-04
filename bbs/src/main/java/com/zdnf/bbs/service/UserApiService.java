@@ -60,8 +60,8 @@ public class UserApiService {
         return false;
     }
 
-    public String get_id(String name){
-       return UserApiDao.get_id(name);
+    public String GetIdByName(String name){
+       return UserApiDao.GetIdByName(name);
     }
 
     public String GetPasswdById(String id){return UserApiDao.GetPasswdById(id);}
