@@ -16,7 +16,7 @@ public class ReplayService {
     ReplayDao ReplayDao;
 
     public boolean add(Replay replay){
-        //对数据进行处理，方式注入
+        //对数据进行处理，防止注入
         replay.setContent(replay.getContent().replace("<script","<"));
         //更新数据
         if(ReplayDao.add(replay)&ReplayDao.repling(replay.getFather(),replay.getTimes()))
@@ -34,4 +34,10 @@ public class ReplayService {
     public boolean DeleteById(int id){return ReplayDao.DeleteById(id);}
 
     public int max(int id){return ReplayDao.max(id);}
+
+    public String GetAuthorById(int id){return ReplayDao.GetAuthorById(id);}
+
+    public List<Replay> SearchReply(String keyword,int page){
+        return ReplayDao.SearchReply("%"+keyword+"%",(page-1)*10);
+    }
 }

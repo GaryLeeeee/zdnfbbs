@@ -3,18 +3,15 @@ package com.zdnf.bbs.controller;
 import com.zdnf.bbs.dao.UserApiDao;
 import com.zdnf.bbs.domain.Post;
 import com.zdnf.bbs.service.PostService;
+import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import com.zdnf.bbs.tools.Login;
 
 /**
  * Created by Skysibule on 2017/5/12.
@@ -39,7 +36,8 @@ public class PostController {
     @RequestMapping("add")
     public String AddPost(@Valid Post post, @CookieValue(value="id")String id,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
-            return "usererror";}
+            return "usererror";
+        }
         if (PostService.add(post)){
             Thread.sleep(333);
             return PostService.add2(post);
@@ -49,8 +47,23 @@ public class PostController {
 
     //删除帖子
     @RequestMapping("delete")
-    public String DeletePostById(@RequestParam(value="id")int id){
-        if (PostService.DeletePostById(id))return "true";
+    public String DeletePostById(
+            @RequestParam(value="postid")int postid,
+        @CookieValue(value="id")String id,
+        @CookieValue(value="key")String key
+          //  @RequestParam(value="token" ,required = false)String token
+            ) throws NoSuchAlgorithmException {
+           // if (token.equals(GlobalConfig.token)){
+            //    PostService.DeletePostById(postid);
+             //   return "删除成功";
+           // }
+            if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))
+                    &&
+                    UserApiDao.GetNameById(id).equals(PostService.GetLouZhu(postid))){
+                return "用户验证失败";
+            }
+        if (PostService.DeletePostById(postid))
+            return "true";
         return "false";
     }
 
@@ -81,6 +94,12 @@ public class PostController {
     @RequestMapping("getallbyid")
     public List<Post> GetPostAllInfoById(int id){return PostService.GetOnePostAllInfoById(id);}
 
+    //搜索帖子
+    @RequestMapping("searchpost")
+    @ResponseBody
+    public List<Post> SearchPost(String keyword,int page){
+        return PostService.SearchPost(keyword, page);
+    }
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {
         String res="skyisblue"+str;

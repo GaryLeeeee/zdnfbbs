@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=320, user-scalable=no">
+  <meta name="wap-font-scale" content="no">
+<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15">
+
+<title>南巷</title>
+
+</head>
+<body>
+
+<img id="big-title-header" src="/nanxiang.jpg">
+
+<div id="big-title-content">
+  <!-- this is the real content-->
+<!-- start main -->
+<div id="page-register">
+  <div class="form-content" >
+    
+    <div class="tab-infos">
+      <div class="tab-info">
+        <span>请填写以下基本信息，用户名即为发帖时显示的名字，一旦注册，不得更改。</span>
+      </div>
+    </div>
+
+    <div class="form" data-role="form-1" data-path="../ajax/register_user2.php">
+      <input type="hidden" data-role="type" value="1">
+
+
+<div class="form-group">
+    <label class="row">用户名 
+      <span class="instruction" style="margin-left: 0;">发帖时展示，不可更改</span>
+    </label>
+  <input class="row" data-role="username"
+         type="text"
+         placeholder="2-12个字">
+  <span class="warning-info">请填写仅包含英文字母的用户名</span>
+  
+</div>
+      
+
+<div class="form-group">
+  
+    <label class="row">密码 </label>
+  
+  <input class="row" data-role="password"
+         type="password"
+         
+         placeholder="8~60位，包含不止一种字符">
+  
+  
+  <span class="warning-info">密码应为8~60位，包含数字、小写字母、大写字母、其他字符中的至少两种</span>
+  
+</div>
+  
+
+<div class="form-group">
+  
+    <label class="row">重复密码 </label>
+  
+  <input class="row" data-role="password_repeat" type="password">
+  
+  
+  <span class="warning-info">两次输入的密码不同</span>
+  
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <label>个人签名<span class="instruction">随便写点东西就好</span></label>
+  </div>
+  <input type="text" class="medium row" data-role="nickname" placeholder="我还是很喜欢你，像风走了八百里，不问归期。">
+</div>
+
+
+<div class="form-group">
+  <label class="row">性别</label>
+  <div class="row">
+    <input type="radio" id="form-1-radio-gender-1" data-role="gender" name="form-1-radio-gender" value="M" checked>
+    <label for="form-1-radio-gender-1">男</label>
+    <input type="radio" id="form-1-radio-gender-2" data-role="gender" name="form-1-radio-gender" value="F">
+    <label for="form-1-radio-gender-2">女</label>
+    <input type="checkbox" id="form-1-radio-gender-3" data-role="hide_gender" value="true">
+    
+  </div>
+</div>
+      
+
+      <div class="row agreement">
+        <span class="instruction">点击注册，即表示你阅读并同意遵守<a class="red-link" href="/v2/collection-read.php?path=groups%2FGROUP_0%2Frules%2FD812D7D8C%2FM.1334508708.A" target="_blank">南巷BBS站规</a>，以及各项具体<a class="red-link" data-no-pjax href="/v2/collection.php?path=groups%2FGROUP_0%2Frules%2FD812D7D8C" target="_blank">站规细则</a>。</span>
+      </div>
+      <div class="row" style="margin-top: 30px;">
+        <a class="orange-btn" data-action="submit-form">注册</a>
+      </div>
+    </div>
+
+   
+ 
+</div>
+
+<div id="big-title-footer">
+  <p>@ 南巷BBS</p>
+</div>
+</body>
+</html>

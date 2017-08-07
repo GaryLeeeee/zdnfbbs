@@ -46,4 +46,11 @@
         SELECT * FROM post WHERE id=#{id}
     </select>
 
+    <select id="FindContent"  resultType="com.zdnf.bbs.domain.Post">
+        SELECT * FROM post WHERE title LIKE #{KeyWord} ORDER BY LastTime DESC Limit #{page},10
+    </select>
+
+    <select id="GetLouZhu" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT author FROM reply WHERE father=#{father} limit 1
+    </select>
 </mapper>

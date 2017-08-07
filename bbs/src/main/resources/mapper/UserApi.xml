@@ -23,6 +23,10 @@
         SELECT id FROM userinfo WHERE name=#{name} LIMIT 1
     </select>
 
+    <select id="GetNameById" resultType="java.lang.String">
+        SELECT name FROM userinfo WHERE id=#{id} LIMIT 1
+    </select>
+
     <select id="GetPasswdById" resultType="java.lang.String">
         SELECT passwd FROM userinfo WHERE id=#{id} LIMIT 1
     </select>

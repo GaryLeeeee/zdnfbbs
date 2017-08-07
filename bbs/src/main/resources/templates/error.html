@@ -1,24 +1,55 @@
+<!-- end pre_output -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html>
 <head>
-    <title>error</title>
-    <style>
-        h1{
-            color:red;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=320, user-scalable=no">
+  <meta name="wap-font-scale" content="no">
+  <link rel="apple-touch-icon" href="images/logo.jpg">
+  <link rel="canonical" href="https://bbs.pku.edu.cn/v2/thread.php?bid=414">
+
+<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15">
+
+<!-- start meta -->
+<title>出错啦 - 南巷</title>
+
+<!-- end meta -->
 </head>
 <body>
-<h1>error!!!!</h1>
-<p>嘛</p>
-<p>反正是出错了</p>
-<ul>
-    <li>账号密码输错</li>
-    <li>验证码输错</li>
-    <li>没有登录</li>
-</ul>
-<p>大概是这几个问题吧</p>
+<div id="top-search">
+  <span class="logo">南巷BBS</span>
+  <div class="search">
+    <input data-role="top-search-text" type="text" placeholder="版面、帖子、用户">
+    <a data-action="top-search"></a>
+  </div>
+</div>
+
+<div id="top-nav" >
+  <a href="/" >首页</a
+  ><a href="/mplate" class="active">版面</a>
+  <a>新闻</a>
+  
+  <a href="/login">登录</a>
+  </ul>
+  <a href="/help">帮助</a>
+</div>
+<div id="page-content">
+  <!-- this is the real content-->
+<!-- start main -->
+  <div id="page-error">
+    <img class="error-img" src="https://bbs.pku.edu.cn/v2/mobile/images/global/error.png">
+    <p>您访问的页面不存在</p>
+  </div>
+
+<!-- end main -->
+  <!-- content end-->
+</div>
+
+<div id="footer">
+
+  <p><a href="/v2/home.php?from_mobile_long=1">计协</a><span>-</span><a href="help.php">帮助中心</a><span>-</span><a href="mail-new.php?username=SYSOP">意见反馈</a></p>
+  <p>© 南巷BBS</p>
+</div>
 </body>
 </html>

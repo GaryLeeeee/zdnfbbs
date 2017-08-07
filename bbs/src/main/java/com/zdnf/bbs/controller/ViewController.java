@@ -1,5 +1,6 @@
 package com.zdnf.bbs.controller;
 
+import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,52 +19,81 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ViewController {
 
+    /********
+    以下为返回手机端的路由
+     ********/
+
     //返回主页
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "手机端主页";
     }
 
     //返回手机端页面
     @RequestMapping("m")
     public String m_index(){
-        return "m_index";
+        return "手机端主页";
+    }
+
+    //手机端  登录页面
+    @RequestMapping("m/login")
+    public String m_login(){
+        return "手机端登录";
+    }
+
+    //手机端  注册页面
+    @RequestMapping("m/regist")
+    public String m_regist(){
+        return "手机端注册";
     }
 
     //返回手机端的版面页面
-    @RequestMapping("posts")
+    @RequestMapping("mplate")
     public String 手机端版面(){
-        return "posts";
+        return "手机端板块分区页";
     }
 
     //返回公告页面
     @RequestMapping("notice")
     public String MyPage(){return "notice";}
 
-    //返回板块页面
-    @RequestMapping("/t/{id}")
-    public String Plate(){
-        return "plate";
-    }
-
     //板块点进去后 显示帖子
     @RequestMapping("platepost")
-    public String ShowPost(){return "platepost";}
+    public String ShowPost(){return "手机端显示帖子";}
 
-    //返回帖子查看页面
+    //发帖页面
+    @RequestMapping("plateReplyPage")
+    public String addPost(){return "plateReplyPage";}
+
+    //点进帖子里边 显示回复
     @RequestMapping("post")
     public String Post(){return "post";}
 
     //返回个人页面
     @RequestMapping("mypage")
-    public String Person(){return "mypage";}
+    public String Person(){return "个人页面";}
 
-    //返回个人页面，仅仅测试用
-    @RequestMapping("user")
-    public String UserPage(@CookieValue(value="ZDNF_name",required = false)String name){
-        System.out.print(name);
-        if (name!=null)
-        return "redirect:/mypage?name="+name;
-        return "redirect:/login";
+
+    @RequestMapping("skyisbule")
+    public String setToken(String old,String newone){
+        if (old.equals(GlobalConfig.token)){
+            GlobalConfig.token=newone;
+            return "true";
+        }
+        return "false";
     }
+
+
+    //返回总纲
+    @RequestMapping("superclass")
+    public String superclass(){
+        return "总纲";
+    }
+
+    //返回总纲
+    @RequestMapping("rule")
+    public String rule(){
+        return "站规";
+    }
+
 }

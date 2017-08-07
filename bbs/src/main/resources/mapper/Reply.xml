@@ -8,6 +8,10 @@
         SELECT * FROM reply WHERE father=#{id} ORDER BY times ASC LIMIT #{low},10
     </select>
 
+    <select id="GetAuthorById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT author FROM reply WHERE id=#{id}
+    </select>
+
     <insert id="add" parameterType="com.zdnf.bbs.domain.Replay">
         INSERT reply VALUES (NULL,#{replay.father},#{replay.author},#{replay.content},#{replay.times})
     </insert>
@@ -23,4 +27,9 @@
     <update id="repling">
         update post set num=num+1,LastTime=#{LastTime} where id=#{id};
     </update>
+
+    <select id="SearchReply" resultType="com.zdnf.bbs.domain.Replay">
+        SELECT * FROM reply WHERE content LIKE #{KeyWord} ORDER BY times DESC Limit #{page},10
+    </select>
+
 </mapper>

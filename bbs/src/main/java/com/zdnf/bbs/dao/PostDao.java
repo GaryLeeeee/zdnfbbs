@@ -27,4 +27,8 @@ public interface PostDao {
     public String frist(@Param("title")String title,@Param("author")String author,@Param("LastTime")String LastTime);
 
     public List<Post> GetOnePostAllInfoById(@Param("id")int id);
+
+    public List<Post> FindContent(@Param("KeyWord")String KeyWord,@Param("page")int page);
+
+    public String GetLouZhu(int father);
 }

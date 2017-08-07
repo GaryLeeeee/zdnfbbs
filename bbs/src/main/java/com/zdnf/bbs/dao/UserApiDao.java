@@ -13,4 +13,5 @@ public interface UserApiDao {
     public List<User> GetUserPost(@Param("name")String name,@Param("low")int low);
     public String GetIdByName(@Param("name")String name);
     public String GetPasswdById(@Param("id") String id);
+    public String GetNameById(String id);
 }

@@ -14,4 +14,6 @@ public interface ReplayDao {
     public boolean DeleteById(@Param("id")int id);
     public int max(@Param("id")int id);
     public boolean repling(@Param("id")int id,@Param("LastTime")String LastTime);
+    public List<Replay> SearchReply(@Param("KeyWord")String KeyWord,@Param("page")int page);
+    public String GetAuthorById(int id);
 }

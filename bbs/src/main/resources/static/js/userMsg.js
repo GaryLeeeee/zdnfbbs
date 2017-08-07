@@ -28,7 +28,7 @@ function msgInit(){//个人信息初始化
 	
 	var usermsg=checkLoginStatus();
 	var username;
-	if(usermsg){
+	if(!isNull(usermsg)){
 		
 		username = usermsg;
 	}
@@ -37,20 +37,21 @@ function msgInit(){//个人信息初始化
 	}
 	
 	var dataName=$("#userId").html();
-	if(username&&username==dataName)
+	if(!isNull(username)&&username==dataName)
 	{
  		$.post("/api/user/userinfo","name="+dataName,function(userData){//登陆者私人信息页面
  			$("#nameContent").html(userData.name);
  			$("#sexContent").html(userData.sex);
- 			var personerObj = "<ul>密码<a id='passwdContent'></a></ul>"+"<ul>微信:<a id='wechatContent'></a></ul>"
- 			+"<ul>联系电话<a id='telnumContent'></a></ul>"+"<ul>权限<a id='powerContent'></a></ul>";
+ 			var personerObj = "<ul>微信:<a id='wechatContent'></a></ul>"
+ 			+"<ul>联系电话:<a id='telnumContent'></a></ul>"+"<ul>权限:<a id='powerContent'></a></ul>";
  			$("#nameTitle").after(personerObj);
  			$("#passwdContent").html(userData.passwd);
  			$("#wechatContent").html(userData.wechat);
  			$("#telnumContent").html(userData.telnum);
  			$("#powerContent").html(userData.power);
  			$("#introduceContent").html(userData.introduce);
-
+ 			$("#historyPost").after("<h3 id='delPost' class='littletitle'>删除</h3>");
+ 			$("#historyReply").after("<h3 id='delReply' class='littletitle'>删除</h3>");
  		})
  	}
  	else
@@ -62,6 +63,7 @@ function msgInit(){//个人信息初始化
  			$("#sexContent").html(userData.sex);
  			$("#introduceContent").html(userData.introduce);
  		})
+ 		
  	}
 
 
@@ -73,7 +75,7 @@ function PlateContent(page){//发过的帖子初始化
 	$.post("/api/user/userpost","name="+dataName+"&page="+page,function(userData){
 		if(!isNull(userData)){
 			for(var i in userData){
-				var userPlateObj = "<a id='postEver"+i+"' class='Plate' href='./post?id="+userData[i].id+"'>"+userData[i].title+"</a></br>";
+				var userPlateObj = "<a id='postEver"+userData[i].id+"' class='Plate' href='./post?id="+userData[i].id+"'><xmp>"+userData[i].title+"</xmp></a></br>";
 				$("#userPlate").append(userPlateObj);
 			}
 			$("#userPlate").append("<div class='morePost'>点击加载更多</div>");
@@ -84,6 +86,32 @@ function PlateContent(page){//发过的帖子初始化
 		}
 
 	})
+	$("#postTArea").on("click","#delPost",function(){
+			if($("#delPost").hasClass('littletitle')){
+				$("#delPost").removeClass('littletitle');
+				$("#delPost").toggleClass('clickTitle');
+				$(".Plate").each(function(){$(this).attr("href","javascritp:void(0);");}).click(function(){
+				var idStr = $(this).attr("id");
+				idStr = idStr.replace("postEver","");
+				$(this).remove();
+				$.post("/api/post/delete","postid="+idStr,function(msg){
+					return;
+				})
+				
+			})
+				return ;
+		}
+		else{
+			$("#delPost").removeClass('clickTitle');
+			$("#delPost").toggleClass('littletitle');
+			$(".Plate").each(function(){
+				var idStr = $(this).attr("id");
+				idStr = idStr.replace("postEver","");
+				$(this).attr("href","./post?id="+idStr);
+			}).click(function(){ return;});
+		}
+	})
+
 	
 
 }
@@ -93,10 +121,10 @@ function ReplyContent(page){//收到的评论初始化
 	var nextPage = parseInt(page)+1;
 	$.post("/api/user/userreplay","name="+dataName+"&page="+page,function(userData){
 		if(!isNull(userData)){
-			
 			for(var i in userData){
-				var userReplyObj = "<a id='replyEver"+i+"' class='Reply' href='./post?id="+userData[i].father+"'>"+userData[i].content+"</a></br>";
+				var userReplyObj = "<a id='replyEver"+userData[i].id+"' class='Reply' href='./post?id="+userData[i].father+"'><xmp>"+userData[i].content+"</xmp></a></br>";
 				$("#userReply").append(userReplyObj);
+
 			}
 			$("#userReply").append("<div class='moreReply'>点击加载更多</div>");
 			$(".moreReply").click(function(page){ReplyContent(nextPage)});
@@ -106,15 +134,48 @@ function ReplyContent(page){//收到的评论初始化
 		}
 
 	})
+	var hrefTemp =new Array();
+	$("#replyTArea").on("click","#delReply",function(){
+			
+			if($("#delReply").hasClass('littletitle')){
+				$("#delReply").removeClass('littletitle');
+				$("#delReply").toggleClass('clickTitle');
+				$(".Reply").each(function(i){hrefTemp[i] = $(this).attr("href");$(this).attr("href","javascritp:void(0);");}).click(function(){
+				var idStr = $(this).attr("id");
+				idStr = idStr.replace("replyEver","");
+				$(this).remove();
+				$.post("/api/replay/delete","replyid="+idStr,function(msg){
+					return;
+				})
+				
+			})
+				return ;
+		}
+		else{
+			$("#delReply").removeClass('clickTitle');
+			$("#delReply").toggleClass('littletitle');
+			$(".Reply").each(function(i){
+				$(this).attr("href",hrefTemp[i]);
+			}).click(function(){ return;});
+		}
+	})
 	
 	
 
 }
+
 function HeadSetting(){//头像显示
 	var ownerName = $("#userId").html();
-	if(ownerName){
+	if(!isNull(ownerName)){
+		$.get("http://osqfm1e16.bkt.clouddn.com/"+ownerName,function(msg){
+			if(msg.error=="Document not found"){
+				$("#headphoto").attr('src',"http://osqfm1e16.bkt.clouddn.com/root"); 
+			}
+			else{
+				$("#headphoto").attr('src',"http://osqfm1e16.bkt.clouddn.com/"+ownerName); 
+			}
+		})
 		
-		$("#headphoto").attr('src',"/api/user/img?id="+ownerName); 
 	}
 
 }

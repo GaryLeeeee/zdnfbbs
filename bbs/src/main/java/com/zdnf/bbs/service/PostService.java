@@ -41,4 +41,12 @@ public class PostService {
     public String add2(Post post){return PostDao.frist(post.getTitle(),post.getAuthor(),post.getLastTime());}
 
     public List<Post> GetOnePostAllInfoById(int id){return PostDao.GetOnePostAllInfoById(id);}
+
+    public List<Post> SearchPost(String KeyWord,int page){
+        return PostDao.FindContent("%"+KeyWord+"%",(page-1)*10);
+    }
+
+    public String GetLouZhu(int PostId){
+        return PostDao.GetLouZhu(PostId);
+    }
 }

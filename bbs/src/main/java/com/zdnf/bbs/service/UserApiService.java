@@ -35,6 +35,7 @@ public class UserApiService {
     }
 
     public boolean up(MultipartFile file,String id){
+        Boolean IsExist=false;
         if (file.isEmpty())return false;
         //文件路径
         String filePath = GlobalConfig.FilePath;
@@ -47,10 +48,11 @@ public class UserApiService {
         //判断文件存不存在 存在就删掉
         if (dest.exists()&dest.isFile()){
             dest.delete();
+            IsExist = true;//判断文件存在
         }
         try {
             file.transferTo(dest);
-            FileUp.upload(id);
+            FileUp.upload(id,UserApiDao.GetNameById(id),IsExist);
             return true;
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -65,4 +67,6 @@ public class UserApiService {
     }
 
     public String GetPasswdById(String id){return UserApiDao.GetPasswdById(id);}
+
+
 }

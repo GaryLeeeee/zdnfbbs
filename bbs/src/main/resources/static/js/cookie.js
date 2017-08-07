@@ -44,9 +44,9 @@ function checkLoginStatus(){
         async:false,
         success : function(userStatus){
         	if(userStatus&&userStatus!="false"){
-        		console.log(userStatus);
         		result = userStatus;
         	}
+        	else result =false;
             
             
 

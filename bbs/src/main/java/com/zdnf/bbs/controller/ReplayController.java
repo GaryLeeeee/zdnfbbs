@@ -1,7 +1,7 @@
 package com.zdnf.bbs.controller;
 
-import com.zdnf.bbs.dao.UserApiDao;
 import com.zdnf.bbs.domain.Replay;
+import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,23 +30,42 @@ public class ReplayController {
 
     //查找回复
     @RequestMapping("select")
-    public List<Replay> getReplyById(@RequestParam(value="id",required=true)int id,@RequestParam(value="page",required=true)int page){
+    public List<Replay> getReplyById(
+            @RequestParam(value="id",required=true)int id,
+            @RequestParam(value="page",required=true)int page){
         return ReplayService.GetReplyByPostId(id,page);
     }
 
     //添加回复
     @RequestMapping("add")
-    public String add(@Valid Replay replay, @CookieValue(value = "id")String id, @CookieValue(value = "key")String key) throws NoSuchAlgorithmException {
+    public String add(@Valid Replay replay, @CookieValue(value = "id")String id,
+                      @CookieValue(value = "key")String key)
+                      throws NoSuchAlgorithmException {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
-            return "usererror";}
+            return "usererror";
+        }
         if (ReplayService.add(replay)) return "true";
         return "false";
     }
 
     //删除回复
     @RequestMapping("delete")
-    public String delete(@RequestParam(value = "id",required = true)int id){
-        if (ReplayService.DeleteById(id))return "true";
+    public String delete(
+            @RequestParam(value="replyid" ,required = true)int replyid,
+            @CookieValue(value="id")String id,
+            @CookieValue(value="key")String key,
+            @RequestParam(value="token",defaultValue = "123")String token) throws NoSuchAlgorithmException {
+        if (token.equals(GlobalConfig.token)){
+            ReplayService.DeleteById(replyid);
+            return "删除成功";
+        }
+        if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))
+                &&
+                UserApiDao.GetNameById(id).equals(ReplayService.GetAuthorById(replyid))){
+            return "用户验证失败";
+        }
+
+        if (ReplayService.DeleteById(replyid))return "true";
         return "false";
     }
 
@@ -55,6 +74,12 @@ public class ReplayController {
     @RequestMapping("max")
     public int max(@RequestParam(value = "id", required = true) int id){
         return ReplayService.max(id);
+    }
+
+    //模糊搜索
+    @RequestMapping("searchreply")
+    public List<Replay> SearchReply(String keyword,int page){
+        return ReplayService.SearchReply(keyword,page);
     }
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {
