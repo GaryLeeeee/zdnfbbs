@@ -33,17 +33,30 @@ public class ReplayController {
     public List<Replay> getReplyById(
             @RequestParam(value="id",required=true)int id,
             @RequestParam(value="page",required=true)int page){
-        return ReplayService.GetReplyByPostId(id,page);
+        List<Replay> res = ReplayService.GetReplyByPostId(id,page);
+        for (int i =0;i<res.size();i++){
+            if (res.get(i).getIsdeleted()==1){
+                Replay temp = res.get(i);
+                temp.setAuthor("看什么f12");
+                temp.setContent("看什么f12");
+                res.set(i,temp);
+            }
+        }
+        return res;
+        //return ReplayService.GetReplyByPostId(id,page);
     }
 
     //添加回复
     @RequestMapping("add")
-    public String add(@Valid Replay replay, @CookieValue(value = "id")String id,
-                      @CookieValue(value = "key")String key)
+    public String add(@Valid Replay replay,
+                      @CookieValue(value = "id")String id,
+                      @CookieValue(value = "key")String key,
+                      @RequestParam(name="isfirst",required=false,defaultValue="0") char isfirst)
                       throws NoSuchAlgorithmException {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
             return "usererror";
         }
+
         if (ReplayService.add(replay)) return "true";
         return "false";
     }
@@ -54,7 +67,8 @@ public class ReplayController {
             @RequestParam(value="replyid" ,required = true)int replyid,
             @CookieValue(value="id")String id,
             @CookieValue(value="key")String key,
-            @RequestParam(value="token",defaultValue = "123")String token) throws NoSuchAlgorithmException {
+            @RequestParam(value="token",defaultValue = "123")String token)
+            throws NoSuchAlgorithmException {
         if (token.equals(GlobalConfig.token)){
             ReplayService.DeleteById(replyid);
             return "删除成功";

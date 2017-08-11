@@ -15,6 +15,8 @@ public class Replay {
     private String content;//正文
     @NotNull
     private String times;//时间
+    private int isfirst;//是不是一楼  0是flase 1是true
+    private int isdeleted; //有没有被删除  同上
 
     public void setId(int id){this.id=id;}
     public int getId(){return id;}
@@ -26,4 +28,8 @@ public class Replay {
     public String getContent(){return content;}
     public void setTimes(String time){this.times=time;}
     public String getTimes(){return times;}
+    public void setIsfirst(int Is){this.isfirst=Is;}
+    public int getIsfirst(){return isfirst;}
+    public void setIsdeleted(int Is){this.isdeleted=Is;}
+    public int getIsdeleted(){return isdeleted;}
 }

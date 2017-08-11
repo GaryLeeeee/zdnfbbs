@@ -2,12 +2,7 @@ package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Skysibule on 2017/5/16.
@@ -65,6 +60,10 @@ public class ViewController {
     @RequestMapping("plateReplyPage")
     public String addPost(){return "plateReplyPage";}
 
+    //帖子回复
+    @RequestMapping("postReplyPage")
+    public String addReply(){return "postReplyPage";}
+
     //点进帖子里边 显示回复
     @RequestMapping("post")
     public String Post(){return "post";}
@@ -95,5 +94,20 @@ public class ViewController {
     public String rule(){
         return "站规";
     }
+
+    //返回FAQ帮助页面
+    @RequestMapping("faq")
+    public String faq(){
+        return "faq";
+    }
+
+    //返回帮助页面
+    @RequestMapping("help")
+    public String help(){return "帮助";}
+
+    //返回新生页面
+    @RequestMapping("freshman")
+    public String freshman(){return "新生";}
+
 
 }

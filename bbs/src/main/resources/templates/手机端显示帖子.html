@@ -19,12 +19,21 @@
       <script type="text/javascript">
         $(document).ready(function () {
           topPostInit();
-          postInit(1,0);
-          
-            
+          setTimeout(function(){
+            postInit(1,0);
+          },200)
+         
         });
     </script>
-  
+  <script type="text/javascript">
+  $(document).ready(function(){
+    var userCookie = checkLoginStatus();
+    if(userCookie) {
+      $("#l_or_p").text("个人");
+      $("#l_or_p").attr("href","/mypage?name="+escape(userCookie));
+    }
+  })
+</script>
 
 
 <!-- start meta -->
@@ -42,24 +51,13 @@
   </div>
 </div>
 <div id="top-nav" >
-  <a href="home.php">首页</a
-  ><a class="active">版面</a
-  ><ul style="display: none">
-    <li><a href="favorite.php">收藏夹</a>
-    <li><a href="zone.php">版面目录</a>
-  </ul
-  ><a disabled>好友</a
-  ><ul style="display: none">
-    <li><a href="friend.php">关注</a>
-    <li><a href="friend.php?mode=fan">粉丝</a>
-    <li><a href="friend.php?mode=reject">黑名单</a>
-  </ul
-  ><a disabled>提醒</a
-  ><ul style="display: none">
-    <li><a href="mail.php">站内信</a>
-    <li><a href="message.php">消息</a>
-  </ul
-  ><a href="login.php">登录</a>
+  <a href="/">首页</a
+  ><a href="/mplate" class="active">版面</a>
+  <a>新生</a>
+  
+  <a href="/m/login" id="l_or_p">登录</a>
+  </ul>
+  <a href="/help" >帮助</a>
 </div>
 
 <div id="page-content">
@@ -86,9 +84,8 @@
 </div>
 
 <div id="footer">
-<!--  <p><a href="--><!--">电脑版</a><span>-</span><a href="help.php">帮助中心</a><span>-</span><a href="mail-new.php?username=SYSOP">意见反馈</a></p>-->
-  <p><a href="/v2/thread.php?bid=476&amp;from_mobile_long=1">电脑版</a><span>-</span><a href="help.php">帮助中心</a><span>-</span><a href="mail-new.php?username=SYSOP">意见反馈</a></p>
-  <p>© 2017 南巷BBS</p>
-</div>
+  <p><a href="/">计协</a><span>-</span><a href="/help">帮助中心</a><span>-</span><a href="/platepost?id=21">意见反馈</a></p>
+  <p>© 2017–2017 南巷BBS</p>
+</div> 
 </body>
 </html>

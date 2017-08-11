@@ -45,13 +45,17 @@ function msgInit(){//个人信息初始化
  			var personerObj = "<ul>微信:<a id='wechatContent'></a></ul>"
  			+"<ul>联系电话:<a id='telnumContent'></a></ul>"+"<ul>权限:<a id='powerContent'></a></ul>";
  			$("#nameTitle").after(personerObj);
- 			$("#passwdContent").html(userData.passwd);
  			$("#wechatContent").html(userData.wechat);
  			$("#telnumContent").html(userData.telnum);
  			$("#powerContent").html(userData.power);
  			$("#introduceContent").html(userData.introduce);
  			$("#historyPost").after("<h3 id='delPost' class='littletitle'>删除</h3>");
  			$("#historyReply").after("<h3 id='delReply' class='littletitle'>删除</h3>");
+ 		})
+ 		$("#exit").click(function(){
+ 			DelCookie("id");
+ 			DelCookie("key");
+ 			
  		})
  	}
  	else
@@ -62,6 +66,11 @@ function msgInit(){//个人信息初始化
  			$("#nameContent").html(userData.name);
  			$("#sexContent").html(userData.sex);
  			$("#introduceContent").html(userData.introduce);
+ 			$("#wechatContent").remove();
+ 			$("#powerContent").remove();
+ 			$("#telnumContent").remove();
+ 			$("#historyPost").remove();
+ 			$("#historyReply").remove();
  		})
  		
  	}
@@ -117,24 +126,34 @@ function PlateContent(page){//发过的帖子初始化
 }
 function ReplyContent(page){//收到的评论初始化
 	var dataName=$("#userId").html();
+	var allFirst=[];
 	$(".moreReply").remove();
 	var nextPage = parseInt(page)+1;
-	$.post("/api/user/userreplay","name="+dataName+"&page="+page,function(userData){
+	var getFirst = function(callback){
+		$.post("/api/user/userreplay","name="+dataName+"&page="+page,function(userData){
 		if(!isNull(userData)){
+			var n=0;
 			for(var i in userData){
 				var userReplyObj = "<a id='replyEver"+userData[i].id+"' class='Reply' href='./post?id="+userData[i].father+"'><xmp>"+userData[i].content+"</xmp></a></br>";
 				$("#userReply").append(userReplyObj);
-
+				if(userData[i].isfirst==1){
+					allFirst[n]=userData[i].father;
+					n++;
+				}
 			}
 			$("#userReply").append("<div class='moreReply'>点击加载更多</div>");
 			$(".moreReply").click(function(page){ReplyContent(nextPage)});
+			callback(allFirst);
 		}
 		else{
 			$("#userReply").append("<p>无</p>");
 		}
 
 	})
+	}
+	
 	var hrefTemp =new Array();
+	getFirst(function(allFirst){
 	$("#replyTArea").on("click","#delReply",function(){
 			
 			if($("#delReply").hasClass('littletitle')){
@@ -144,12 +163,18 @@ function ReplyContent(page){//收到的评论初始化
 				var idStr = $(this).attr("id");
 				idStr = idStr.replace("replyEver","");
 				$(this).remove();
+				for(var x in allFirst){
+					if(allFirst[x]==idStr){
+						$.post("/api/post/delete","postid="+allFirst[x],function(msg){
+							return;
+						})
+						break;
+					}
+				}
 				$.post("/api/replay/delete","replyid="+idStr,function(msg){
 					return;
-				})
-				
+				})	
 			})
-				return ;
 		}
 		else{
 			$("#delReply").removeClass('clickTitle');
@@ -159,7 +184,7 @@ function ReplyContent(page){//收到的评论初始化
 			}).click(function(){ return;});
 		}
 	})
-	
+	})
 	
 
 }

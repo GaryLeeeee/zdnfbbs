@@ -20,10 +20,9 @@ function checkUserStatus(){//检查登录人
 	if(name){
 		var IdStr = name;
 		$("#userId").html(IdStr);
-		$("#userId").click(function(){
-			window.location.href="./mypage?name="+escape(IdStr);
-		})
-	}
+		$("#userId").attr("href","./mypage?name="+escape(IdStr));
+		}
+	
 	else{
 		return;
 	}
@@ -74,10 +73,9 @@ function pagination(){//板块帖子分页
 }
 function postNew(){
 	var author = checkLoginStatus();
-	console.log(author);
 	if(!author) {
 		alert("请登录");
-		window.location.href="/login";
+		window.location.href="/m/login";
 	}
 	else{
 		var plateId = checkPlateCookie();
@@ -102,13 +100,11 @@ function postNew(){
 						var month = nowTime.getMonth()+1;
 						var postTime = nowTime.getFullYear()+"-"+month+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"
 						+nowTime.getSeconds(); 
-
-						var author=$("#userId").html();
-						$.post("/api/replay/add","father="+dataId+"&author="+author+"&content="+sandContent+"&times="+postTime,function(data){
+						$.post("/api/replay/add","father="+dataId+"&author="+author+"&content="+sandContent+"&times="+postTime+"&isfirst=1",function(data){
 							if(data){
 								
 								setTimeout(function(){
-									location.reload(true);
+									window.location.href="/platepost?id="+plateId;
 								},500)
 							}
 							else{
@@ -116,7 +112,7 @@ function postNew(){
 							}
 						}
 						)
-						location.reload(true);
+						
 					},500)
 				}
 				else{
@@ -145,8 +141,8 @@ function postInit(pageNum,postNum){//板块帖子初始化
 			if(pageNum!=1){
 				$("#allPost").empty();
 			}
-			for(var i=postNum;i<postData.length+parseInt(postNum)-1;i++){
-				var platePostObj = "<div  class='thread-item' ><div id='postTitle_"+postData[i].id+"' class='row head'><div class='item title'>"+postData[i].title+"</div></div><div class='row info'><div class='item'><span class='txt admi'><a href='./mypage?name="+escape(postData[i].author)+"'>"+postData[i].author+"</a></span></div><div class='item time'><span class='txt'>最后发表：</span><span class='num'>"+dateFormat(postData[i].lastTime)+"</span></div><div class='item reply r'><i class='iconfont'>&#xe608;</i><span class='num'>"+postData[i].num+"</span></div></div></div>";
+			for(var i=postNum;i<postData.length+parseInt(postNum);i++){
+				var platePostObj = "<div  class='thread-item' ><div id='postTitle_"+postData[i].id+"' class='row head'><div class='item title'>"+postData[i].title+"</div></div><div class='row info'><div class='item'><span class='txt admi'><a href='./mypage?name="+escape(postData[i].author)+"'>"+postData[i].author+"</a></span></div><div class='item time'><span class='txt'>最后发表：</span><span class='num'>"+dateFormat(postData[i].lastTime)+"</span></div><div class='item reply r'><span class='num'>"+postData[i].num+"</span></div></div></div>";
 				$("#morePost").before(platePostObj);
 				allPostId[i]= postData[i].id;
 
@@ -154,7 +150,7 @@ function postInit(pageNum,postNum){//板块帖子初始化
 				
 			}
 			var postObj=[];
-			for(var i=postNum;i<postData.length+parseInt(postNum)-1;i++){
+			for(var i=postNum;i<postData.length+parseInt(postNum);i++){
 				postObj[i]=$("#postTitle_"+allPostId[i]);
 				
 			}
@@ -182,7 +178,7 @@ function topPostInit(){//置顶帖子初始化
 	var allPostId = [];
 	var allPostTitle = [];
 	$.post("/api/post/top","id="+plateId,function(postTop){
-		if(postTop){
+		if(!isNull(postTop)){
 			var tempId=0,tempTitle;
 			for(var i=0;i<postTop.length;i++){
 				var plateTopObj = "<div class='thread-item top'><div id='postTop_"+i+"' class='row head'><div class='tag top'>置顶</div><div  class='item title highlight'>"+postTop[i].title+"</div></div><div class='row info'><div class='item'><span class='txt admi'><a href='./mypage?name="+escape(postTop[i].author)+"'>"+postTop[i].author+"</a></span></div><div class='item time'><span class='num'>"+dateFormat(postTop[i].lastTime)+"</span></div></div></div>";
@@ -206,6 +202,7 @@ function topPostInit(){//置顶帖子初始化
 		}
 		
 	})
+	
 }
 function postPagination(){//帖子回复的分页
 	var url = window.location.search;
@@ -214,7 +211,7 @@ function postPagination(){//帖子回复的分页
 		var tempStr = url.substr(1);
 		var strsId = tempStr.split('=');
 		$.post("/api/replay/max","id="+strsId[1],function(pageSum){
-			if(pageSum){
+			if(!isNull(pageSum)){
 				var paginationNum = pageSum/10;
 				for(var i=1;i<paginationNum+1;i++){
 					var pagination = "<span class='paging' id='page_"+i+"'>"+i+"</span>";
@@ -245,12 +242,12 @@ function replyNew(){
 	var postId = checkPostCookie();
 	if(!author) {
 		alert("请登录");
-		window.location.href="/login";
+		window.location.href="/m/login";
 	}
 	else{
 	$(".back").attr("href","/post?id="+postId);
 	$(".sand").click(function(){//回复功能
-			var sandContent = $("#editor").html();
+			var sandContent = $("#editor").val();
 			if(!isNull(sandContent)){
 				var nowTime = new Date();
 				var month = nowTime.getMonth()+1;
@@ -261,7 +258,7 @@ function replyNew(){
 						$(".sand").html("发送中");
 
 						setTimeout(function(){
-							location.reload(true);
+							window.location.href="/post?id="+postId;
 						},500)
 					}
 					else{
@@ -280,11 +277,12 @@ function postReplay(postpage){//帖子内容及回复初始化
 	if(url.indexOf("?")!=-1){
 		var tempStr = url.substr(1);
 		var strsId = tempStr.split('=');
-		$(".orange-btn submit-btn fixed").attr('href',"/postReplyPage?id="+strsId[1]);
+		$("#replySkip").attr('href',"/postReplyPage?id="+strsId[1]);
 		$.post("/api/post/getallbyid","id="+strsId[1],function(allData){
 			$("#title").html(allData[0].title);
 			setTimeout(function(){
-				if(allData[0]){
+				if(!isNull(allData[0])){
+				$(".home").attr("href","/platepost?id="+allData[0].BelongTo);
 				$.post("/api/plate/namebyid","id="+allData[0].BelongTo,function(f_plateName){
 					$("#ownerPlate").html(f_plateName);
 				})
@@ -296,36 +294,34 @@ function postReplay(postpage){//帖子内容及回复初始化
 			
 		})
 		$.post("/api/replay/select","id="+strsId[1]+"&page="+postpage,function(postContent){
-			if(postContent){
+			if(!isNull(postContent)){
 				if(postpage==1){
 					$("#content").html(xssFormat(postContent[0].content));
 					$("#author").html(postContent[0].author);
-					$("#ownerTime").html(postContent[0].times);
+					$("#ownerTime").html(dateFormat(postContent[0].times));
 					$("#ownerphoto").attr('src',"/api/user/img?id="+postContent[0].author)
-				}
-				else{
-					$("#towerOwner").remove();
-					for(var i=0;i<10;i++){
-						$("#floor_"+i).remove();
-					}
 				}
 				for(var i=0;i<postContent.length;i++){
 					if(i!=0||postpage!=1){
+						if(postContent[i].isdelete==1){i++;continue;}
 						var floorNum = (postpage-1)*10+i+1;
-						var floorObj  = "<div id='floor_" +i + "'><div class='me'>"+"<a href=\"/mypage?name="+escape(postContent[i].author)+"\"><img class='headshot' src='/api/user/img?id="+postContent[i].author+"' width=80px height=80px ></a><div id='floorName_" +i+ "' class='name'>名字</div></div><div id='floorContent_"+i+"  ' class='message' >"+xssFormat(postContent[i].content)+"</div><div class='tail'><span id='floorTime_"+i+"' class='tailtime'>time</span><span class='tailfloor'>第"+floorNum+"楼</span></div><div class='clear'></div> <hr/></div>"
-						$("#page_1").before(floorObj);
-						$("#floorName_"+i).html(postContent[i].author);
-						$("#floorTime_"+i).html(postContent[i].times);
+						var floorObj  = "<div id='floor_" +postContent.id + "'><div class='me'>"+"<a href=\"/mypage?name="+escape(postContent[i].author)+"\"><img class='headshot' src='/api/user/img?id="+postContent[i].author+"' width=80px height=80px ></a><div id='floorName_" +postContent[i].id+ "' class='name'>名字</div></div><div id='floorContent_"+postContent[i].id+"  ' class='message' >"+xssFormat(postContent[i].content)+"</div><div class='tail'><span id='floorTime_"+postContent[i].id+"' class='tailtime'>time</span><span class='tailfloor'>第"+floorNum+"楼</span></div><div class='clear'></div> <hr/></div>"
+						$("#page-content").before(floorObj);
+						$("#floorName_"+postContent[i].id).html(postContent[i].author);
+						$("#floorTime_"+postContent[i].id).html(dateFormat(postContent[i].times));
 					}
 				}
-
+				$("#morePost").click(function(){
+				postReplay(parseInt(postpage)+1);
+			})
 			}
-			else return;
-		})
+			else {
+				$("#morePost").remove();
+				alert("已经没有更多回复了_(xз」∠)_");
+			}
+		
+})
 
-}
-else{
-	window.close();
 }
 }
 

@@ -6,9 +6,9 @@ import javax.validation.constraints.Size;
  * Created by ZDNF on 2017/5/7.
  */
 public class User {
-    @Size(min=1,max=18)
+    @Size(min=2,max=18)
     private String name;//姓名
-    @Size(min=1,max=20)
+    @Size(min=6,max=20)
     private String passwd;//密码
     private String sex="神秘";//性别
     private String wechat="0";//微信

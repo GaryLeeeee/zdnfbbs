@@ -13,19 +13,20 @@
     </select>
 
     <insert id="add" parameterType="com.zdnf.bbs.domain.Replay">
-        INSERT reply VALUES (NULL,#{replay.father},#{replay.author},#{replay.content},#{replay.times})
+        INSERT reply VALUES (NULL,#{replay.father},#{replay.author},#{replay.content},
+                              #{replay.times},#{replay.isfirst},0)
     </insert>
 
-    <delete id="DeleteById" parameterType="java.lang.Integer">
-        DELETE FROM reply WHERE id=#{id}
-    </delete>
+    <update id="DeleteById" parameterType="java.lang.Integer">
+        update reply set isdeleted=1 where id=#{id}
+    </update>
 
     <select id="max" resultType="java.lang.Integer">
         SELECT COUNT(*) from reply WHERE father=#{id}
     </select>
 
     <update id="repling">
-        update post set num=num+1,LastTime=#{LastTime} where id=#{id};
+        update post set num=num+1,LastTime=#{LastTime} where id=#{id}
     </update>
 
     <select id="SearchReply" resultType="com.zdnf.bbs.domain.Replay">

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+#page-thread .board-body .submit-btn {
+  padding: 12px 28px;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 60; }
+  
+.orange-btn {
+  display: inline-block;
+  border: 1px solid #BFBFBF;
+  border-radius: 6px;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 12px;
+  color: white;
+  background-color: #F18C73;
+  border-color: #F18C73; }
+  .orange-btn:visited {
+    color: white; }
+  .orange-btn:active {
+    background-color: #F0937D;
+    border-color: #F0937D; }
+  .orange-btn:focus {
+    background-color: #CD5E44;
+    border-color: #CD5E44; }
+  .orange-btn.disabled {
+    background-color: #959595;
+    border-color: #959595; }

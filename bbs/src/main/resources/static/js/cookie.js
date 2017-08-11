@@ -4,52 +4,36 @@ function setCookie(username,password)
 	document.cookie="ZDNFBBS_userName="+escape(username)+"&"+"ZDNFBBS_passWd="+escape(password)+";"+"expires="+deadLine.toGMTString(); 
 }
 
-function getCookie(username)
-
-{
-
-	if(document.cookie.length>0)
-
-	{
-
-		c_start=document.cookie.indexOf("ZDNFBBS_userName="+username);
-
-		if(c_start!=-1)
-
-		{
-
-
-			
-
-			c_end=document.cookie.indexOf(";",c_start);
-
-			if(c_end==-1)
-				c_end=document.cookie.length;
-
-
-			return unescape(document.cookie.substring(c_start,c_end));
-
-		}
-
-	}
-
-	return"";
-
+function GetCookieValue(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != '') {
+ var cookies = document.cookie.split(';');
+ for (var i = 0; i < cookies.length; i++) {
+   var cookie = jQuery.trim(cookies[i]);
+   if (cookie.substring(0, name.length + 1) == (name + '=')) {
+ cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+ break;
+   }
+ }
+  }
+  return cookieValue;
+}
+function DelCookie(name) {
+  var exp = new Date();
+  exp.setTime(exp.getTime() + (-1 * 24 * 60 * 60 * 1000));
+  var cval = GetCookieValue(name);
+  document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
 }
 function checkLoginStatus(){
 	var result;
     $.ajax({
-        
         url : 'api/user/user',
         async:false,
         success : function(userStatus){
-        	if(userStatus&&userStatus!="false"){
+        	if(!isNull(userStatus)&&userStatus!="false"){
         		result = userStatus;
         	}
         	else result =false;
-            
-            
-
         }
     })
     return result;

@@ -6,6 +6,19 @@
   <meta name="viewport" content="width=320, user-scalable=no">
   <meta name="wap-font-scale" content="no">
 
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/format.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var userCookie = checkLoginStatus();
+    if(userCookie) {
+      $("#l_or_p").text("个人");
+      $("#l_or_p").attr("href","/mypage?name="+escape(userCookie));
+    }
+  })
+</script>
+
   <link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15">
 
   <title>[总纲]南巷BBS</title>
@@ -27,7 +40,7 @@
   ><a href="/mplate" class="active" >版面</a>
   <a>新闻</a>
 
-  <a href="/m/login">登录</a>
+  <a href="/m/login" id="l_or_p">登录</a>
   </ul>
   <a href="/help">帮助</a>
 </div>
@@ -436,8 +449,8 @@
 </div>
 
 <div id="footer">
-  <p><a href="/v2/home.php?from_mobile_long=1">计协</a><span>-</span><a href="help.php">帮助中心</a><span>-</span><a href="mail-new.php?username=SYSOP">意见反馈</a></p>
+  <p><a href="/">计协</a><span>-</span><a href="/help">帮助中心</a><span>-</span><a href="/platepost?id=22">意见反馈</a></p>
   <p>© 2017–2017 南巷BBS</p>
-</div>
+</div> 
 </body>
 </html>

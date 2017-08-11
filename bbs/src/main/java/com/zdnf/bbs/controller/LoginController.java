@@ -81,7 +81,7 @@ public class LoginController {
       //  if (captchaId.equals(parameter)) {
             user.setPower("0");
             LoginService.adduser(user);
-            return "注册成功";
+            return "redirect:/";
       //  }
     //   return "验证码输入错误";
     }

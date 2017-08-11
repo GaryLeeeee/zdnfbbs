@@ -28,13 +28,24 @@ public class PostController {
 
     //按板块id和page获取板块下相应的数据
     @RequestMapping("get")
-    public List<Post> GetPostsByIdAndPage(@RequestParam(value="id")int id,@RequestParam(value="page")int page){
-        return PostService.GetPagesPostByBelongTo(id,page);
+    public List<Post> GetPostsByIdAndPage(@RequestParam(value="id")int id,
+                                          @RequestParam(value="page")int page){
+        List<Post> res = PostService.GetPagesPostByBelongTo(id,page);
+        for(int i=0;i<res.size();i++){
+            if (res.get(i).getIsTop()==1){
+                res.remove(i);
+            }
+        }
+        return res;
+        //return PostService.GetPagesPostByBelongTo(id,page);
     }
 
     //添加帖子
     @RequestMapping("add")
-    public String AddPost(@Valid Post post, @CookieValue(value="id")String id,@CookieValue(value="key")String key) throws InterruptedException, NoSuchAlgorithmException {
+    public String AddPost(@Valid Post post,
+                          @CookieValue(value="id")String id,
+                          @CookieValue(value="key")String key)
+                          throws InterruptedException, NoSuchAlgorithmException {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
             return "usererror";
         }

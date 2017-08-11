@@ -1,5 +1,7 @@
 package com.zdnf.bbs.service;
 
+import com.zdnf.bbs.domain.Post;
+import com.zdnf.bbs.domain.Replay;
 import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +26,12 @@ public class UserApiService {
 
     public User GetUserInfo(String name){return UserApiDao.GetUserInfo(name);}
 
-    public List<User> GetUserReply(String name, int page){
+    public List<Replay> GetUserReply(String name, int page){
         int low=10*(page-1);
         return UserApiDao.GetUserReply(name,low);
     }
 
-    public List<User> GetUserPost(String name,int page){
+    public List<Post> GetUserPost(String name, int page){
         int low=10*(page-1);
         return UserApiDao.GetUserPost(name,low);
     }

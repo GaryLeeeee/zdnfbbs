@@ -836,7 +836,7 @@ body {
   margin: 0;
   padding: 0;
   width: 320px;
-  background:url(../images/l.jpg) 0% no-repeat ;
+  background: #f7f7f7;
   }
 
 div, a, img, p, ul, li {
@@ -936,7 +936,7 @@ input {
   #top-nav > a {
     position: relative;
     display: inline-block;
-    width: 62px;
+    width: 19%;
     height: 40px;
     line-height: 40px;
     text-align: center;
@@ -1030,9 +1030,8 @@ input {
       margin-bottom: 12px; }
 
 #big-title-header {
-  width: 150px;
+  width: 200px;
   display: block;
-  height: 60px;
   margin: 50px auto 20px; }
 
 #big-title-content {

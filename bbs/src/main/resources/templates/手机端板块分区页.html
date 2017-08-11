@@ -6,10 +6,21 @@
   <meta name="viewport" content="width=320, user-scalable=no" />
   <meta name="wap-font-scale" content="no" />
  
-<!-- start _stylesheets_and_scripts.php-->
-<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15" />
 
-<script src="https://bbs.pku.edu.cn/v2/mobile/libs/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15" />
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/format.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var userCookie = checkLoginStatus();
+    if(userCookie) {
+      $("#l_or_p").text("个人");
+      $("#l_or_p").attr("href","/mypage?name="+escape(userCookie));
+    }
+  })
+</script>
+
 
 <!-- end _stylesheets_and_scripts.php-->
 
@@ -31,10 +42,10 @@
 <div id="top-nav" >
   <a href="/"  >首页</a
   ><a href="#" class="active">版面</a>
-  <a>新生</a>
+  <a href="/freshman">新生</a>
   
-  <a href="/login">登录</a>
-  </ul>
+  <a href="/m/login" id="l_or_p">登录</a>
+  
   <a href="/help">帮助</a>
 </div>
 
@@ -50,35 +61,35 @@
 
       <div class="card">
       <div class="title">
-        <a class="name" href="board.php?bid=664">一区 南苑</a>
+        <a class="name" href="#">一区 南苑</a>
         <!-- <a class="more-link" href="board.php?bid=664">更多</a> -->
       </div>
       <ul>
                     <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=1"></a>
               <a class="post-title"
                         >南苑</a>
               <a class="post-info">南巷最核心的版面 </a>
             </li>
                     <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=2"></a>
               <a class="post-title"
                         >军训</a>
               <a class="post-info">谈谈军训要干的事~ </a>
             </li>
                         <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=3"></a>
               <a class="post-title"
                         >南苑美食</a>
               <a class="post-info">聊聊南苑好吃的东西吧</a>
             </li>
                         <li>
-              <a class="post-link" href="/platepost?id=12"></a>
+              <a class="post-link" href="/platepost?id=4"></a>
               <a class="post-title">跳蚤市场</a>
               <a class="post-info">买买买卖卖卖！！！</a>
             </li>
                         <li>
-              <a class="post-link" href="/platepost?id=13"></a>
+              <a class="post-link" href="/platepost?id=5"></a>
               <a class="post-title">交友</a>
               <a class="post-info">交个朋友 聊聊骚</a>
             </li>
@@ -90,35 +101,35 @@
 
       <div class="card">
       <div class="title">
-        <a class="name" href="board.php?bid=664">二区 学术交流</a>
+        <a class="name" href="#">二区 学术交流</a>
       </div>
       <ul>
                   <li>
-              <a class="post-link" href="/platepost?id=13"></a>
+              <a class="post-link" href="/platepost?id=6"></a>
               <a class="post-title">编程技术</a>
               <a class="post-info">如何优雅的写代码</a>
             </li>
                     <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=7"></a>
               <a class="post-title"
                         >英语角</a>
               <a class="post-info">AW, GRE, TOEFL, English, writing</a>
             </li>
                         <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=8"></a>
               <a class="post-title"
                         >艺术</a>
               <a class="post-info">刷刷刷</a>
             </li>
             <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=9"></a>
               <a class="post-title"
                         >考研</a>
               <a class="post-info">介绍一下喽</a>
             </li>
 
             <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=10"></a>
               <a class="post-title"
                         >军事知识</a>
               <a class="post-info">Military</a>
@@ -129,28 +140,28 @@
 
       <div class="card">
       <div class="title">
-        <a class="name" href="board.php?bid=664">三区 电脑网络</a>
+        <a class="name" href="#">三区 电脑网络</a>
       </div>
       <ul>
                   <li>
-              <a class="post-link" href="/platepost?id=13"></a>
+              <a class="post-link" href="/platepost?id=11"></a>
               <a class="post-title">电脑推荐</a>
               <a class="post-info">以最便宜的价格买到最好的电脑</a>
             </li>
                     <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=12"></a>
               <a class="post-title"
                         >网络技术</a>
               <a class="post-info">讨论关于学校的网络</a>
             </li>
                         <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=13"></a>
               <a class="post-title"
                         >手机数码</a>
               <a class="post-info">智能手机、数码相机与平板等~</a>
             </li>
             <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=14"></a>
               <a class="post-title"
                         >软件资源</a>
               <a class="post-info">快来分享</a>
@@ -161,41 +172,41 @@
 
       <div class="card">
       <div class="title">
-        <a class="name" href="board.php?bid=664">四区 娱乐</a>
+        <a class="name" href="#">四区 娱乐</a>
       </div>
       <ul>
                   <li>
-              <a class="post-link" href="/platepost?id=13"></a>
+              <a class="post-link" href="/platepost?id=15"></a>
               <a class="post-title">动漫</a>
               <a class="post-info">喜欢二次元的你，快加入吧</a>
             </li>
                     <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=16"></a>
               <a class="post-title"
                         >游戏</a>
               <a class="post-info">让我们 play play~</a>
             </li>
                       <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=17"></a>
               <a class="post-title"
                         >王者荣耀</a>
               <a class="post-info">想找人一起开黑？</a>
             </li>
                         <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=18"></a>
               <a class="post-title"
                         >音乐</a>
               <a class="post-info">Music！！！</a>
             </li>
             <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=19"></a>
               <a class="post-title"
                         >追剧</a>
               <a class="post-info">春风十里不如你 我们一起追剧呀</a>
             </li>
 
             <li>
-              <a class="post-link" href="/platepost?id=11"></a>
+              <a class="post-link" href="/platepost?id=20"></a>
               <a class="post-title"
                         >DIY</a>
               <a class="post-info">just do it</a>
@@ -206,35 +217,31 @@
 
       <div class="card">
       <div class="title">
-        <a class="name" href="board.php?bid=664">五区 协会/社团</a>
+        <a class="name" href="#">O区 南巷官方</a>
       </div>
       <ul>
-
                   <li>
-              <a class="post-link" href="/platepost?id=13"></a>
-              <a class="post-title">所有社团</a>
-              <a class="post-info">这并不是一个板块！！！</a>
-            </li>
-                  <li>
-              <a class="post-link" href="/platepost?id=13"></a>
-              <a class="post-title">计算机协会</a>
-              <a class="post-info">会编程，会写推文，会处理图像视频，还会修电脑</a>
+              <a class="post-link" href="/platepost?id=21"></a>
+              <a class="post-title">南巷BBS</a>
+              <a class="post-info">会发一些官方的东西</a>
             </li>
                     <li>
-              <a class="post-link" href="/platepost?id=10"></a>
+              <a class="post-link" href="/platepost?id=22"></a>
               <a class="post-title"
-                        >武术协会</a>
-              <a class="post-info">教你强身健体</a>
+                        >意见反馈</a>
+              <a class="post-info">可以提一提任何意见</a>
             </li>
-      
+                      <li>
+              <a class="post-link" href="/platepost?id=23"></a>
+              <a class="post-title">求助</a>
+              <a class="post-info">有问必答</a>
+                </li>
+                        
                   </ul>
       </div>
 
 
-
-
-
-                  </ul>
+                
     
 
 
@@ -246,9 +253,8 @@
 
 </div>
 <div id="footer">
-  <p><a href="/v2/home.php?from_mobile_long=1">计协</a><span>-</span><a href="help.php">帮助中心</a><span>-</span><a href="mail-new.php?username=SYSOP">意见反馈</a></p>
-  <p>© 2000–2017 南巷BBS</p>
-</div> 
-
+  <p><a href="/">计协</a><span>-</span><a href="/help">帮助中心</a><span>-</span><a href="/platepost?id=22">意见反馈</a></p>
+  <p>© 2017–2017 南巷BBS</p>
+</div>
 </body>
 </html>
