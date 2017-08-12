@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import com.zdnf.bbs.tools.FileUp;
+import com.zdnf.bbs.tools.ImgCompression;
 
 /**
  * Created by ZDNF on 2017/5/11.
@@ -37,7 +38,8 @@ public class UserApiService {
     }
 
     public boolean up(MultipartFile file,String id){
-        Boolean IsExist=false;
+        //Boolean IsExist=false;
+
         if (file.isEmpty())return false;
         //文件路径
         String filePath = GlobalConfig.FilePath;
@@ -50,15 +52,26 @@ public class UserApiService {
         //判断文件存不存在 存在就删掉
         if (dest.exists()&dest.isFile()){
             dest.delete();
-            IsExist = true;//判断文件存在
+
+         //   IsExist = true;//判断文件存在
         }
         try {
+            //将文件写入硬盘
             file.transferTo(dest);
-            FileUp.upload(id,UserApiDao.GetNameById(id),IsExist);
+            //对文件进行压缩处理
+            ImgCompression runner =new ImgCompression();
+            runner.run(id+".jpg");
+
+            /**
+             * 这里是头像上传七牛的接口，暂时去掉。
+             */
+           // FileUp.upload(id,UserApiDao.GetNameById(id),IsExist);
             return true;
         } catch (IllegalStateException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
