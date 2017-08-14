@@ -5,7 +5,7 @@
 
 <mapper namespace="com.zdnf.bbs.dao.ReplayDao">
     <select id="GetReplyByPostId" resultType="com.zdnf.bbs.domain.Replay">
-        SELECT * FROM reply WHERE father=#{id} ORDER BY times ASC LIMIT #{low},10
+        SELECT * FROM reply WHERE father=#{id} ORDER BY id ASC LIMIT #{low},10
     </select>
 
     <select id="GetAuthorById" parameterType="java.lang.Integer" resultType="java.lang.String">

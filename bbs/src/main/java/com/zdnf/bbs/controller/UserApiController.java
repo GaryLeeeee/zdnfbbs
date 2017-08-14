@@ -66,13 +66,7 @@ public class UserApiController {
     //返回最近回复的
     @RequestMapping("userreplay")
     public List<Replay> reply(@RequestParam(value = "name") String name, @RequestParam(value = "page") int page) {
-        List<Replay> res = UserApiService.GetUserReply(name, page);
-        for (int i =0;i<res.size();i++){
-            if (res.get(i).getIsdeleted()==1){
-                res.remove(i);
-            }
-        }
-        return res;
+        return UserApiService.GetUserReply(name, page);
     }
 
     //返回发过的所有帖子

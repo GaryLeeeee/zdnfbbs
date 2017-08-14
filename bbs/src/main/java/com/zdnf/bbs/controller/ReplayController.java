@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -56,7 +57,17 @@ public class ReplayController {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
             return "usererror";
         }
-
+        System.out.println(replay.getTimes());
+        Calendar c = Calendar.getInstance();
+        int mon=c.get(Calendar.MONTH) + 1;
+        String time=""+c.get(Calendar.YEAR)+"-"+
+                mon+"-"+
+                c.get(Calendar.DATE)+" "+
+                c.get(Calendar.HOUR_OF_DAY)+":"+
+                c.get(Calendar.MINUTE)+":"+
+                c.get(Calendar.SECOND);
+        replay.setTimes(time);
+        System.out.print(replay.getTimes());
         if (ReplayService.add(replay)) return "true";
         return "false";
     }

@@ -12,7 +12,7 @@
     </select>
 
     <select id="GetUserReply" resultType="com.zdnf.bbs.domain.Replay">
-        SELECT * FROM reply WHERE author=#{name} ORDER BY times DESC LIMIT #{low},10
+        SELECT * FROM reply WHERE author=#{name} AND isdeleted=0 ORDER BY times DESC LIMIT #{low},10
     </select>
 
     <select id="GetUserPost" resultType="com.zdnf.bbs.domain.Post">

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zdnf.bbs.dao.AlidayuDao">
+    <insert id="addTel">
+        INSERT INTO alidayu VALUES (null,#{telnum},#{code},#{num},now())
+    </insert>
+    <select id="getTodayNum" resultType="java.lang.String">
+        SELECT num FROM alidayu WHERE telnum=#{telnum}
+    </select>
+    <select id="getIdByTel">
+        SELECT id FROM alidayu WHERE telnum=#{telnum}
+    </select>
+    <update id="success">
+        UPDATE alidayu SET num=num+1 WHERE telnum=#{telnum}
+    </update>
+    <select id="getCode">
+        SELECT code FROM alidayu WHERE telnum=#{telnum}
+    </select>
+</mapper>

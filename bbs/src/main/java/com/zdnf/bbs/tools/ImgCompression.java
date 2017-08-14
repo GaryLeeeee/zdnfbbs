@@ -16,7 +16,7 @@ public class ImgCompression {
     @SuppressWarnings("deprecation")
     public static void run(String fileName) throws Exception {
         ImgCompression imgCom = new ImgCompression(GlobalConfig.FilePath+fileName);
-        imgCom.resizeFix(100, 100,fileName);
+        imgCom.resizeFix(200, 200,fileName);
     }
     /**
      * 构造函数

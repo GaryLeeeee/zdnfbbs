@@ -2,6 +2,8 @@ $(document).ready(function(){
 	userNameFormat();
 	passwdFormat();
 	passwdReapeat();
+	telNumFormat();
+	registing();
 })
 function userNameFormat(){
 	$("input[name='name']").blur(function(){
@@ -48,4 +50,68 @@ function passwdReapeat(){
 			$("#passwdRepeat").css('display','none');
 		}
 })
+}
+function telNumFormat(){
+	
+	$("input[name='telnum']").blur(function(){
+		var telNum = $("input[name='telnum']").val();
+		if(telNum.length<11){
+			$("#phoneLength").css('display','inline-block');
+			$("#phoneLength").text("手机号填写错误");
+		}
+		else{
+			$("#phoneLength").css('display','none');
+		}
+		telNumRepeat(function(flag){
+			if(flag){$("#phoneLength").css('display','none');}
+			else{
+				$("#phoneLength").css('display','inline-block');
+				$("#phoneLength").text("手机号已被注册");
+			}
+		})
+})
+}
+function telNumRepeat(callback){
+	var telNum = $("input[name='telnum']").val();
+	$.post("/api","tel="+telNum,function(msg){
+		if(isNull(msg)){
+			callback(false);
+		}
+		else callback(true);
+		
+	})
+}
+function getVer(){
+	var telNum = $("input[name='telnum']").val();
+	telNumRepeat(function(flag){
+	if(telNum.length<11){
+			$("#phoneLength").css('display','inline-block');
+			$("#phoneLength").text("手机号填写错误");
+		}
+	else if(!flag){
+				$("#phoneLength").css('display','inline-block');
+				$("#phoneLength").text("手机号已被注册");
+	}
+	else{
+		var times=60;
+		$("#getVerify").attr("onclick","return;");
+		$.post("/api/message/send","tel="+telNum,function(msg){return;});
+		$("#getVerify").text(times);
+		$("#getVerify").css("background-color","#c6c6c6");
+		setInterval(function(){
+			$("#getVerify").text(parseInt(times)-1);
+			if(times==0){
+				$("#getVerify").text("获取验证码");
+				$("#getVerify").css("background-color","#F18C73");
+				$("#getVerify").attr("onclick","getVer()");
+				 clearInterval();
+			}
+		},1000);
+	}
+	})
+}
+function registing(){
+	if($(".warning-info").each().css("display")=="none"){
+		$("#registing").css("background-color","#c6c6c6");
+	}	
 }

@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="../css/all.css?" />
   <script type="text/javascript">
         function sub(){
-          document.getElementById('regUser').submit();return false;
+          if($(".warning-info").each().css("display")=="none"&&$("#useNameRepeat")&&$("#passwdLength")&&$("#passwdRepeat")&&$("#phoneLength")){
+            document.getElementById('regUser').submit();return false;
+          }
+          else {
+            return;
+          }
         }
     </script>
 <title>南巷</title>
@@ -98,13 +103,37 @@
     
   </div>
 </div>
+
+
+<div class="form-group">
+  
+    <label class="row">手机号</label>
+  <input class="row" name="telnum" type="text" maxlength="11" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-pattern="/[^a-zA-Z]/">
+  <span class="warning-info" id="phoneLength" >手机号填写错误</span>
+  
+</div>
+<div class="form-group" style="
+    width: 100%;
+    float: left;">
+  
+  <input class="row" maxlength="4" name="verify" type="text" style="
+    width: 60%;
+    float: left;">
+  
+  <div class="row" style="float:right;width:35%;">
+        <a id="getVerify" class="orange-btn" onclick="getVer()" style="
+    padding: 8px 5px;
+">获取验证码</a>
+      </div>
+  
+</div>
       
 
       <div class="row agreement">
         <span class="instruction">点击注册，即表示你阅读并同意遵守<a class="/superclass">南巷BBS总纲</a>，以及各项具体<a class="red-link" data-no-pjax href="/rule">站规细则</a>。</span>
       </div>
       <div class="row" style="margin-top: 30px;">
-        <a class="orange-btn" onclick="sub()">注册</a>
+        <a id="registing" class="orange-btn" onclick="sub()">注册</a>
       </div>
     </div>
     </form>

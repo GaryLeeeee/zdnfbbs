@@ -1,6 +1,7 @@
 package com.zdnf.bbs.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.zdnf.bbs.dao.AlidayuDao;
 import com.zdnf.bbs.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,8 @@ public class LoginController {
     DefaultKaptcha defaultKaptcha;
     @Autowired
     LoginService LoginService;
+    @Autowired
+    AlidayuDao AlidayuDao;
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {
         String res="skyisblue"+str;
@@ -72,18 +75,13 @@ public class LoginController {
     //注册表单提交
     @RequestMapping(value = "/registing",method = RequestMethod.POST)
     @ResponseBody
-    public String registing(@Valid User user){
-        //String captchaId = (String) httpServletRequest.getSession().getAttribute("vrifyCode");
-        //String parameter = httpServletRequest.getParameter("vrifyCode");
-        if (LoginService.HasUsername(user.getName())){
-            return "<p>账户已存在<br>换个用户名呗QAQ";
+    public String registing(@Valid User user,String code){
+        if (!code.equals(AlidayuDao.getCode(user.getTelnum()))){
+              return "验证码输入错误";
         }
-      //  if (captchaId.equals(parameter)) {
-            user.setPower("0");
-            LoginService.adduser(user);
-            return "redirect:/";
-      //  }
-    //   return "验证码输入错误";
+        user.setPower("0");
+        LoginService.adduser(user);
+        return "redirect:/";
     }
 
     //登陆的表单

@@ -84,7 +84,7 @@ function postNew(){
 			$("#plateTitle").html(f_plateName);
 		})
 		$(".back").attr("href","/platepost?id="+plateId);
-		$(".sand").click(function(){//发帖功能
+		$(".sand").unbind('click').bind('click',function(){//发帖功能
 		var sandTitle = $("#replyTitle").val();
 		var sandContent = $("#replyContent").val();
 		if(!isNull(sandContent)&&!isNull(sandTitle)){
@@ -165,7 +165,7 @@ function postInit(pageNum,postNum){//板块帖子初始化
 			alert("已经没有更多帖子了_(xз」∠)_");
 		}
 	})
-		$("#morePost").click(function(){
+		$("#morePost").unbind('click').bind('click',function(){
 			postInit(parseInt(pageNum)+1,parseInt(postNum)+10);
 		})
 
@@ -246,7 +246,7 @@ function replyNew(){
 	}
 	else{
 	$(".back").attr("href","/post?id="+postId);
-	$(".sand").click(function(){//回复功能
+	$(".sand").unbind('click').bind('click',function(){//回复功能
 			var sandContent = $("#editor").val();
 			if(!isNull(sandContent)){
 				var nowTime = new Date();
@@ -303,7 +303,7 @@ function postReplay(postpage){//帖子内容及回复初始化
 				}
 				for(var i=0;i<postContent.length;i++){
 					if(i!=0||postpage!=1){
-						if(postContent[i].isdelete==1){i++;continue;}
+						if(postContent[i].isdeleted==1){continue;}
 						var floorNum = (postpage-1)*10+i+1;
 						var floorObj  = "<div id='floor_" +postContent.id + "'><div class='me'>"+"<a href=\"/mypage?name="+escape(postContent[i].author)+"\"><img class='headshot' src='/api/user/img?id="+postContent[i].author+"' width=80px height=80px ></a><div id='floorName_" +postContent[i].id+ "' class='name'>名字</div></div><div id='floorContent_"+postContent[i].id+"  ' class='message' >"+xssFormat(postContent[i].content)+"</div><div class='tail'><span id='floorTime_"+postContent[i].id+"' class='tailtime'>time</span><span class='tailfloor'>第"+floorNum+"楼</span></div><div class='clear'></div> <hr/></div>"
 						$("#page-content").before(floorObj);
@@ -311,7 +311,7 @@ function postReplay(postpage){//帖子内容及回复初始化
 						$("#floorTime_"+postContent[i].id).html(dateFormat(postContent[i].times));
 					}
 				}
-				$("#morePost").click(function(){
+				$("#morePost").unbind('click').bind('click',function(){
 				postReplay(parseInt(postpage)+1);
 			})
 			}
