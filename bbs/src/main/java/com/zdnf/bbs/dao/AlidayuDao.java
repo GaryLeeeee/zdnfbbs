@@ -11,6 +11,7 @@ public interface AlidayuDao {
                        @Param("num")String num);
     public String getTodayNum(String telnum);
     public String getIdByTel(String telnum);
-    public void success(String telnum);
+    public void success(@Param("telnum") String telnum,
+                        @Param("code")int code);
     public String getCode(String telnum);
 }

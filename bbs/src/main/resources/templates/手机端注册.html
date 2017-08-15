@@ -12,12 +12,15 @@
   <link rel="stylesheet" href="../css/all.css?" />
   <script type="text/javascript">
         function sub(){
-          if($(".warning-info").each().css("display")=="none"&&$("#useNameRepeat")&&$("#passwdLength")&&$("#passwdRepeat")&&$("#phoneLength")){
-            document.getElementById('regUser').submit();return false;
+          $(".warning-info").each(function(){
+            if($(this).css("display")=="none"&&$("#useNameRepeat")&&$("#passwdLength")&&$("#passwdRepeat")&&$("#phoneLength")){
+              document.getElementById('regUser').submit();return false;
           }
           else {
             return;
           }
+          })
+
         }
     </script>
 <title>南巷</title>

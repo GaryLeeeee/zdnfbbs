@@ -73,11 +73,11 @@ function telNumFormat(){
 }
 function telNumRepeat(callback){
 	var telNum = $("input[name='telnum']").val();
-	$.post("/api","tel="+telNum,function(msg){
+	$.post("/message/exist","tel="+telNum,function(msg){
 		if(isNull(msg)){
-			callback(false);
+			callback(true);
 		}
-		else callback(true);
+		else callback(false);
 		
 	})
 }
@@ -95,23 +95,29 @@ function getVer(){
 	else{
 		var times=60;
 		$("#getVerify").attr("onclick","return;");
-		$.post("/api/message/send","tel="+telNum,function(msg){return;});
+		$.post("/message/send","telnum="+telNum,function(msg){return;});
 		$("#getVerify").text(times);
 		$("#getVerify").css("background-color","#c6c6c6");
-		setInterval(function(){
-			$("#getVerify").text(parseInt(times)-1);
+		var interval =setInterval(function(){
+			times = parseInt(times)-1;
+			$("#getVerify").text(times);
 			if(times==0){
 				$("#getVerify").text("获取验证码");
 				$("#getVerify").css("background-color","#F18C73");
 				$("#getVerify").attr("onclick","getVer()");
-				 clearInterval();
+				 clearInterval(interval);
 			}
 		},1000);
 	}
 	})
 }
 function registing(){
-	if($(".warning-info").each().css("display")=="none"){
+	$(".warning-info").each(function(){
+		if($(this).css("display")=="none"){
+		$("#registing").css("background-color","#F18C73");
+	}
+	else{
 		$("#registing").css("background-color","#c6c6c6");
-	}	
+	}
+	})
 }

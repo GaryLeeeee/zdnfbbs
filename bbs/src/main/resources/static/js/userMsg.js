@@ -88,7 +88,10 @@ function PlateContent(page){//发过的帖子初始化
 				$("#userPlate").append(userPlateObj);
 			}
 			$("#userPlate").append("<div class='morePost'>点击加载更多</div>");
-			$(".morePost").click(function(page){PlateContent(nextPage)});
+			$(".morePost").click(function(page){
+				$("#postTArea").off('click',"#delPost");
+				PlateContent(nextPage);
+			});
 		}
 		else{
 			$("#userPlate").append("<p>无</p>");
@@ -142,7 +145,10 @@ function ReplyContent(page){//收到的评论初始化
 				}
 			}
 			$("#userReply").append("<div class='moreReply'>点击加载更多</div>");
-			$(".moreReply").click(function(page){ReplyContent(nextPage)});
+			$(".moreReply").click(function(page){
+				$("#replyTArea").off('click',"#delReply");
+				ReplyContent(nextPage);
+			});
 			callback(allFirst);
 		}
 		else{
@@ -155,7 +161,6 @@ function ReplyContent(page){//收到的评论初始化
 	var hrefTemp =new Array();
 	getFirst(function(allFirst){
 	$("#replyTArea").on("click","#delReply",function(){
-			
 			if($("#delReply").hasClass('littletitle')){
 				$("#delReply").removeClass('littletitle');
 				$("#delReply").toggleClass('clickTitle');

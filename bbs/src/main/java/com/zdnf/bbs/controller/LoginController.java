@@ -75,8 +75,12 @@ public class LoginController {
     //注册表单提交
     @RequestMapping(value = "/registing",method = RequestMethod.POST)
     @ResponseBody
-    public String registing(@Valid User user,String code){
-        if (!code.equals(AlidayuDao.getCode(user.getTelnum()))){
+    public String registing(@Valid User user,String verify){
+        String telcode=AlidayuDao.getCode(user.getTelnum());
+        if (telcode==null){
+            telcode="1";
+        }
+        if (!verify.equals(telcode)){
               return "验证码输入错误";
         }
         user.setPower("0");

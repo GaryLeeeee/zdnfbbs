@@ -10,13 +10,13 @@
     <select id="getTodayNum" resultType="java.lang.String">
         SELECT num FROM alidayu WHERE telnum=#{telnum}
     </select>
-    <select id="getIdByTel">
+    <select id="getIdByTel" resultType="java.lang.String">
         SELECT id FROM alidayu WHERE telnum=#{telnum}
     </select>
     <update id="success">
-        UPDATE alidayu SET num=num+1 WHERE telnum=#{telnum}
+        UPDATE alidayu SET num=num+1,code=#{code} WHERE telnum=#{telnum}
     </update>
-    <select id="getCode">
+    <select id="getCode" resultType="java.lang.String">
         SELECT code FROM alidayu WHERE telnum=#{telnum}
     </select>
 </mapper>

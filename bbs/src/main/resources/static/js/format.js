@@ -23,16 +23,17 @@ function dateFormat(PostDate){//判断时间差
 
 function xssFormat(postContent){
 	if(postContent.search(/<script>/)!=-1){ 
-		postContent.replace(/<script>/g, "<xmp>  <script>  </xmp>");
-		postContent.replace(/<\/script>/g, "<xmp>  </script>  </xmp>");
+		postContent=postContent.replace(/<script>/g, "<xmp><script></xmp>");
+		postContent=postContent.replace(/<\/script>/g, "<xmp></script></xmp>");
 	}
 	if(postContent.search(/style=/)!=-1){
-		postContent.replace(/style=/g, "<xmp>  style  </xmp>");
+		postContent=postContent.replace(/style=/g, "<xmp>style</xmp>");
 	}
-	if(postContent.search(/javascript:/)!=-1) postContent.replace(/javascript:/g, "<xmp>  javascript:  </xmp>");
+	if(postContent.search(/javascript:/)!=-1) postContent=postContent.replace(/javascript:/g, "<xmp>  javascript:  </xmp>");
 	if(postContent.search(/<from>/)!=-1) {
-		postContent.replace(/<\/from>/g, "<xmp>  </from>  </xmp>");
+		postContent=postContent.replace(/<\/from>/g, "<xmp></from></xmp>");
 	}
+	console.log(postContent);
 	return postContent;
 
 }

@@ -84,7 +84,8 @@ function postNew(){
 			$("#plateTitle").html(f_plateName);
 		})
 		$(".back").attr("href","/platepost?id="+plateId);
-		$(".sand").unbind('click').bind('click',function(){//发帖功能
+		$(".sand").off('click').on('click',function(){//发帖功能
+		$(this).off('click');
 		var sandTitle = $("#replyTitle").val();
 		var sandContent = $("#replyContent").val();
 		if(!isNull(sandContent)&&!isNull(sandTitle)){
@@ -141,16 +142,16 @@ function postInit(pageNum,postNum){//板块帖子初始化
 			if(pageNum!=1){
 				$("#allPost").empty();
 			}
-			for(var i=postNum;i<postData.length+parseInt(postNum);i++){
+			for(var i=0;i<postData.length;i++){
 				var platePostObj = "<div  class='thread-item' ><div id='postTitle_"+postData[i].id+"' class='row head'><div class='item title'>"+postData[i].title+"</div></div><div class='row info'><div class='item'><span class='txt admi'><a href='./mypage?name="+escape(postData[i].author)+"'>"+postData[i].author+"</a></span></div><div class='item time'><span class='txt'>最后发表：</span><span class='num'>"+dateFormat(postData[i].lastTime)+"</span></div><div class='item reply r'><span class='num'>"+postData[i].num+"</span></div></div></div>";
 				$("#morePost").before(platePostObj);
-				allPostId[i]= postData[i].id;
-
-				allPostTitle[i]= postData[i].title;
+				
 				
 			}
 			var postObj=[];
 			for(var i=postNum;i<postData.length+parseInt(postNum);i++){
+				allPostId[i]= postData[i].id;
+				allPostTitle[i]= postData[i].title;
 				postObj[i]=$("#postTitle_"+allPostId[i]);
 				
 			}
@@ -246,7 +247,8 @@ function replyNew(){
 	}
 	else{
 	$(".back").attr("href","/post?id="+postId);
-	$(".sand").unbind('click').bind('click',function(){//回复功能
+	$(".sand").off('click').on('click',function(){//回复功能
+			$(this).off('click');
 			var sandContent = $("#editor").val();
 			if(!isNull(sandContent)){
 				var nowTime = new Date();
@@ -311,7 +313,7 @@ function postReplay(postpage){//帖子内容及回复初始化
 						$("#floorTime_"+postContent[i].id).html(dateFormat(postContent[i].times));
 					}
 				}
-				$("#morePost").unbind('click').bind('click',function(){
+				$("#morePost").off('click').on('click',function(){
 				postReplay(parseInt(postpage)+1);
 			})
 			}
