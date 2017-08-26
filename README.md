@@ -1,6 +1,43 @@
 # 一个论坛
 # coding by java smm
-因为想做，于是就做了。<br>
-做它的目的不仅仅是练习java web，更是想用自己的一份力量，创造出一个可能，为这个世界做出一点微不足道的贡献。<br>
-所以它可能，会陪我一辈子吧。<br>
-只要还有一个人在用这个论坛，我就保证它不会闭站。
+<small>
+.
+└── bbs
+    └── src
+        └── main
+            ├── java
+            │   └── com
+            │       └── zdnf
+            │           └── bbs
+            │               ├── controller
+            │               ├── dao
+            │               ├── domain
+            │               ├── service
+            │               └── tools
+            └── resources
+                ├── mapper
+                ├── static
+                │   ├── css
+                │   │   └── __history
+                │   ├── css2
+                │   ├── fonts
+                │   ├── js
+                │   │   ├── external
+                │   │   │   └── google-code-prettify
+                │   │   ├── i18n
+                │   │   ├── jquery.plupload.queue
+                │   │   │   ├── css
+                │   │   │   └── img
+                │   │   ├── jquery.ui.plupload
+                │   │   │   ├── css
+                │   │   │   └── img
+                │   │   └── lib
+                │   │       ├── css
+                │   │       ├── img
+                │   │       └── js
+                │   └── lib
+                │       ├── css
+                │       ├── img
+                │       └── js
+                └── templates
+</small>
