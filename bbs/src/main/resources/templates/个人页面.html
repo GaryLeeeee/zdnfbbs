@@ -3,82 +3,85 @@
 		<title>我的首页</title>
 
 		<link rel="stylesheet" type="text/css" href="css/mypage.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/buttonDIV.css"></link>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />	
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/strapdown.js"></script>
 		<script type="text/javascript" src="js/format.js"></script>
 		<script type="text/javascript" src="js/cookie.js"></script>
-		<script type="text/javascript" src="js/userMsg.js"></script> 
-		
+		<script type="text/javascript" src="js/userMsg.js"></script>
+
 	</head>
 
 	<body>
 
 		<div class="title">
 			<a class="back" href="/">首页</a>
-			<font id="userId" face="宋體" size="+3" color="snow">我的</font>
+			<font id="userId" face="宋體" size="+1" color="snow">1111111111</font>
 			<a class="back" href="/" id="exit">注销</a>
 		</div>
 
-		<!-- 头像 -->
+		<!-- headshot -->
 		<div class="headshot">
 			<a href="">
-				<img id="headphoto" src="./static/hei.jpg" width="150px" height="150px"></img>
-				<form id="form_1"  method="post" enctype="multipart/form-data" action="/api/user/up"> 
-				<input type="file" name="_f" accept="image/jpg,image/jepg" style="opacity: 0; position: absolute; top: 50px; left: 10px; width: 150px; height: 150px;" title="点击上传头像"/> 
+				<img id="headphoto" src="./static/hei.jpg" width="100px" height="100px"></img>
+				<form action="/api/user/up" method="post" enctype="multipart/form-data">
+					<input class="sand" type="file" name="file"/>
+					<input class="sand" type="submit">
 				</form>
 			</a>
 		</div>
 
 		<div class="clear"></div>
-		<form action="/api/user/up" method="post" enctype="multipart/form-data">
-			<input type="file" name="file"/>
-			<input type="submit">
-		</form>
+		
 
-		<!-- 个人信息 -->
-		<div>
-			<h3 class="littletitle">个人信息</h3>
+		<!-- personal information -->
+		<div class="thiefhandsome">
+			<hr  style=" height:1px; border:none; border-top:3px dashed #F08080;" width=90%>
+			<div>
+				<h3 class="littletitle">个人信息</h3>
+			</div>
+
+			<div class="personinfor">
+				<ul id="nameTitle" class="ulme">姓名:<a id="nameContent">无</a></ul>
+				<ul class="ulme">性别:<a id="sexContent">无</a></ul>
+				<ul class="ulme">个人签名:<a id="introduceContent">无</a></ul>
+			</div>
 		</div>
 
-		<div class="personinfor">
-			<ul id="nameTitle" class="ulme">姓名:<a id="nameContent">无</a></ul>
-			<ul class="ulme">性别:<a id="sexContent">无</a></ul>
-			<ul class="ulme">个人签名:<a id="introduceContent">无</a></ul>
-		</div>
-		<hr  style=" height:1px; border:none; border-top:1px dashed #2d5186;" width=80%>
+		<!-- history post -->
+		<div id="userPlate" class="thiefhandsome">
+			<hr  style=" height:1px; border:none; border-top:3px dashed #87CEEB;" width=90%>
+			<div id="postTArea">
+				<h3 id="historyPost" class="littletitle">历史帖子</h3>
+			</div>
 
-		<!-- 历史帖子 -->
-		<div id="postTArea">
-			<h3 id="historyPost" class="littletitle">历史帖子</h3>
-			
 		</div>
 
-		<div id="userPlate" class="mypost">
-			
-		</div>
-		<hr  style=" height:1px; border:none; border-top:1px dashed #2d5186;" width=80%>
+		<!-- history reply -->
+		<div id="userReply" class="thiefhandsome">
+			<hr  style=" height:1px; border:none; border-top:3px dashed #e2eb87;" width=90%>
+			<div id="replyTArea">
+				<h3 id="historyReply" class="littletitle">历史回复</h3>
+			</div>
 
-		<!-- 历史回复 -->
-		<div id="replyTArea">
-			<h3 id="historyReply" class="littletitle">历史回复</h3>
-			
-		</div>
-
-		<div id="userReply" class="myreply">
-			
-		</div>
-		<hr  style=" height:1px; border:none; border-top:1px dashed #2d5186;" width=80%>
-
-		<!-- 收藏 -->
-		<div>
-			<h3 class="littletitle">收藏</h3>
-		</div>
-
-		<div class="mycollect">
 		
 		</div>
 
+		<!-- collect -->
+		<!-- <div class="thiefhandsome">
+			<hr  style=" height:1px; border:none; border-top:3px dashed #e4d283;" width=90%>
+			<div>
+				<h3 class="littletitle">收藏</h3>
+			</div>
+
+			<div class="mycollect">
+			<a>无asdjflas;kjf;lkasjlkfja;slkjf;las;lfkasjlfkjas;ljf;laskj;flkasjlfkja;sljf;laskjdf;lkajskfj;lasjf;lkas;lfkjas;lfja;sljf</a>
+			</div>
+			<hr  style=" height:1px; border:none; border-top:1px solid #ccd0d2;" width=85%>
+
+		</div> -->
+		
 	</body>
 </html>

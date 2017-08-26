@@ -2,6 +2,7 @@
 	
 	body {
 		margin: 0 0;
+		background-color: #f7f7f7;
 		/*background-image: url(../static/ll.jpg);
 		background-attachment:fixed;
 		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../static/ll.jpg', sizingMethod='scale');
@@ -16,7 +17,7 @@
 	.title {
 		//position: fixed;
 		width: 100%;
-		height: 55px;
+		height: 46px;
 		margin: 0;
 		line-height: 50px;
 		text-align: center;
@@ -27,34 +28,116 @@
 		//#397FE9
 	}
 
+	.back {
+		display: block;
+		float: left;
+		font-size: 18px;
+		color: rgb(255, 255, 255);
+		margin-top: 10px;
+		line-height: 25px;
+		padding: 2px 4px;
+		margin-right: 2%;
+		margin-left: 2%;
+		text-decoration: none;
+		box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.78);
+		border-radius: 5px;
+		background: rgba(199, 189, 189, 0.2);
+	}
+
+	#exit {
+		float:right;
+	}
+
 	.headshot {
+		position: relative;
+		width: 100%;
+		height: 160px;
 		border:0px solid #ccc;
 		overflow: hidden;
-		margin:10px 5%;
-		
-		//text-align:center;
-		
+		margin:10px 1%;
+		border-bottom: 1px solid #e7e7e7;
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.85);
+		z-index: 0;
+		//text-align:center;		
 	}
-	.headshot img{
-		z-index: 2; 
-	}
-	.headshot input 
-	{ 
-		position: absolute; 
-		width: 150px; 
-		height: 150px; 
-		line-height: 40px; 
-		font-size: 23px; 
-		filter: "alpha(opacity=0)"; 
-		filter: alpha(opacity=0); 
-		-moz-opacity: 0;  
-		cursor: pointer; 
-		z-index: 1; 
-		opacity: 0;  
-		top: 50px; 
-		left: 10px;
 
-	} 
+	/*.headshot:before {
+		position: absolute;
+		left: 10px;
+		top: -20px;
+		width: 100%;
+		height: 100px;
+		border:0px solid #ccc;
+		overflow: hidden;
+		margin:10px 1%;
+		border-bottom: 1px solid #e7e7e7;
+		border-radius: 10px;
+		background: red;
+		z-index: 6;
+		//text-align:center;		
+	}
+	.headshot:after {
+		position: absolute;
+		border:0px solid #ccc;
+		overflow: hidden;
+		margin:10px 1%;
+		border-bottom: 1px solid #e7e7e7;
+		border-radius: 10px;
+		background: rgba(255, 25, 255, 0.85);
+		z-index: -1;
+		//text-align:center;		
+	}*/
+
+	.headshot img{
+		position: relative;
+		margin-left: 20px;
+		border-radius: 5px;
+		border: 3px solid rgba(255, 255, 255, 0.85);
+		z-index: 10;
+	}
+
+	.sand {
+		float: left;
+		display: inline-block;
+		padding: 4px 8px;
+		margin-left: 5px;
+		margin-bottom: 10px;
+		font-size: 10px;
+		line-height: 20px;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		color: #333333;
+		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+		background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+		background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+		border: 1px solid #cccccc;
+		border-bottom-color: #b3b3b3;
+	    -webkit-border-radius: 4px;
+	    -moz-border-radius: 4px;
+		border-radius: 4px;
+	    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	}
+
+	.thiefhandsome {
+		margin: 20px 0%;
+		border-bottom: 1px solid #e7e7e7;
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.85);
+	}
+
 	.littletitle {
 		display: inline-block;
 		margin: 0;
@@ -66,6 +149,7 @@
 		border-radius: 10px;
 		transform: skew(-10deg);
 		box-sizing: content-box;
+		box-shadow: 0px 0px 20px 0px rgba(121, 140, 138, 0.31);
 		line-height: 30px;
 		margin-left: 10px;
 	}
@@ -81,10 +165,63 @@
 		font-family: 微软雅黑;
 	}
 
+	xmp {
+    	font-family: 微软雅黑;
+    	margin-top: 8px;
+    	margin-bottom: 1px;
+    	line-height: 1.2;
+    	overflow: hidden;
+    	height: 21;
+    	text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+    	white-space: nowrap;
+    	text-decoration: none;
+    }
+
 	.mypost {
 		border:0px solid #ccc;
 		font-family: 微软雅黑;
-		margin-top: 1%;
+		margin-top: 1px;
+		margin-left: 40px;
+		width: 60%;
+		overflow:hidden;
+		text-overflow:ellipsis;
+        -o-text-overflow:ellipsis;
+        -webkit-text-overflow:ellipsis;
+        -moz-text-overflow:ellipsis;
+        white-space:nowrap;
+        cursor: pointer;
+	}
+	.mypost a{
+    	text-decoration: none;
+    	color: black;
+	}
+
+	#delPost {
+		float: right;
+    	margin-right: 5%;
+	}
+
+	.Plate {
+    	font-family: 微软雅黑;
+    	line-height: 1.2;
+    	overflow: hidden;
+    	height: 21;
+    	text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+    	white-space: nowrap;
+    	cursor: pointer;
+    	text-decoration: none;
+    }
+
+	.myreply {
+		border:0px solid #ccc;
+		font-family: 微软雅黑;
+		margin-top: 1PX;
 		margin-left: 40px;
 		width: 60%;
 		overflow:hidden;
@@ -96,20 +233,29 @@
         cursor: pointer;
 	}
 
-	.myreply {
-		border:0px solid #ccc;
-		font-family: 微软雅黑;
-		margin-top: 1%;
-		margin-left: 40px;
-		width: 60%;
-		overflow:hidden;
-		text-overflow:ellipsis;
-        -o-text-overflow:ellipsis;
-        -webkit-text-overflow:ellipsis;
-        -moz-text-overflow:ellipsis;
-        white-space:nowrap;
-        cursor: pointer;
+	.myreply a{
+    	text-decoration: none;
+    	color: black;
 	}
+
+	#delReply {
+		float: right;
+    	margin-right: 5%;
+    }
+
+    .Reply {
+    	font-family: 微软雅黑;
+    	line-height: 1.2;
+    	overflow: hidden;
+    	height: 21;
+    	text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+    	white-space: nowrap;
+    	cursor: pointer;
+    	text-decoration: none;
+    }
 
 	.mycollect {
 		border:0px solid #ccc;
@@ -126,76 +272,71 @@
         cursor: pointer;
 	}
 
-	.clear {
-		clear: both;
-	}
-	.paging {
-	margin: 2px 1px 1px 1px;
-	padding: 0;
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	border: 1px solid #CCCCCC;
-	border-radius: 50%;
-	text-align: center;
-	font-family: Microsoft YaHei;
-	color: #333333;
-	line-height: 15.5px;
-	font-size: 5px;
-	white-space: nowrap;
-}
+	#delCollect {
+		float: right;
+    	margin-right: 5%;
+    }
 
-.paging:hover {
-	cursor: pointer;
-	color: white;
-	background-color: #BBBBBB;
-	opacity:0.9;
-	filter:alpha(opacity=90);
-	transition: 0.3s;
-}
+	.Collect {
+    	font-family: 微软雅黑;
+    	line-height: 1.2;
+    	overflow: hidden;
+    	height: 21;
+    	text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+    	white-space: nowrap;
+    	cursor: pointer;
+    	text-decoration: none;
+    }
 
-.back {
-	display: block;
-	float: left;
-	font-size: 18px;
-	color: rgb(255, 255, 255);
-	margin-top: 10px;
-	line-height: 30px;
-	padding: 2px 4px;
-	margin-right: 2%;
-	margin-left: 2%;
-	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.78);
-	border-radius: 5px;
-	background: rgba(199, 189, 189, 0.2);
-}
-#exit {
-	float:right;
-}
-#delPost{
-	float: right;
-    margin-right: 5%;
-    
-}
-#delReply{
-	float: right;
-    margin-right: 5%;
-    
-}
-
-.clickTitle{
+	.clickTitle{
 		display: inline-block;
 		margin: 0;
 		padding: 0;
 		width: 100px;
 		height: 30px;
 		text-align:center;
-		border: 1px solid #8cb3ee;
+		border: 1px solid #e63b73;
+		//#8cb3ee
 		border-radius: 10px;
 		transform: skew(-10deg);
 		box-sizing: content-box;
 		line-height: 30px;
 		margin-left: 10px;
-		box-shadow: 0px 0px 20px 0px #0909f7;
+		box-shadow: 0px 0px 20px 0px #630505;
+		//#0909f7
     	color: rgb(255, 255, 255);
-    	background: #3783f8;
-}
+    	background: #c13535;
+    	//#3783f8
+    }
+
+    .paging {
+		margin: 2px 1px 1px 1px;
+		padding: 0;
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		border: 1px solid #CCCCCC;
+		border-radius: 50%;
+		text-align: center;
+		font-family: Microsoft YaHei;
+		color: #333333;
+		line-height: 15.5px;
+		font-size: 5px;
+		white-space: nowrap;
+    }
+
+    .paging:hover {
+		cursor: pointer;
+		color: white;
+		background-color: #BBBBBB;
+		opacity:0.9;
+		filter:alpha(opacity=90);
+		transition: 0.3s;
+    }
+
+	.clear {
+		clear: both;
+	}

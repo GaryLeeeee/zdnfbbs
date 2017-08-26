@@ -2,13 +2,7 @@
 
 body {
 	margin: 0 0;
-	background-image: url(../images/ll.jpg);
-	background-attachment:fixed;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/ll.jpg', sizingMethod='scale');
-	-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/ll.jpg', sizingMethod='scale');
-	background-size: cover;
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
+	
 }
 
 a {
@@ -27,6 +21,7 @@ a {
 
 .back {
 	display: block;
+	border: 0px;
 	float: left;
 	font-size: 18px;
 	color: rgb(255, 255, 255);
@@ -178,11 +173,12 @@ a {
 }
 
 .sand{
-	float: left;
+	
 	height: 30px;
 	width: 19%;
-	margin-top: 76px;
-	margin-left: 2%;
+	position: absolute;
+    right: 5%;
+    bottom: 20px;
 	background-color: #C4C4C4;
 	background: rgba(68,42,86, 0.3);
 	border-radius:8px;

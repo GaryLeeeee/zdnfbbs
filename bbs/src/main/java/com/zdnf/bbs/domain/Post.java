@@ -1,6 +1,7 @@
 package com.zdnf.bbs.domain;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 /**
@@ -8,9 +9,11 @@ import javax.validation.constraints.Size;
  */
 public class Post {
     public int id;
+    @NotNull
     public String BelongTo;
-    @Size(min=1,max=25)
+    @Size(min=1,max=25,message = "标题长度为1-25个字符")
     public String title;
+    @NotNull
     public String author;
     public int num=0;
     public String LastOne;

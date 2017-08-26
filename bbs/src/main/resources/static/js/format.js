@@ -26,12 +26,16 @@ function xssFormat(postContent){
 		postContent=postContent.replace(/<script>/g, "<xmp><script></xmp>");
 		postContent=postContent.replace(/<\/script>/g, "<xmp></script></xmp>");
 	}
-	if(postContent.search(/style=/)!=-1){
-		postContent=postContent.replace(/style=/g, "<xmp>style</xmp>");
-	}
 	if(postContent.search(/javascript:/)!=-1) postContent=postContent.replace(/javascript:/g, "<xmp>  javascript:  </xmp>");
 	if(postContent.search(/<from>/)!=-1) {
 		postContent=postContent.replace(/<\/from>/g, "<xmp></from></xmp>");
+	}
+	if(postContent.search(/style=/)!=-1) {
+		postContent=postContent.replace(/style=/g, "<xmp>style=</xmp>");
+	}
+
+	if(postContent.search(/class="img" <xmp>style=<\/xmp>/)!=-1) {
+		postContent=postContent.replace(/class="img" <xmp>style=<\/xmp>/g, "class='img' style=");
 	}
 	console.log(postContent);
 	return postContent;

@@ -125,8 +125,8 @@ public class UserApiController {
     //一个参数 文件名
     @RequestMapping("token")
     public String UpToken(String FileName) {
-        Auth auth = Auth.create("dcNxos-8d9hb222GRRyI5dWlsMI0hARssZA_Bspn", "_NT5SwHFOKdCMYdlEAHf1QsQABtW1VzACBEdEkaS");
-        return auth.uploadToken("zdnfbbs", FileName);
+        Auth auth = Auth.create("", "");
+        return auth.uploadToken("", FileName);
 
     }
 

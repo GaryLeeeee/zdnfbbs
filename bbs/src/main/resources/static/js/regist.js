@@ -8,7 +8,8 @@ $(document).ready(function(){
 function userNameFormat(){
 	$("input[name='name']").blur(function(){
 		var rName = $("input[name='name']").val();
-		if(rName.length<2||rName.length>10){
+		var reg = /^.*[~!@#\$%\^&\*\(\)_+\-=\[\]\{\}\\\|\'\";:,\<\.\>\/\?\s+].*$/;
+		if(rName.length<2||rName.length>10||reg.test(rName)){
 			$("#useNameRepeat").css('display','inline-block');
 		}
 		else{
@@ -42,8 +43,9 @@ function passwdFormat(){
 function passwdReapeat(){
 	
 	$("input[name='rePasswd']").blur(function(){
+		var Passwd = $("input[name='passwd']").val();
 		var rPasswd = $("input[name='rePasswd']").val();
-		if(rPasswd.length<8||rPasswd.length>20){
+		if(Passwd!=rPasswd){
 			$("#passwdRepeat").css('display','inline-block');
 		}
 		else{

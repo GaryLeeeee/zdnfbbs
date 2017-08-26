@@ -60,7 +60,7 @@ public class LoginController {
     @Autowired
     AlidayuDao AlidayuDao;
 
-    public String ToMd5(String str) throws NoSuchAlgorithmException {
+    private String ToMd5(String str) throws NoSuchAlgorithmException {
         String res="skyisblue"+str;
         MessageDigest md =MessageDigest.getInstance("md5");
         md.update(res.getBytes());
@@ -81,7 +81,7 @@ public class LoginController {
             telcode="1";
         }
         if (!verify.equals(telcode)){
-              return "验证码输入错误";
+            return "验证码输入错误";
         }
         user.setPower("0");
         LoginService.adduser(user);

@@ -238,7 +238,7 @@ function postPagination(){//帖子回复的分页
 
 	}
 }
-function replyNew(){
+function replyNew(){//回复功能
 	var author = checkLoginStatus();
 	var postId = checkPostCookie();
 	if(!author) {
@@ -247,18 +247,18 @@ function replyNew(){
 	}
 	else{
 	$(".back").attr("href","/post?id="+postId);
-	$(".sand").off('click').on('click',function(){//回复功能
+	$(".sand").off('click').on('click',function(){
 			$(this).off('click');
-			var sandContent = $("#editor").val();
+			var sandContent = $("#editor").html();
 			if(!isNull(sandContent)){
+				if($(this).text()!="等待"){
 				var nowTime = new Date();
 				var month = nowTime.getMonth()+1;
 				var postTime = nowTime.getFullYear()+"-"+month+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"
 				+nowTime.getSeconds();
-				$.post("/api/replay/add","father="+postId+"&author="+author+"&content="+sandContent+"&times="+postTime,function(data){
-					if(data){
+				$.post("/api/replay/add",{"father":postId,"author":author,"content":sandContent,"times":postTime},function(data){
+					if(!isNull(data)){
 						$(".sand").html("发送中");
-
 						setTimeout(function(){
 							window.location.href="/post?id="+postId;
 						},500)
@@ -268,6 +268,8 @@ function replyNew(){
 					}
 				}
 				)
+			}
+			else alert("图片上传中，不可发送");
 			}
 			else alert("输入内容不能为空");
 
@@ -305,7 +307,7 @@ function postReplay(postpage){//帖子内容及回复初始化
 				}
 				for(var i=0;i<postContent.length;i++){
 					if(i!=0||postpage!=1){
-						if(postContent[i].isdeleted==1){continue;}
+						if(postContent[i].isdeleted==1||postContent[i].content=='undefined'){continue;}
 						var floorNum = (postpage-1)*10+i+1;
 						var floorObj  = "<div id='floor_" +postContent.id + "'><div class='me'>"+"<a href=\"/mypage?name="+escape(postContent[i].author)+"\"><img class='headshot' src='/api/user/img?id="+postContent[i].author+"' width=80px height=80px ></a><div id='floorName_" +postContent[i].id+ "' class='name'>名字</div></div><div id='floorContent_"+postContent[i].id+"  ' class='message' >"+xssFormat(postContent[i].content)+"</div><div class='tail'><span id='floorTime_"+postContent[i].id+"' class='tailtime'>time</span><span class='tailfloor'>第"+floorNum+"楼</span></div><div class='clear'></div> <hr/></div>"
 						$("#page-content").before(floorObj);

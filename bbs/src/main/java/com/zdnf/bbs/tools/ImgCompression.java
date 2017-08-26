@@ -14,7 +14,7 @@ public class ImgCompression {
     private int width;
     private int height;
     @SuppressWarnings("deprecation")
-    public static void run(String fileName) throws Exception {
+    public void run(String fileName) throws Exception {
         ImgCompression imgCom = new ImgCompression(GlobalConfig.FilePath+fileName);
         imgCom.resizeFix(200, 200,fileName);
     }

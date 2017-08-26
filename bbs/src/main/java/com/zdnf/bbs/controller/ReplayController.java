@@ -57,7 +57,6 @@ public class ReplayController {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
             return "usererror";
         }
-        System.out.println(replay.getTimes());
         Calendar c = Calendar.getInstance();
         int mon=c.get(Calendar.MONTH) + 1;
         String time=""+c.get(Calendar.YEAR)+"-"+
@@ -67,7 +66,6 @@ public class ReplayController {
                 c.get(Calendar.MINUTE)+":"+
                 c.get(Calendar.SECOND);
         replay.setTimes(time);
-        System.out.print(replay.getTimes());
         if (ReplayService.add(replay)) return "true";
         return "false";
     }
