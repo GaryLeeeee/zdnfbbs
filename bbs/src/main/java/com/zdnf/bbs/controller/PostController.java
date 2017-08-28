@@ -3,7 +3,6 @@ package com.zdnf.bbs.controller;
 import com.zdnf.bbs.dao.UserApiDao;
 import com.zdnf.bbs.domain.Post;
 import com.zdnf.bbs.service.PostService;
-import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +11,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+
 
 /**
  * Created by Skysibule on 2017/5/12.
@@ -109,7 +110,8 @@ public class PostController {
     @RequestMapping("searchpost")
     @ResponseBody
     public List<Post> SearchPost(String keyword,int page){
-        return PostService.SearchPost(keyword, page);
+        //解析一下json，字符串切割
+        return PostService.SearchPost(keyword.substring(12,keyword.length()-2), page);
     }
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {

@@ -41,3 +41,17 @@ function xssFormat(postContent){
 	return postContent;
 
 }
+
+var keywordFormat = function(titleContent,keyword){
+	titleContent = titleContent.replace(keyword,"<span class='red'>"+keyword+"</span>");
+	return titleContent;
+}
+
+var searchReplyFormat = function(titleContent,keyword){
+	if(titleContent.indexOf(keyword)>15){
+		titleContent = titleContent.slice(titleContent.indexOf(keyword));
+		titleContent = "..."+titleContent;
+	}
+	titleContent = keywordFormat(titleContent,keyword);
+	return titleContent;
+}

@@ -86,12 +86,11 @@ $(document).ready(function(){
         var ImageDiv = "<img src='" + sourceLink + "'class='img' style='width:100%;overflow-x:hidden;height:auto;'>";
         editor.focus();
         document.execCommand('insertHTML', false, ImageDiv);
+        $("#filesUpload").attr('id','Null');
       },
       'Error': function(up, err, errTip) {
         //上传出错时，处理相关的事情
-        console.log(err);
-        console.log(errTip);
-        alert("上传出错，请稍后重试");
+        alert(errTip);
 
       },
       'UploadComplete': function() {

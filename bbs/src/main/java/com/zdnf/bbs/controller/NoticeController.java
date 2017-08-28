@@ -20,15 +20,15 @@ public class NoticeController {
     NoticeService NoticeService;
 
     //返回公告标题 已验证通过
-    @RequestMapping("title")
-    public List<String> GetAllTitle(){
-        return NoticeService.GetAllTitle();
+    @RequestMapping("getall")
+    public List<Notice> GetAll(){
+        return NoticeService.GetAll();
     }
 
     //返回公告的内容 已验证通过
     @RequestMapping("content")
-    public String GetContentByTitle(String title){
-        return NoticeService.GetContentByTitle(title);
+    public Notice GetContentByTitle(int id){
+        return NoticeService.GetContentByTitle(id);
     }
 
     //添加公告 已验证通过
@@ -41,8 +41,8 @@ public class NoticeController {
 
     //删除公告 已验证通过
     @RequestMapping("delete")
-    public String DeleteByTitle(String title){
-        return NoticeService.DeleteByTitle(title);
+    public String DeleteByTitle(int id){
+        return NoticeService.DeleteByTitle(id);
     }
 
     //TODO! 这俩以后再写 懒

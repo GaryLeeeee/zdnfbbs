@@ -54,7 +54,7 @@
 		height: 160px;
 		border:0px solid #ccc;
 		overflow: hidden;
-		margin:10px 1%;
+		margin:10px 0px;
 		border-bottom: 1px solid #e7e7e7;
 		border-radius: 10px;
 		background: rgba(255, 255, 255, 0.85);

@@ -5,5 +5,5 @@ package com.zdnf.bbs.tools;
  */
 public class GlobalConfig {
     public static final String FilePath="D:\\bbs\\userimgs\\";
-    public static String token="";
+    public static String token="skyisbule";
 }

@@ -38,7 +38,7 @@ public class UserApiService {
     }
 
     public boolean up(MultipartFile file,String id){
-        //Boolean IsExist=false;
+        Boolean IsExist=false;
 
         if (file.isEmpty())return false;
         //文件路径
@@ -53,7 +53,7 @@ public class UserApiService {
         if (dest.exists()&dest.isFile()){
             dest.delete();
 
-         //   IsExist = true;//判断文件存在
+            IsExist = true;//判断文件存在
         }
         try {
             //将文件写入硬盘
@@ -65,7 +65,7 @@ public class UserApiService {
             /**
              * 这里是头像上传七牛的接口，暂时去掉。
              */
-           // FileUp.upload(id,UserApiDao.GetNameById(id),IsExist);
+            FileUp.upload(id,UserApiDao.GetNameById(id),IsExist);
             return true;
         } catch (IllegalStateException e) {
             e.printStackTrace();

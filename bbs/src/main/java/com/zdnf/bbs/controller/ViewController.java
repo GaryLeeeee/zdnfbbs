@@ -50,7 +50,7 @@ public class ViewController {
 
     //返回公告页面
     @RequestMapping("notice")
-    public String MyPage(){return "notice";}
+    public String notice(){return "公告";}
 
     //板块点进去后 显示帖子
     @RequestMapping("platepost")
@@ -71,6 +71,10 @@ public class ViewController {
     //返回个人页面
     @RequestMapping("mypage")
     public String Person(){return "个人页面";}
+
+    //公告
+    //@RequestMapping("notice")
+   // public String notice(){return "公告";}
 
 
     @RequestMapping("skyisbule")

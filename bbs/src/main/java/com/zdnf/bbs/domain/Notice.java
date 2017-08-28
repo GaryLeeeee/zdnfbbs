@@ -7,13 +7,13 @@ import javax.validation.constraints.NotNull;
  * 公告的实体类
  */
 public class Notice {
-    @NotNull
+    private int id;
     private String title;
-    @NotNull
     private String content;
-    @NotNull
     private String time;
 
+    public void setId(int id){this.id=id;}
+    public int getId(){return id;}
     public void setTitle(String title){this.title=title;}
     public String getTitle(){return title;}
     public void setContent(String content){this.content=content;}

@@ -102,7 +102,7 @@ public class ReplayController {
     //模糊搜索
     @RequestMapping("searchreply")
     public List<Replay> SearchReply(String keyword,int page){
-        return ReplayService.SearchReply(keyword,page);
+        return ReplayService.SearchReply(keyword.substring(12,keyword.length()-2),page);
     }
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {

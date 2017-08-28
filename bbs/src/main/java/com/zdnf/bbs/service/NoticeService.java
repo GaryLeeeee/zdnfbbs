@@ -24,15 +24,15 @@ public class NoticeService {
         }
     }
 
-    public List<String> GetAllTitle(){return NoticeDao.GetAllTitle();}
+    public List<Notice> GetAll(){return NoticeDao.GetAll();}
 
-    public String GetContentByTitle(String title){
-        return NoticeDao.GetContentByTitle(title);
+    public Notice GetContentByTitle(int id){
+        return NoticeDao.GetContentById(id);
     }
 
-    public String DeleteByTitle(String title){
+    public String DeleteByTitle(int id){
         try{
-            NoticeDao.DeleteByTitle(title);
+            NoticeDao.DeleteById(id);
         }catch (Exception e){
             return e.toString();
         }finally {

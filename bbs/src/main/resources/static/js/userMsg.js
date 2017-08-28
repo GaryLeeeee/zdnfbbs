@@ -54,8 +54,7 @@ function msgInit(){//个人信息初始化
  		})
  		$("#exit").click(function(){
  			DelCookie("id");
- 			DelCookie("key");
- 			
+ 			DelCookie("key");	
  		})
  	}
  	else
@@ -90,14 +89,14 @@ function PlateContent(page){//发过的帖子初始化
 				$("#userPlate").append(hrObj);
 				
 			}
-			$("#userPlate").append("<div class='button' id='morePost' style='margin:10px 32%'>点击加载更多</div>");
+			$("#userPlate").append("<div class='button' id='morePost' style='margin:10px 30%'>点击加载更多</div>");
 			$("#morePost").click(function(page){
 				$("#postTArea").off('click',"#delPost");
 				PlateContent(nextPage);
 			});
 		}
 		else{
-			$("#userPlate").append("<p style='margin:10px 32%'>无</p>");
+			$("#userPlate").append("<p style='margin:10px 30%'>无</p>");
 		}
 
 	})
@@ -105,7 +104,7 @@ function PlateContent(page){//发过的帖子初始化
 		if($("#delPost").hasClass('littletitle')){
 			$("#delPost").removeClass('littletitle');
 			$("#delPost").toggleClass('clickTitle');
-			$(".Plate").each(function(){$(this).attr("href","javascritp:void(0);");}).click(function(){
+			$(".mypost>a").each(function(){$(this).attr("href","javascritp:void(0);");}).click(function(){
 				var idStr = $(this).attr("id");
 				idStr = idStr.replace("postEver","");
 				$(this).remove();
@@ -119,7 +118,7 @@ function PlateContent(page){//发过的帖子初始化
 		else{
 			$("#delPost").removeClass('clickTitle');
 			$("#delPost").toggleClass('littletitle');
-			$(".Plate").each(function(){
+			$(".mypost>a").each(function(){
 				var idStr = $(this).attr("id");
 				idStr = idStr.replace("postEver","");
 				$(this).attr("href","./post?id="+idStr);
@@ -139,13 +138,13 @@ function ReplyContent(page){//收到的评论初始化
 		if(!isNull(userData)){
 			for(var i in userData){
 				if(userData[i].isfirst==1) continue;
-				var userReplyObj = "<div  class='myreply'><a id='replyEver"+userData[i].id+"'  href='./post?id="+userData[i].father+"'><xmp>"+userData[i].content+"</xmp></a></div>";
+				var userReplyObj = "<div  class='myreply'><a id='replyEver"+userData[i].id+"'  href='./post?id="+userData[i].father+"#"+userData[i].id+"'><xmp>"+userData[i].content+"</xmp></a></div>";
 				$("#userReply").append(userReplyObj);
 				$("#userReply").append(hrObj);
 				
 			}
 
-			$("#userReply").append("<div class='button' id='moreReply' style='margin:10px 32%'>点击加载更多</div>");
+			$("#userReply").append("<div class='button' id='moreReply' style='margin:10px 30%'>点击加载更多</div>");
 			$("#moreReply").click(function(page){
 				$("#replyTArea").off('click',"#delReply");
 				ReplyContent(nextPage);
@@ -153,7 +152,7 @@ function ReplyContent(page){//收到的评论初始化
 			
 		}
 		else{
-			$("#userReply").append("<p style='margin:10px 32%'>无</p>");
+			$("#userReply").append("<p style='margin:10px 30%'>无</p>");
 		}
 
 	})
@@ -164,7 +163,7 @@ function ReplyContent(page){//收到的评论初始化
 		if($("#delReply").hasClass('littletitle')){
 			$("#delReply").removeClass('littletitle');
 			$("#delReply").toggleClass('clickTitle');
-			$(".Reply").each(function(i){hrefTemp[i] = $(this).attr("href");$(this).attr("href","javascritp:void(0);");}).click(function(){
+			$(".myreply>a").each(function(i){hrefTemp[i] = $(this).attr("href");$(this).attr("href","javascritp:void(0);");}).click(function(){
 				var idStr = $(this).attr("id");
 				idStr = idStr.replace("replyEver","");
 				$(this).remove();
@@ -176,7 +175,7 @@ function ReplyContent(page){//收到的评论初始化
 		else{
 			$("#delReply").removeClass('clickTitle');
 			$("#delReply").toggleClass('littletitle');
-			$(".Reply").each(function(i){
+			$(".myreply>a").each(function(i){
 				$(this).attr("href",hrefTemp[i]);
 			}).click(function(){ return;});
 		}

@@ -9,16 +9,16 @@
         INSERT INTO notice VALUES (NULL,#{Notice.title},#{Notice.content},#{Notice.time})
     </insert>
 
-    <select id="GetAllTitle" resultType="java.lang.String">
-        SELECT title from notice
+    <select id="GetAll" resultType="com.zdnf.bbs.domain.Notice">
+        SELECT id,title from notice ORDER BY id DESC Limit 5
     </select>
 
-    <select id="GetContentByTitle" resultType="java.lang.String">
-        SELECT content from notice WHERE title=#{title}
+    <select id="GetContentById" parameterType="java.lang.Integer" resultType="com.zdnf.bbs.domain.Notice">
+        SELECT * from notice WHERE id=#{id}
     </select>
 
-    <delete id="DeleteByTitle" parameterType="com.zdnf.bbs.domain.Notice">
-        DELETE FROM notice WHERE title=#{title}
+    <delete id="DeleteByTitle" parameterType="java.lang.Integer">
+        DELETE FROM notice WHERE id=#{id}
     </delete>
 
 </mapper>
