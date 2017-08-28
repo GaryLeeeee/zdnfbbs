@@ -17,9 +17,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class FileUp {
-    public final String accessKey="dcNxos-8d9hb222GRRyI5dWlsMI0hARssZA_Bspn";
-    public final String secretKey = "_NT5SwHFOKdCMYdlEAHf1QsQABtW1VzACBEdEkaS";
-    public final String bucket = "touxiang";
+    public final String accessKey="dcNxos-";
+    public final String secretKey = "";
+    public final String bucket = "";
 
 
     public String upload(String id, String username, Boolean IsExist) {

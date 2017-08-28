@@ -31,8 +31,8 @@ public class AliDayu {
     private final String domain = "dysmsapi.aliyuncs.com";
 
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-    private final String accessKeyId = "LTAI8UBTVHmbCHfQ";
-    private final String accessKeySecret = "CtCBHZVebDVP60ORB8pePOvmf9ATr7";
+    private final String accessKeyId = "";
+    private final String accessKeySecret = "";
 
     public SendSmsResponse sendSms(String telnum,int code) throws ClientException {
 
