@@ -45,15 +45,13 @@ function checkAnchor() {
 						flag = false;
 					} else {
 						for (var j = 0; j < postContent.length; j++) {
-							if (postContent[j].id == strsAnchor) {
-								postReplay(i,true);
+							if (postContent[j].id == strsAnchor) {	
 								flag = false;
 								break;
-							} else {
-								postReplay(i,false);
-								i++;
+							} 
 							}
-						}
+						postReplay(i,!flag);
+						i++;
 					}
 				}
 			})
@@ -361,7 +359,7 @@ function postReplay(postpage,anchorFlag) { //帖子内容及回复初始化
 				}
 			} else {
 				$("#morePost").remove();
-				alert("已经没有更多回复了_(xз」∠)_");
+				console.log("已经没有更多回复了_(xз」∠)_");
 			}
 
 		})

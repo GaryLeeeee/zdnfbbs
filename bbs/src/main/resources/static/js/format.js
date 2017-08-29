@@ -55,3 +55,11 @@ var searchReplyFormat = function(titleContent,keyword){
 	titleContent = keywordFormat(titleContent,keyword);
 	return titleContent;
 }
+function isUTF8MB4(str){
+	var i;
+	for(i=0;i<str.length;i++){
+	var value = str.charCodeAt(i);
+	if( value < 0x080|| value < 0x0800) {return false;}
+	else{return true;}
+	}
+}
