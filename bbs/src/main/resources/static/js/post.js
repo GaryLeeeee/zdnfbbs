@@ -25,12 +25,18 @@ function checkUserStatus() { //检查登录人
 }
 
 function checkAnchor() {
-	var url = location.hash;	
-	if (isNull(url)) {
-		postReplay(1,false);
+	var url = location.hash; 
+	var num = 'x';
+	if(url.indexOf('floorContent_')!=-1){
+		var strs= new Array(); //定义一数组 
+		strs = url.split('_');
+		num = strs[1];
+	}
+	if (isNull(url)||isNull(num)||parseInt(num)==NaN) {
+		postReplay(1, false);
 		return;
 	} else {
-		var strsAnchor = url.substr(1);
+		var strsAnchor = parseInt(num);
 		var strsId = checkPostCookie();
 		var i = 1;
 		var flag = true;
@@ -45,18 +51,18 @@ function checkAnchor() {
 						flag = false;
 					} else {
 						for (var j = 0; j < postContent.length; j++) {
-							if (postContent[j].id == strsAnchor) {	
+							if (postContent[j].id == strsAnchor) {
 								flag = false;
 								break;
-							} 
 							}
-						postReplay(i,!flag);
+						}
+						postReplay(i, !flag);
 						i++;
 					}
 				}
 			})
 		}
-		
+
 	}
 }
 
@@ -191,12 +197,21 @@ function postInit(pageNum, postNum) { //板块帖子初始化
 			})
 		} else {
 			$("#morePost").remove();
-			alert("已经没有更多帖子了_(xз」∠)_");
+			console.log("已经没有更多帖子了_(xз」∠)_");
 		}
 	})
-	$("#morePost").unbind('click').bind('click', function() {
+	$("#morePost").off('click').on('click', function() {
 		postInit(parseInt(pageNum) + 1, parseInt(postNum) + 10);
 	})
+	$(window).scroll(function() {
+					var keyword = $('input').val();
+					var scrollTop = $(this).scrollTop();　　
+					var scrollHeight = $(document).height();　　
+					var windowHeight = $(this).height();　　
+					if (scrollHeight - scrollTop - windowHeight <= 1 ) {
+						$("#morePost").click();
+					}
+				})
 
 
 
@@ -258,7 +273,7 @@ function postPagination() { //帖子回复的分页
 					$(this).click(function() {
 						if (i == 1) {
 							location.reload(true);
-						} else postReplay(i,false);
+						} else postReplay(i, false);
 					})
 				})
 			}
@@ -309,7 +324,7 @@ function replyNew() { //回复功能
 	}
 }
 
-function postReplay(postpage,anchorFlag) { //帖子内容及回复初始化
+function postReplay(postpage, anchorFlag) { //帖子内容及回复初始化
 	var url = window.location.search;
 	if (url.indexOf("?") != -1) {
 		var tempStr = url.substr(1);
@@ -350,16 +365,24 @@ function postReplay(postpage,anchorFlag) { //帖子内容及回复初始化
 					}
 				}
 				$("#morePost").off('click').on('click', function() {
-					postReplay(parseInt(postpage) + 1,false);
+					postReplay(parseInt(postpage) + 1, false);
 				})
-				if(anchorFlag){
+				$(window).scroll(function() {
+					var scrollTop = $(document).scrollTop();　　
+					var scrollHeight = $(document).height();　　
+					var windowHeight = $(this).height();　
+					if (scrollTop + windowHeight == parseInt(scrollHeight)-10&&!isNull($("#morePost").text())) {
+						console.log('底部翻页');
+						$("#morePost").click();
+					}
+				})
+				if (anchorFlag) {
 					var url = location.hash;
 					var strsAnchor = url.substr(1);
 					window.location.href = "#floorContent_" + strsAnchor;
 				}
 			} else {
 				$("#morePost").remove();
-				console.log("已经没有更多回复了_(xз」∠)_");
 			}
 
 		})

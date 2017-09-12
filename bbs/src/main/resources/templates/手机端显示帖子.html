@@ -10,12 +10,21 @@
   <meta name="viewport" content="width=320, user-scalable=no">
   <meta name="wap-font-scale" content="no">
   <link rel="apple-touch-icon" href="images/logo.jpg">
-<link rel="stylesheet" type="text/css" href="css/all_plate.css">
+<link rel="stylesheet" type="text/css" href="http://pic.zdnfbbs.cn/all.css">
   <link rel="stylesheet" type="text/css" href="css/buttonDIV.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/format.js"></script>
   <script type="text/javascript" src="js/cookie.js"></script>
       <script type="text/javascript" src="js/post.js"></script>
+      <script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
       <script type="text/javascript">
         $(document).ready(function () {
           topPostInit();

@@ -74,7 +74,6 @@ public class LoginController {
 
     //注册表单提交
     @RequestMapping(value = "/registing",method = RequestMethod.POST)
-    @ResponseBody
     public String registing(@Valid User user,String verify){
         String telcode=AlidayuDao.getCode(user.getTelnum());
         if (telcode==null){

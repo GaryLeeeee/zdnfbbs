@@ -3462,7 +3462,7 @@ select {
     #page-search .result-list .post .right {
       float: right; }
     #page-search .result-list .post .post-title {
-      display: block;
+      display: inline-block;
       color: black;
       font-size: 16px;
       margin: 3px 0; 
@@ -3471,7 +3471,7 @@ select {
         display: inline-block;
         width: 140px; }
         #page-search .result-list .post .reply-title {
-      display: block;
+      display: inline-block;
       color: black;
       font-size: 16px;
       margin: 3px 0; 

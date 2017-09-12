@@ -5,10 +5,20 @@
   <meta name="renderer" content="webkit" />
   <meta name="viewport" content="width=320, user-scalable=no" />
   <meta name="wap-font-scale" content="no" />
-<link rel="stylesheet" href="css/all.css?v15" />
+<link rel="stylesheet" href="http://pic.zdnfbbs.cn/all.css" />
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/strapdown.js"></script>
 <script type="text/javascript" src="js/format.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
 <script type="text/javascript">
   $(document).ready(function(){
     var userCookie = checkLoginStatus();
@@ -26,7 +36,7 @@
   <span class="logo">南巷BBS</span>
   <div class="search">
     <input data-role="top-search-text" type="text" placeholder="帖子、回复" />
-    <a data-action="top-search"><i class="iconfont"></i></a>
+    <a id="search" data-action="top-search"><i class="iconfont"></i></a>
   </div>
 </div>
 
@@ -52,13 +62,13 @@
         <span class="name">新生帮助</span>
       </div>
       <ul>
-                  <li><a class="post-title inline" href="#">开学</a>
+                  <li><a class="post-title inline" href="/notice?id=2">常用信息</a>
                   </li>                    
                   <li><a class="post-title inline" href="/platepost?id=4">跳蚤市场</a>
                   </li>                    
                   <li><a class="post-title inline" href="/platepost?id=11">电脑推荐</a>
                   </li>   
-                  <li><a class="post-title inline" href="#">BBS使用说明</a>
+                  <li><a class="post-title inline" href="/notice?id=1">BBS使用说明</a>
                   </li>                  
                                
       </ul>

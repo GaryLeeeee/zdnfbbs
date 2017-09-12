@@ -29,6 +29,15 @@
 	<script src="js/i18n/zh_CN.js" type="text/javascript"></script>
 	<script src="js/qiniu.js" type="text/javascript"></script>
 	<script src="js/pic.js" type="text/javascript"></script>
+	<script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
 </head>
 <body >
 

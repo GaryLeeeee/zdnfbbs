@@ -73,7 +73,7 @@ $(document).ready(function(){
         // var domain = up.getOption('domain');
         // var res = JSON.parse(info);
         var res = JSON.parse(info.response);
-        var sourceLink = "http://ospc42q93.bkt.clouddn.com/" + res.key; //获取上传成功后的文件的Url
+        var sourceLink = "http://pic.zdnfbbs.cn/" + res.key; //获取上传成功后的文件的Url
         var imgLink = Qiniu.imageMogr2({
           auto_orient: true,
           strip: true, // 布尔值，是否去除图片中的元信息

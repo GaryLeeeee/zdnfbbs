@@ -1,3 +1,18 @@
+
+function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 function isNull( str ){//判空
 	if ( str == "" ) return true;
 	var regu = "^[ ]+$";
@@ -43,7 +58,7 @@ function xssFormat(postContent){
 }
 
 var keywordFormat = function(titleContent,keyword){
-	titleContent = titleContent.replace(keyword,"<span class='red'>"+keyword+"</span>");
+	titleContent = titleContent.replace(keyword,"</xmp><xmp class='reply-title' style='color:#F18C73'>"+keyword+"</xmp><xmp class='reply-title'>");
 	return titleContent;
 }
 
@@ -59,7 +74,11 @@ function isUTF8MB4(str){
 	var i;
 	for(i=0;i<str.length;i++){
 	var value = str.charCodeAt(i);
-	if( value < 0x080|| value < 0x0800) {return false;}
-	else{return true;}
+	var arr = str.split("");
+	if( value > 0x8800) {
+		arr.splice(i,1);
+		str = arr.join(""); 
 	}
+	}
+	return str;
 }

@@ -50,10 +50,15 @@ public class PostController {
         if(!key.equals(ToMd5(UserApiDao.GetPasswdById(id)))){
             return "usererror";
         }
-        if (PostService.add(post)){
-            Thread.sleep(333);
-            return PostService.add2(post);
+        try {
+            if (PostService.add(post)){
+                Thread.sleep(333);
+                return PostService.add2(post);
+            }
+        }catch (Exception e){
+            return "false";
         }
+
         return "false";
     }
 
@@ -111,7 +116,8 @@ public class PostController {
     @ResponseBody
     public List<Post> SearchPost(String keyword,int page){
         //解析一下json，字符串切割
-        return PostService.SearchPost(keyword.substring(12,keyword.length()-2), page);
+        //return PostService.SearchPost(keyword.substring(12,keyword.length()-2), page);
+        return PostService.SearchPost(keyword, page);
     }
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {
@@ -120,4 +126,5 @@ public class PostController {
         md.update(res.getBytes());
         return new BigInteger(1,md.digest()).toString();
     }
+
 }

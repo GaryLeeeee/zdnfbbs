@@ -30,7 +30,7 @@
     </update>
 
     <select id="SearchReply" resultType="com.zdnf.bbs.domain.Replay">
-        SELECT * FROM reply WHERE content LIKE #{KeyWord} ORDER BY times DESC Limit #{page},10
+        SELECT * FROM reply WHERE content LIKE #{KeyWord} AND isdeleted=0 ORDER BY times DESC Limit #{page},10
     </select>
 
 </mapper>

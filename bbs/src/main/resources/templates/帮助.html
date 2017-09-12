@@ -6,12 +6,21 @@
   <meta name="viewport" content="width=320, user-scalable=no" />
   <meta name="wap-font-scale" content="no" />
   <link rel="canonical" href="https://bbs.pku.edu.cn/v2/home.php" />
-<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15" />
-<script src="https://bbs.pku.edu.cn/v2/mobile/libs/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://pic.zdnfbbs.cn/all.css" />
 <title>南巷</title>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/strapdown.js"></script>
 <script type="text/javascript" src="js/format.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
 <script type="text/javascript">
   $(document).ready(function(){
     var userCookie = checkLoginStatus();
@@ -21,6 +30,7 @@
     }
   })
 </script>
+
 <script type="text/javascript" src="js/search.js"></script>
 </head>
 <body>
@@ -67,9 +77,9 @@
         <a class="name" href="#">相关链接</a>
         </div>
         <ul>
-              <li><a href="#" class="post-link" /></a><a class="post-title" >电脑报修(免费)</a></li>
-              <li><a href="#" class="post-link" /></a><a class="post-title" >失物招领</a></li>
-              <li><a href="heartqiu.cn" class="post-link" /></a><a class="post-title" >
+              <li><a href="http://www.cybergear-cn.com/ACM/repair_system/Home/Index/addOrder" class="post-link" /></a><a class="post-title" >电脑报修(免费)</a></li>
+
+              <li><a href="http://st.zdnfbbs.cn" class="post-link" /></a><a class="post-title" >
               社团页面</a></li>
                              
           </ul>

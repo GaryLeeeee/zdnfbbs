@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>我的首页</title>
@@ -11,7 +12,15 @@
 		<script type="text/javascript" src="js/format.js"></script>
 		<script type="text/javascript" src="js/cookie.js"></script>
 		<script type="text/javascript" src="js/userMsg.js"></script>
-
+		<script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
 	</head>
 
 	<body>

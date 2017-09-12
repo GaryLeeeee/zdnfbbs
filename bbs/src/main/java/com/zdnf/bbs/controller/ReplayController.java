@@ -1,6 +1,7 @@
 package com.zdnf.bbs.controller;
 
 import com.zdnf.bbs.domain.Replay;
+import com.zdnf.bbs.service.PostService;
 import com.zdnf.bbs.tools.GlobalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -27,6 +28,8 @@ public class ReplayController {
     ReplayService ReplayService;
     @Autowired
     com.zdnf.bbs.dao.UserApiDao UserApiDao;
+    @Autowired
+    PostService PostService;
 
 
     //查找回复
@@ -66,7 +69,14 @@ public class ReplayController {
                 c.get(Calendar.MINUTE)+":"+
                 c.get(Calendar.SECOND);
         replay.setTimes(time);
-        if (ReplayService.add(replay)) return "true";
+        try{
+            ReplayService.add(replay);
+            return "true";
+        }catch (Exception e){
+            if (isfirst=='1'){
+                PostService.DeletePostById(replay.getFather());
+            }
+        }
         return "false";
     }
 
@@ -102,7 +112,7 @@ public class ReplayController {
     //模糊搜索
     @RequestMapping("searchreply")
     public List<Replay> SearchReply(String keyword,int page){
-        return ReplayService.SearchReply(keyword.substring(12,keyword.length()-2),page);
+        return ReplayService.SearchReply(keyword,page);
     }
 
     public String ToMd5(String str) throws NoSuchAlgorithmException {
@@ -111,5 +121,7 @@ public class ReplayController {
         md.update(res.getBytes());
         return new BigInteger(1,md.digest()).toString();
     }
+
+
 
 }

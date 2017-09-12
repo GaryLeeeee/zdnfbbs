@@ -5,12 +5,18 @@
   <meta name="renderer" content="webkit">
   <meta name="viewport" content="width=320, user-scalable=no">
   <meta name="wap-font-scale" content="no">
-  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="../js/format.js"></script>
-  <script type="text/javascript" src="../js/regist.js"></script>
-
-  <link rel="stylesheet" href="../css/all.css?" />
+  <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/js/format.js"></script>
+  <script type="text/javascript" src="/js/regist.js"></script>
+  <link rel="stylesheet" href="http://pic.zdnfbbs.cn/all.css" />
   <script type="text/javascript">
+      $(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
         function sub(){
           $(".warning-info").each(function(){
             if($(this).css("display")=="none"&&$("#useNameRepeat")&&$("#passwdLength")&&$("#passwdRepeat")&&$("#phoneLength")){

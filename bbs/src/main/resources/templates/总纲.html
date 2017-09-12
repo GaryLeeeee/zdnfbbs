@@ -8,7 +8,17 @@
 
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/strapdown.js"></script>
 <script type="text/javascript" src="js/format.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
 <script type="text/javascript">
   $(document).ready(function(){
     var userCookie = checkLoginStatus();
@@ -20,7 +30,7 @@
 </script>
 <script type="text/javascript" src="js/search.js"></script>
 
-  <link rel="stylesheet" href="css/all.css?v15">
+  <link rel="stylesheet" href="http://pic.zdnfbbs.cn/all.css">
 
   <title>[总纲]南巷BBS</title>
 
@@ -32,17 +42,17 @@
 <div id="top-search">
   <span class="logo">南巷BBS</span>
   <div class="search">
-    <input data-role="top-search-text" type="text" placeholder="帖子、回复">
-    <a data-action="top-search"><i class="iconfont"></i></a>
+    <input data-role="top-search-text" type="text" placeholder="帖子、回复" />
+    <a id="search" data-action="top-search"><i class="iconfont"></i></a>
   </div>
 </div>
 <div id="top-nav" >
-  <a href="/" >首页</a
-  ><a href="/mplate" class="active" >版面</a>
-  <a>新闻</a>
-
+  <a href="/" class="active" >首页</a
+  ><a href="/mplate" >版面</a>
+  <a href="/freshman">新生</a>
+  
   <a href="/m/login" id="l_or_p">登录</a>
-  </ul>
+  
   <a href="/help">帮助</a>
 </div>
 

@@ -5,10 +5,10 @@ var postSearch = function(word, pageNum) {
 	$('#replyS').css('color', '#959595');
 	$.post("/api/post/searchpost", {"keyword": word , "page": pageNum}, function(sPost) {
 		if (isNull(sPost)) {
-				$(".result-list").append("<div class='item post'><p class='post-title'><span>已无更多结果</span></p></div>");
+				$(".result-list").append("<div class='item post'><p class='post-title'><span class='.ending'>已无更多结果</span></p></div>");
 		} else {
 			for (var i in sPost) {
-				var userPlateObj = "<div class='item post'><a class='item-link' href='./post?id="+sPost[i].id +"'></a><p class='post-title'>"+keywordFormat(sPost[i].title,word)+"</p><p class='post-info'>"+sPost[i].author+"  "+dateFormat(sPost[i].lastTime)+"</p></div>";
+				var userPlateObj = "<div class='item post'><a class='item-link' href='./post?id="+sPost[i].id +"'></a><xmp class='post-title'>"+keywordFormat(sPost[i].title,word)+"</xmp><p class='post-info'>"+sPost[i].author+"  "+dateFormat(sPost[i].lastTime)+"</p></div>";
 				$(".result-list").append(userPlateObj);
 			}
 		}
@@ -19,11 +19,11 @@ var replySearch = function(word, pageNum) {
 	$('#postS').css('color', '#959595');
 	$.post("/api/replay/searchreply", {"keyword": word , "page": pageNum}, function(sReply) {
 		if (isNull(sReply)) {
-			$(".result-list").append("<div class='item post'><p class='post-title'><span>已无更多结果</span></p></div>");
+			$(".result-list").append("<div class='item post'><p class='post-title'><span class='.ending'>已无更多结果</span></p></div>");
 		} else {
 			
 			for (var i in sReply) {
-				var userReplyObj = "<div class='item post'><a class='item-link' href='./post?id="+sReply[i].father+"#"+sReply[i].id+"'></a><p class='reply-title'>"+searchReplyFormat(sReply[i].content,word)+"</p><p class='post-info'>"+sReply[i].author+"  "+dateFormat(sReply[i].times)+"</p></div>";
+				var userReplyObj = "<div class='item post'><a class='item-link' href='./post?id="+sReply[i].father+"#floorContent_"+sReply[i].id+"'></a><xmp class='reply-title'>"+searchReplyFormat(sReply[i].content,word)+"</xmp><p class='post-info'>"+sReply[i].author+"  "+dateFormat(sReply[i].times)+"</p></div>";
 				$(".result-list").append(userReplyObj);
 			}
 		}
@@ -37,6 +37,7 @@ function searchListener() {
 	var resultFlag = 1;
 	var i = 1;
 	$(document).on('click',".iconfont",function(){
+		resultFlag = 1;
 		i=1;
 		$("#page-content").empty();
 		$("#page-content").append(searchObj);
@@ -54,7 +55,7 @@ function searchListener() {
        	var scrollTop = $(this).scrollTop();
 　　   	var scrollHeight = $(document).height();
 　　    var windowHeight = $(this).height();
-　　			if(scrollTop + windowHeight == scrollHeight){
+　　			if(scrollHeight- scrollTop - windowHeight <= 1&&isNull($('.ending').html())){
             i++;
             switch(resultFlag)
             {

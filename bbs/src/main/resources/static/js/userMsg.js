@@ -138,7 +138,7 @@ function ReplyContent(page){//收到的评论初始化
 		if(!isNull(userData)){
 			for(var i in userData){
 				if(userData[i].isfirst==1) continue;
-				var userReplyObj = "<div  class='myreply'><a id='replyEver"+userData[i].id+"'  href='./post?id="+userData[i].father+"#"+userData[i].id+"'><xmp>"+userData[i].content+"</xmp></a></div>";
+				var userReplyObj = "<div  class='myreply'><a id='replyEver"+userData[i].id+"'  href='./post?id="+userData[i].father+"#floorContent_"+userData[i].id+"'><xmp>"+userData[i].content+"</xmp></a></div>";
 				$("#userReply").append(userReplyObj);
 				$("#userReply").append(hrObj);
 				

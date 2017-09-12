@@ -10,6 +10,15 @@
 		<script type="text/javascript" src="js/cookie.js"></script>
     	<script type="text/javascript" src="js/post.js"></script>
     	<script type="text/javascript" src="js/format.js"></script>
+    	<script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
+</script>
     	<script type="text/javascript" >
         $(document).ready(function () {
           postNew();
@@ -35,9 +44,14 @@
 			<textarea id="replyTitle" class="say" rows="1" cols="5" placeholder="标题"></textarea>
 			<textarea id="replyContent" class="say" rows="4" cols="5" placeholder="内容"></textarea>
 			<button class="sand">发送</button>
+				<span  style="
+color: #dc5858;
+font-size: 15px;
+margin: 5px;
+"><br><br><br><br><br><br><br>注意，发帖标题最长为25个字符，内容为3000个字符。且发帖时不能含有emoji表情以及非法字符，只能发utf-8编码的内容。</span>
 		</div>
-        		 
-    
+
+
  
 	</body>
 </html>

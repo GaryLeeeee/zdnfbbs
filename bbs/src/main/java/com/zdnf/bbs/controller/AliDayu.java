@@ -62,6 +62,9 @@ public class AliDayu {
     @RequestMapping("send")
     @ResponseBody
     public String run(String telnum) throws ClientException, InterruptedException {
+        if(telnum.substring(0,3).equals("171")){
+            return "error";
+        }
         String toDayNum=AlidayuDao.getTodayNum(telnum);
         if (toDayNum==null)toDayNum=0+"";
         if (Integer.parseInt(toDayNum)>3){
@@ -82,8 +85,8 @@ public class AliDayu {
 
     @RequestMapping("exist")
     @ResponseBody
-    public String exist(String telnum){
-        return AlidayuDao.getIdByTel(telnum);
+    public String exist(String tel){
+        return AlidayuDao.getIdByTel(tel);
     }
 
 

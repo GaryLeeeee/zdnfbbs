@@ -7,11 +7,19 @@
   <meta name="wap-font-scale" content="no" />
  
 
-<link rel="stylesheet" href="https://bbs.pku.edu.cn/v2/mobile/css/all.css?v15" />
+<link rel="stylesheet" href="http://pic.zdnfbbs.cn/all.css" />
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/strapdown.js"></script>
 <script type="text/javascript" src="js/format.js"></script>
 <script type="text/javascript">
+$(document).ready(function () {
+        if(IsPC())
+        {
+          window.close(); 
+          alert('论坛尚未支持电脑端，请使用手机开启');
+        }
+});
   $(document).ready(function(){
     var userCookie = checkLoginStatus();
     if(userCookie) {
@@ -35,7 +43,7 @@
   <span class="logo">南巷BBS</span>
   <div class="search">
     <input data-role="top-search-text" type="text" placeholder="帖子、回复" />
-    <a data-action="top-search"><i class="iconfont"></i></a>
+    <a id="search" data-action="top-search"><i class="iconfont"></i></a>
   </div>
 </div>
 
@@ -94,7 +102,7 @@
               <a class="post-title">交友</a>
               <a class="post-info">交个朋友 聊聊骚</a>
             </li>
-                        
+            
                         
       </div>
 
@@ -152,8 +160,8 @@
                     <li>
               <a class="post-link" href="/platepost?id=12"></a>
               <a class="post-title"
-                        >网络技术</a>
-              <a class="post-info">讨论关于学校的网络</a>
+                        >电脑硬件</a>
+              <a class="post-info">组个水冷玩玩？</a>
             </li>
                         <li>
               <a class="post-link" href="/platepost?id=13"></a>
